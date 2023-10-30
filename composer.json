@@ -1,0 +1,20 @@
+{
+    "require": {
+        "slim/slim": "^4.12",
+        "slim/psr7": "^1.6",
+        "twig/twig": "^3.7",
+        "middlewares/trailing-slash": "^2.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "core\\": "core"
+        },
+
+        "files":[
+            "app/functions/helpers.php"
+        ]
+    }
+    
+}
