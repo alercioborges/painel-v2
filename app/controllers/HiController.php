@@ -10,9 +10,9 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 class HiController extends Controller
 {
 	
-	function index(Reques $request, Response $response): Response
+	public function show(Reques $request, Response $response): Response
 	{		
-		$this->view('pages/hi.twig', [
+		$this->view('pages/hi.html', [
 			'TITLE' => 'Olá'
 		]);
 
