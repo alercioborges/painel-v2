@@ -1,0 +1,3 @@
+
+/*core_user_get_users*/
+https://directweb.eduead.com.br/moodle40/webservice/rest/server.php?wstoken=0aa4e9bac2c22fa65beeb720d3a5fb41&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=suspended&criteria[0][value]=false

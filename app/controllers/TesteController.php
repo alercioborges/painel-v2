@@ -5,12 +5,23 @@ namespace app\controllers;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Reques;
 
-class TesteController
+use core\Controller;
+use app\models\User;
+
+class TesteController extends Controller
 {
 	
-	function show(Reques $request, Response $response): Response
+	public function show(Reques $request, Response $response): Response
 	{
-		echo "Teste de rota";
+		$user = new User();
+
+		$users = $user->getAll();
+
+		$this->view('pages/teste.html', [
+			'TITLE' => 'Usuários',
+			'USERS' => $users 
+
+		]);
 		return $response;
 	}
 	

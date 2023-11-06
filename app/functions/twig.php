@@ -1,6 +1,7 @@
 <?php
 
-$get_full_url = new Twig\TwigFunction('get_full_url', function(){
+$get_full_url = new Twig\TwigFunction('get_full_url', function()
+{
 	$isHttps = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
 	$protocol = $isHttps ? 'https://' : 'http://';
 

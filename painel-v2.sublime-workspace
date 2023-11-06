@@ -1,0 +1,474 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"class",
+				"class_alias()"
+			],
+			[
+				"if",
+				"if?\t$… = ( … ) ? … : …"
+			],
+			[
+				"implode",
+				"simplexml_load_file()"
+			],
+			[
+				"array_p",
+				"array_pop()"
+			],
+			[
+				"orint",
+				"snmp_set_oid_numeric_print()"
+			],
+			[
+				"fore",
+				"foreach\tforeach …"
+			],
+			[
+				"aray",
+				"array\t$… = array (…)"
+			],
+			[
+				"arr",
+				"array_filter()"
+			],
+			[
+				"c",
+				"course_id"
+			],
+			[
+				"array_m",
+				"array_merge()"
+			],
+			[
+				"_ses",
+				"invoice_settings"
+			],
+			[
+				"cou",
+				"count_chars()"
+			],
+			[
+				"functio",
+				"function_exists()"
+			],
+			[
+				"src",
+				"onscroll"
+			],
+			[
+				"scri",
+				"noscript"
+			],
+			[
+				"unset",
+				"unset()"
+			],
+			[
+				"_sess",
+				"$_SESSION\tSESSION['…']"
+			],
+			[
+				"_se",
+				"$_SESSION\tSESSION['…']"
+			],
+			[
+				"ser",
+				"iduser"
+			],
+			[
+				"_SER",
+				"_SERVER"
+			],
+			[
+				"_p",
+				"$_POST\tPOST['…']"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"pre",
+				"progress"
+			],
+			[
+				"locatio",
+				"gupnp_root_device_get_relative_location()"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/painel-v2"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/painel-v2/core/Modal.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/OverviewController.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa7648.28725/Model.php",
+		"/C/xampp/htdocs/painel-v2/core/Database.php",
+		"/C/xampp/htdocs/painel-v2/app/Config.php",
+		"/C/xampp/htdocs/curso-php-7/banco-de-dados/pdo/connection.php",
+		"/C/xampp/htdocs/painel-v2/public/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa10676.41197/Model.php",
+		"/C/xampp/htdocs/painel-v2/core/Teste.php",
+		"/C/xampp/htdocs/painel-v2/core/Controller.php",
+		"/C/xampp/htdocs/painel-v2/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa6760.48281/Database.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/DB/Sql.php",
+		"/C/xampp/htdocs/painel-v2/bootstrap.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/overview.html",
+		"/C/xampp/htdocs/painel/core/Model.php",
+		"/C/xampp/htdocs/painel/core/Database.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/overview.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/hi.html",
+		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/index.html",
+		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/charts/chartjs.html",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/base.twig",
+		"/C/xampp/htdocs/painel-v2/app/functions/twig.php",
+		"/C/xampp/htdocs/painel-v2/app/functions/helpers.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/HiController.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/NovoController.php",
+		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
+		"/C/xampp/htdocs/painel-v2/app/src/Load.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/partials/footer.twig",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/partials/header.twig",
+		"/C/xampp/htdocs/painel-v2/index.php",
+		"/C/xampp/htdocs/painel-v2/app/src/GetFullUrl.php",
+		"/C/xampp/htdocs/painel/routes/redirect.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/index.php",
+		"/C/xampp/htdocs/painel/index.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Controller/TemplatePage.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/routes/admin-categories.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Controller/Template.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/HomeController.php",
+		"/C/xampp/htdocs/painel/core/Controller.php",
+		"/C/xampp/htdocs/painel/src/Controllers/UserController.php",
+		"/C/xampp/htdocs/painel/src/Controllers/Teste.php",
+		"/C/xampp/htdocs/painel/src/Config.php",
+		"/C/xampp/htdocs/painel/src/Controllers/HomeController.php",
+		"/C/xampp/htdocs/painel/src/Controllers/ErrorController.php",
+		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/tables/simple.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/user.html",
+		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/tables/data.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/teste.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/base.twig",
+		"/C/xampp/htdocs/painel/composer.json",
+		"/C/Users/alercio.borges/Desktop/excel_numero_usuarios_cadastrados.xlsx",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/hi.html",
+		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/starter.html",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/view/admin/base.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.twig",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.twig",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/base.html",
+		"/C/xampp/htdocs/painel/index-old.php",
+		"/C/xampp/htdocs/painel/.htaccess",
+		"/C/xampp/htdocs/painel/index - Copia.php",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/profile.html",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGeneratorInterface.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderInterface.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/Method.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/Property.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCache.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactory.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactoryInterface.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheInterface.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/FileLocator.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/asset/Exception/AssetNotFoundException.php",
+		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGenerator.php",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.php",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.php",
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.html",
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/header.html",
+		"/C/xampp/htdocs/painel/src/Views/pages/base.html",
+		"/C/xampp/htdocs/painel/src/Views/partials/header.html",
+		"/C/xampp/htdocs/painel/src/Views/partials/footer.html",
+		"/C/Users/alercio.borges/Desktop/mvc_dlim_estrutura.php",
+		"/C/xampp/htdocs/painel/src/Views/partials/header.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp38969/var/www/sites/directweb.eduead.com.br/html/painel/index.php",
+		"/C/Users/alercio.borges/Desktop/apistripe/enrol.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp45537/var/www/sites/directweb.eduead.com.br/html/painel/routes/home.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp41675/var/www/sites/directweb.eduead.com.br/html/painel/src/Controllers/Teste.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp28707/var/www/sites/directweb.eduead.com.br/html/painel/routes/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp11135/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Model/User.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp30955/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp15500/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp23055/var/www/sites/directweb.eduead.com.br/html/painel/src/routes.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp09326/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp09040/var/www/sites/directweb.eduead.com.br/html/painel/core/Model.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp11598/var/www/sites/directweb.eduead.com.br/html/painel/src/controllers/HomeController.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp14821/var/www/sites/directweb.eduead.com.br/html/painel/composer.lock",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp45751/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp48745/var/www/sites/directweb.eduead.com.br/html/painel/core/Request.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp47537/var/www/sites/directweb.eduead.com.br/html/painel/core/Model.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp49272/var/www/sites/directweb.eduead.com.br/html/painel/core/Controller.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp46800/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp20722/var/www/sites/directweb.eduead.com.br/html/painel/core/Controller.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp22216/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp18695/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp37411/var/www/sites/directweb.eduead.com.br/html/painel/routes/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp35028/var/www/sites/directweb.eduead.com.br/html/painel/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa10760.43559/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp15482/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp19390/var/www/sites/directweb.eduead.com.br/html/painel/src/controllers/ErrorController.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp19478/var/www/sites/directweb.eduead.com.br/html/painel/src/controllers/HomeController.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp57600/var/www/sites/directweb.eduead.com.br/html/painel/core/Request.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp23482/var/www/sites/directweb.eduead.com.br/html/painel/src/models/Test.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp24834/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp19911/var/www/sites/directweb.eduead.com.br/html/painel/routes/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp13188/var/www/sites/directweb.eduead.com.br/html/painel/index.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp48537/var/www/sites/directweb.eduead.com.br/html/painel/routes/redirect.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp33811/var/www/sites/directweb.eduead.com.br/html/painel/routes/site.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/routes/site.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/routes/admin-users.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/routes/admin.php",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp32187/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp18483/var/www/sites/directweb.eduead.com.br/html/painel/src/Teste.php",
+		"/C/xampp/htdocs/curso-php-7/slim/v4/index.php",
+		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp38501/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp44920/var/www/sites/directweb.eduead.com.br/html/painel/redirect.php"
+	],
+	"find":
+	{
+		"height": 46.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Length",
+			"Dinosaur",
+			"Bar Chart",
+			"href",
+			"src",
+			"Environment",
+			"loader = new \\Twig\\Loader\\FilesystemLoader(",
+			"handler",
+			"handle",
+			"row -->",
+			"Responsive Hover",
+			"Responsive Hover Table",
+			"Responsive Hover Table\nSearch\n",
+			"respons",
+			"withUri",
+			"request",
+			"<!-- /.sidebar -->",
+			"menu",
+			"manu",
+			"<!-- Control Sidebar -->",
+			"control-sidebar",
+			"fas fa-th-large",
+			"href",
+			"src",
+			"href",
+			"Views\\Twig",
+			"container ",
+			"getci",
+			"base_path()",
+			"asset",
+			"src",
+			"href",
+			"src",
+			"href",
+			"src",
+			"conten",
+			"page",
+			"twig",
+			"twi",
+			"SESSION",
+			"Psr\\Http\\Message\\ResponseInterface",
+			"Psr\\Http\\Message\\ServerRequestInterface",
+			"Psr\\Http\\Message\\ResponseInterface",
+			"hover",
+			"tran",
+			"transi",
+			"hover",
+			"video 4",
+			"mod",
+			"Response",
+			"RequestHandler",
+			"Request",
+			"\\RequestInterface",
+			"RequestInterface ",
+			"RequestHandler",
+			"Response",
+			"flattenArray",
+			"getda",
+			"flatten2DArray",
+			"8",
+			"7",
+			")",
+			"setParams",
+			"$conn",
+			"'],",
+			"course",
+			"couurse",
+			"addUniqueNumber",
+			"number",
+			"nuumber",
+			"enrolledUsers",
+			"course",
+			"cuurse",
+			"couurse",
+			"value",
+			"valuue"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 46.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "painel-v2.sublime-project",
+	"replace":
+	{
+		"height": 88.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 59.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

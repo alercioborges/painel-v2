@@ -10,6 +10,7 @@ $app->get('/user/{id:[0-9]+}', 'app\controllers\UserController:show');
 $app->get('/teste', 'app\controllers\TesteController:show');
 $app->get('/novo', 'app\controllers\NovoController:show');
 $app->get('/hi/{name}', 'app\controllers\HiController:show');
-
+$app->get('/user/create', 'app\controllers\UserController:create');
+$app->post('/user/create', 'app\controllers\UserController:save');
 
 $app->run();

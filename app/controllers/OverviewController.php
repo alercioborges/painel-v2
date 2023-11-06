@@ -12,7 +12,7 @@ class OverviewController extends Controller
 	
 	function index(Reques $request, Response $response): Response
 	{		
-		$this->view('pages/base.twig', [
+		$this->view('pages/overview.html', [
 			'TITLE' => 'Visão Geral'
 		]);
 
