@@ -24,9 +24,7 @@ class UserController extends Controller
 	{
 		$user = new User();
 
-		$x = $user->save($_POST);
-
-		dd($x);
+		$user->save($_POST);
 
 		return $response;
 	}	

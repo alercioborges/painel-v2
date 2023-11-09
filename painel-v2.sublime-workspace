@@ -107,6 +107,138 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "https://devel.uscs.eduead.com.br/ava/webservice/rest/server.php?wstoken=67bc2b1b13eebf2af073858560acce48&moodlewsrestformat=json&wsfunction=core_user_get_users&criteria[0][key]=suspended&criteria[0][value]=false",
+			"file": "/C/Users/alerc/Desktop/api_moodle_uscs",
+			"file_size": 198,
+			"file_write_time": 133432505448076884,
+			"settings":
+			{
+				"buffer_size": 211,
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					3,
+					1,
+					"right_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAAXAAAAaHR0cHM6Ly9lYWQudXNjcy5lZHUuYnI",
+					"AQAAAAAAAAABAAAAFwAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					4,
+					1,
+					"paste",
+					null,
+					"AQAAAAAAAAAAAAAAJQAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					5,
+					1,
+					"right_delete",
+					null,
+					"AQAAACUAAAAAAAAAJQAAAAAAAAABAAAALw",
+					"AQAAAAAAAAABAAAAJQAAAAAAAAAlAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					8,
+					1,
+					"left_delete",
+					null,
+					"AQAAAEgAAAAAAAAASAAAAAAAAAAfAAAAMTJjZWM5NjMxMWI1MzljZTdhMDg1NzllZGFhOGIyMQ",
+					"AQAAAAAAAAABAAAASAAAAAAAAABnAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					9,
+					1,
+					"paste",
+					null,
+					"AQAAAEgAAAAAAAAAaAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					14,
+					1,
+					"insert",
+					{
+						"characters": "suspe"
+					},
+					"BgAAALIAAAAAAAAAswAAAAAAAAAAAAAAswAAAAAAAACzAAAAAAAAAAgAAAB1c2VybmFtZbMAAAAAAAAAtAAAAAAAAAAAAAAAtAAAAAAAAAC1AAAAAAAAAAAAAAC1AAAAAAAAALYAAAAAAAAAAAAAALYAAAAAAAAAtwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAsgAAAAAAAAC6AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					15,
+					1,
+					"insert",
+					{
+						"characters": "nded"
+					},
+					"BAAAALcAAAAAAAAAuAAAAAAAAAAAAAAAuAAAAAAAAAC5AAAAAAAAAAAAAAC5AAAAAAAAALoAAAAAAAAAAAAAALoAAAAAAAAAuwAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAtwAAAAAAAAC3AAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": "false"
+					},
+					"BgAAAM8AAAAAAAAA0AAAAAAAAAAAAAAA0AAAAAAAAADQAAAAAAAAAAYAAAB1c2NzbWLQAAAAAAAAANEAAAAAAAAAAAAAANEAAAAAAAAA0gAAAAAAAAAAAAAA0gAAAAAAAADTAAAAAAAAAAAAAADTAAAAAAAAANQAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAzwAAAAAAAADVAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					24,
+					9,
+					"right_delete",
+					null,
+					"CQAAAEgAAAAAAAAASAAAAAAAAAABAAAANkgAAAAAAAAASAAAAAAAAAABAAAAN0gAAAAAAAAASAAAAAAAAAABAAAAYkgAAAAAAAAASAAAAAAAAAABAAAAY0gAAAAAAAAASAAAAAAAAAABAAAAMkgAAAAAAAAASAAAAAAAAAABAAAAYkgAAAAAAAAASAAAAAAAAAABAAAAMUgAAAAAAAAASAAAAAAAAAABAAAAYkgAAAAAAAAASAAAAAAAAAABAAAAMQ",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					25,
+					8,
+					"right_delete",
+					null,
+					"CAAAAEgAAAAAAAAASAAAAAAAAAABAAAAM0gAAAAAAAAASAAAAAAAAAABAAAAZUgAAAAAAAAASAAAAAAAAAABAAAAZUgAAAAAAAAASAAAAAAAAAABAAAAYkgAAAAAAAAASAAAAAAAAAABAAAAZkgAAAAAAAAASAAAAAAAAAABAAAAMkgAAAAAAAAASAAAAAAAAAABAAAAYUgAAAAAAAAASAAAAAAAAAABAAAAZg",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					26,
+					6,
+					"right_delete",
+					null,
+					"BgAAAEgAAAAAAAAASAAAAAAAAAABAAAAMEgAAAAAAAAASAAAAAAAAAABAAAAN0gAAAAAAAAASAAAAAAAAAABAAAAM0gAAAAAAAAASAAAAAAAAAABAAAAOEgAAAAAAAAASAAAAAAAAAABAAAANUgAAAAAAAAASAAAAAAAAAABAAAAOA",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					27,
+					7,
+					"right_delete",
+					null,
+					"BwAAAEgAAAAAAAAASAAAAAAAAAABAAAANUgAAAAAAAAASAAAAAAAAAABAAAANkgAAAAAAAAASAAAAAAAAAABAAAAMEgAAAAAAAAASAAAAAAAAAABAAAAYUgAAAAAAAAASAAAAAAAAAABAAAAY0gAAAAAAAAASAAAAAAAAAABAAAAY0gAAAAAAAAASAAAAAAAAAABAAAAZQ",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					28,
+					3,
+					"right_delete",
+					null,
+					"AwAAAEgAAAAAAAAASAAAAAAAAAABAAAANEgAAAAAAAAASAAAAAAAAAABAAAAOEgAAAAAAAAASAAAAAAAAAABAAAAOA",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					29,
+					1,
+					"paste",
+					null,
+					"AQAAAEgAAAAAAAAAaAAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAASAAAAAAAAABIAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -140,10 +272,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp/htdocs/painel-v2"
+		"/C/xampp/htdocs/painel-v2",
+		"/C/xampp/htdocs/painel-v2/app",
+		"/C/xampp/htdocs/painel-v2/app/functions",
+		"/C/xampp/htdocs/painel-v2/app/src",
+		"/C/xampp/htdocs/painel-v2/app/traits"
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/app/traits/Validations.php",
+		"/C/xampp/htdocs/painel-v2/app/functions/helpers.php",
+		"/C/xampp/htdocs/painel-v2/app/src/Flash.php",
+		"/C/xampp/htdocs/painel-v2/app/traits/Api.php",
+		"/C/xampp/htdocs/painel-v2/bootstrap.php",
 		"/C/xampp/htdocs/painel-v2/core/Modal.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/OverviewController.php",
@@ -158,7 +299,6 @@
 		"/C/xampp/htdocs/painel-v2/composer.json",
 		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa6760.48281/Database.php",
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/DB/Sql.php",
-		"/C/xampp/htdocs/painel-v2/bootstrap.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/overview.html",
 		"/C/xampp/htdocs/painel/core/Model.php",
 		"/C/xampp/htdocs/painel/core/Database.php",
@@ -168,7 +308,6 @@
 		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/charts/chartjs.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/base.twig",
 		"/C/xampp/htdocs/painel-v2/app/functions/twig.php",
-		"/C/xampp/htdocs/painel-v2/app/functions/helpers.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/HiController.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/NovoController.php",
 		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
@@ -268,10 +407,7 @@
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/routes/admin.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp32187/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp18483/var/www/sites/directweb.eduead.com.br/html/painel/src/Teste.php",
-		"/C/xampp/htdocs/curso-php-7/slim/v4/index.php",
-		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/composer.json",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp38501/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp44920/var/www/sites/directweb.eduead.com.br/html/painel/redirect.php"
+		"/C/xampp/htdocs/curso-php-7/slim/v4/index.php"
 	],
 	"find":
 	{
@@ -386,6 +522,36 @@
 		{
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/alerc/Desktop/api_moodle_uscs",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								211
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -466,7 +632,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

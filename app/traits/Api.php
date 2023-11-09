@@ -8,12 +8,12 @@ use app\src\ValidEmail;
 
 trait Api{
 
-	protected $uri = Config::MOODLE_DOMAIN
+	private $uri = Config::MOODLE_DOMAIN
 	. 'webservice/rest/server.php?wstoken='
 	. Config::MOODLE_TOKEN
 	. '&moodlewsrestformat=json&wsfunction=';
 
-	protected $format = '&moodlewsrestformat=json&';
+	private $format = '&moodlewsrestformat=json&';
 
 	protected function callApi(String $function, String $parameters):array
 	{

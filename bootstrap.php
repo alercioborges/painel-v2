@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use Middlewares\TrailingSlash;
 use Slim\Factory\AppFactory;
 use app\Config;
