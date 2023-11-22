@@ -22,10 +22,27 @@ class UserController extends Controller
 
 	public function save(Reques $request, Response $response): Response
 	{
+
+		$validate = new Validate();
+
+		$data = $validate->validate([
+			'username' => 'required',
+			'password' => 'required',
+			'firstname' => 'required',
+			'lastname' => 'required',
+			'email' => 'required'
+		])
+
+		if ($validate->hasErrors()) {
+			return back();
+		}
+
+		dd($data);
+
 		$user = new User();
 
 		$user->save($_POST);
-
+		
 		return $response;
 	}	
 	

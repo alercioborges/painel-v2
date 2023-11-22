@@ -13,6 +13,14 @@ traits Validations{
 		}
 	}
 
-	
+	protected function email($field)
+	{
+
+	}
+
+	protected function unique($field)
+	{
+		
+	}
 
 }

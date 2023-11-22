@@ -19,8 +19,7 @@ class User extends Model
 
 		$response = $this->callApi('core_user_create_users', $parameter);
 
-		return $response;
-		
+		return $response;		
 	}
 
 }

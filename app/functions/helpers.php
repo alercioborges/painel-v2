@@ -18,9 +18,9 @@ function Flash($index, $message){
 }
 
 function error($message){
-
+	return "<span style='border: solid 2px red;''>{$message}</span>";
 }
 
 function success($message){
-	
+	return "<span style='border: solid 2px green;'>{$message}</span>";
 }
