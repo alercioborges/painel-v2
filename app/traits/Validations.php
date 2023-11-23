@@ -2,14 +2,14 @@
 
 namespace app\traits;
 
-traits Validations{
+trait Validations{
 
 	private $errors = [];
 
-	protected function requied($field)
+	protected function required($field)
 	{
-		if (empty($_POST[$index])) {
-			$this->errors[$field][] = flash($field, error("Compo obrigatório"));;
+		if (empty($_POST[$field])) {
+			$this->errors[$field][] = flash($field, error("Compo obrigatório"));
 		}
 	}
 
@@ -21,6 +21,11 @@ traits Validations{
 	protected function unique($field)
 	{
 		
+	}
+
+	public function hasErrors()
+	{
+		return !empty($this->errors);
 	}
 
 }

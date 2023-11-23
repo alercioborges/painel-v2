@@ -6,18 +6,18 @@ class Flash
 {	
 	public static function add($index, $message)
 	{
-		if (!isset($_SERVER[$index])) {
-			$_SERVER[$index];
+		if (!isset($_SESSION['variable'][$index])) {
+			$_SESSION[$index] = $message;
 		}
 	}
 
 	public static function get($index)
 	{
-		if (isset($_SERVER[$index])) {
-			$message = $_SERVER[$index];
+		if (isset($_SESSION[$index])) {
+			$message = $_SESSION[$index];
 		}
 
-		unset($_SERVER[$index]);
+		unset($_SESSION[$index]);
 
 		return $message ?? NULL;
 	}

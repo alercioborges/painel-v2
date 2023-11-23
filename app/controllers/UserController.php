@@ -6,6 +6,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Reques;
 
 use core\Controller;
+
+use app\src\Validate;
 use app\models\User;
 
 class UserController extends Controller
@@ -31,10 +33,10 @@ class UserController extends Controller
 			'firstname' => 'required',
 			'lastname' => 'required',
 			'email' => 'required'
-		])
+		]);
 
 		if ($validate->hasErrors()) {
-			return back();
+			back();
 		}
 
 		dd($data);

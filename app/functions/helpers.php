@@ -1,7 +1,5 @@
 <?php
 
-use app\src\Flash;
-
 function dd($data){
 	echo "<pre>"; print_r($data); echo "</pre>";
 
@@ -14,13 +12,17 @@ function path(){
 }
 
 function Flash($index, $message){
-	Flash::add($index, $message);
+	app\src\Flash::add($index, $message);
 }
 
 function error($message){
-	return "<span style='border: solid 2px red;''>{$message}</span>";
+	return "<span class='error-message'>{$message}</span>";
 }
 
 function success($message){
-	return "<span style='border: solid 2px green;'>{$message}</span>";
+	return "<span class='success-message'>{$message}</span>";
+}
+
+function back(){
+	app\src\Redirect::back();
 }

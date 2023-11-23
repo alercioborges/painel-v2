@@ -11,12 +11,12 @@ class Validate
 	public function validate($rules)
 	{
 		foreach ($rules as $field => $validation) {
-			if ($this->hasOneValidation($validation) {
+			if ($this->hasOneValidation($validation)) {
 				$this->$validation($field);
 				
 			}
 
-			if ($this->hasOneOrMoreValidation($validation) {
+			if ($this->hasTwoOrMoreValidation($validation)) {
 				$validations = explode(':', $validation);
 
 				foreach ($validations as $validation) {
@@ -26,16 +26,13 @@ class Validate
 		}
 	}
 
-
-
-
 	public function hasOneValidation($validate)
 	{
 		return substr_count($validate, ':') == 0;
 	}
 
 
-	private function hasOneOrMoreValidation($validate)
+	private function hasTwoOrMoreValidation($validate)
 	{
 		return substr_count($validate, ':') >= 1;
 	}
