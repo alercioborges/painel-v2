@@ -9,3 +9,20 @@
 	padding: 5px;
 	color: green;
 }
+
+#firstname-input-form {
+	text-transform: uppercase;
+}
+
+#lastname-input-form {
+	text-transform: uppercase;
+}
+
+#email-input-form {
+	text-transform:lowercase;
+}
+
+#username-input-form {
+	text-transform:lowercase;
+}
+

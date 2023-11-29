@@ -11,7 +11,7 @@ function path(){
 	return dirname($vendorDir); 	
 }
 
-function Flash($index, $message){
+function flash($index, $message){
 	app\src\Flash::add($index, $message);
 }
 
@@ -25,4 +25,12 @@ function success($message){
 
 function back(){
 	app\src\Redirect::back();
+	exit;
+}
+
+function setCookieForm(array $formData)
+{
+	foreach ($formData as $key => $value) {
+		setcookie($key, $value, time() + 1);
+	}
 }

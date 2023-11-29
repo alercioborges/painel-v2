@@ -16,7 +16,8 @@ class UserController extends Controller
 	public function create(Reques $request, Response $response): Response
 	{
 		$this->view('pages/user-create.html', [
-			'TITLE' => 'Cadastrar novo usuários'
+			'TITLE' => 'Cadastrar novo usuários',
+			'COOKIE_DATA' => $_COOKIE
 		]);
 
 		return $response;
@@ -25,27 +26,21 @@ class UserController extends Controller
 	public function save(Reques $request, Response $response): Response
 	{
 
-		$validate = new Validate();
-
-		$data = $validate->validate([
-			'username' => 'required',
-			'password' => 'required',
-			'firstname' => 'required',
-			'lastname' => 'required',
-			'email' => 'required'
-		]);
-
-		if ($validate->hasErrors()) {
-			back();
-		}
-
-		dd($data);
-
 		$user = new User();
 
-		$user->save($_POST);
+		$return_api = $user->save($_POST);
+
+		$validate = new Validate($return_api);
+
+		$data = $validate->validate([
+			'username'	=> 'unique:required',
+			'password'	=> 'required',
+			'firstname'	=> 'required',
+			'lastname'	=> 'required',
+			'email'		=> 'email:required'
+		]);
 		
-		return $response;
+		return $response;		
 	}	
-	
+
 }

@@ -15,15 +15,18 @@ trait Validations{
 
 	protected function email($field)
 	{
-
+		if (!filter_var($_POST[$field], FILTER_VALIDATE_EMAIL)) {
+			$this->errors[$field][] = flash($field, error("O e-mail inserido é inválido"));
+		}
 	}
 
 	protected function unique($field)
 	{
-		
+		$this->errors[$field][] = flash($field, error("val ja cadastrao"));
 	}
+	
 
-	public function hasErrors()
+	public function hasErrors(array $formData = [])
 	{
 		return !empty($this->errors);
 	}

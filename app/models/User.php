@@ -19,7 +19,20 @@ class User extends Model
 
 		$response = $this->callApi('core_user_create_users', $parameter);
 
-		return $response;		
+		if (array_key_exists(0, $response) && $response[0]['username'] == $_POST['username']) {
+			$return_api = array('message' => "Deu certo", 'cod' => 0);
+		}
+		elseif (in_array("Email address already exists: {$_POST['email']}", $response)) {
+			$return_api = array('message' => "Este email já existe", 'cod' => 1);
+		}
+		elseif (in_array("Username already exists: {$_POST['username']}", $response)) {
+			$return_api = array('message' => "Este nome de usuário já existe", 'cod' => 2);
+		}
+		else {
+			$return_api = array('message' => $response['message'], 'cod' => 3);
+		}
+
+		return $return_api;		
 	}
 
 }

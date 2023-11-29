@@ -4,7 +4,6 @@ namespace app\traits;
 
 use app\src\ExecuteCurl;
 use app\Config;
-use app\src\ValidEmail;
 
 trait Api{
 
@@ -26,8 +25,6 @@ trait Api{
 
 	protected function saveParameters(array $arg):String
 	{
-		ValidEmail::verifyEmail($arg['email']);
-
 		$username = '&users[0][username]=' . $arg['username'];
 		$auth = '&users[0][auth]=manual';
 		$password = '&users[0][password]=' . urlencode($arg['password']);

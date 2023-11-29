@@ -8,12 +8,16 @@ class Validate
 {
 	use Validations;
 
+	function __construct(array $return_api)
+	{
+		
+	}
+
 	public function validate($rules)
 	{
 		foreach ($rules as $field => $validation) {
 			if ($this->hasOneValidation($validation)) {
-				$this->$validation($field);
-				
+				$this->$validation($field);				
 			}
 
 			if ($this->hasTwoOrMoreValidation($validation)) {
@@ -24,6 +28,12 @@ class Validate
 				}
 			}
 		}
+
+		if ($this->hasErrors()) {
+			setCookieForm($_POST);
+			back();
+		}
+		
 	}
 
 	public function hasOneValidation($validate)
