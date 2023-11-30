@@ -33,7 +33,7 @@ class UserController extends Controller
 		$validate = new Validate($return_api);
 
 		$data = $validate->validate([
-			'username'	=> 'unique:required',
+			'username'	=> 'required',
 			'password'	=> 'required',
 			'firstname'	=> 'required',
 			'lastname'	=> 'required',

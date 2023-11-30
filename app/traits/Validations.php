@@ -22,7 +22,7 @@ trait Validations{
 
 	protected function unique($field)
 	{
-		$this->errors[$field][] = flash($field, error("val ja cadastrao"));
+		
 	}
 	
 

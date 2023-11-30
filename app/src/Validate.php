@@ -10,14 +10,22 @@ class Validate
 
 	function __construct(array $return_api)
 	{
-		
+		if($return_api['cod'] == 2){
+			$this->errors['username'][] = flash('username', error($return_api['message']));	
+		}
+		elseif($return_api['cod'] == 1){
+			$this->errors['email'][] = flash('email', error($return_api['message']));	
+		}
+		elseif($return_api['cod'] == 3){
+			$this->errors['password'][] = flash('password', error($return_api['message']));	
+		}
 	}
 
 	public function validate($rules)
 	{
 		foreach ($rules as $field => $validation) {
 			if ($this->hasOneValidation($validation)) {
-				$this->$validation($field);				
+				$this->$validation($field);							
 			}
 
 			if ($this->hasTwoOrMoreValidation($validation)) {
@@ -33,7 +41,7 @@ class Validate
 			setCookieForm($_POST);
 			back();
 		}
-		
+
 	}
 
 	public function hasOneValidation($validate)
@@ -46,5 +54,5 @@ class Validate
 	{
 		return substr_count($validate, ':') >= 1;
 	}
-	
+
 }

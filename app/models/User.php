@@ -29,7 +29,7 @@ class User extends Model
 			$return_api = array('message' => "Este nome de usuário já existe", 'cod' => 2);
 		}
 		else {
-			$return_api = array('message' => $response['message'], 'cod' => 3);
+			$return_api = array('message' => $response['errorcode'], 'cod' => 3);
 		}
 
 		return $return_api;		
