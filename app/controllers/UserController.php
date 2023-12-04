@@ -33,11 +33,11 @@ class UserController extends Controller
 		$validate = new Validate($return_api);
 
 		$data = $validate->validate([
-			'username'	=> 'required',
-			'password'	=> 'required',
-			'firstname'	=> 'required',
-			'lastname'	=> 'required',
-			'email'		=> 'email:required'
+			'username'	=> 'username:required:max@30',
+			'password'	=> 'required:max@30',
+			'firstname'	=> 'required:max@30',
+			'lastname'	=> 'required:max@30',
+			'email'		=> 'email:required:max@30'
 		]);
 		
 		return $response;		

@@ -295,7 +295,7 @@
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -413,7 +413,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 38.0
 	},
 	"input":
 	{
@@ -450,7 +450,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":

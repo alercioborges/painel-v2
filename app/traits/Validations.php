@@ -20,9 +20,20 @@ trait Validations{
 		}
 	}
 
-	protected function unique($field)
+	protected function username($field)
 	{
-		
+		if(preg_match('/[^a-z0-9\.@_-]/', $_POST[$field])) {
+			$this->errors[$field][] = flash($field, error('O nome de usuário pode conter apenas caracteres minúsculos alfanuméricos (letras e números), sublinhado (_), hífen (-), ponto (.) ou símbolo arroba (@).'));
+		}
+	}
+
+
+
+	protected function max($field, $max)
+	{
+		if (strlen($_POST[$field]) > $max) {
+			$this->errors[$field][] = flash($field, error("O número de caracteres para este campo não pode ser maior que {$max}"));
+		}
 	}
 	
 
