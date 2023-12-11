@@ -25,7 +25,7 @@ trait Api{
 
 	protected function saveParameters(array $arg):String
 	{
-		$username = '&users[0][username]=' . $arg['username'];
+		$username = '&users[0][username]=' . strtolower($arg['username']);
 		$auth = '&users[0][auth]=manual';
 		$password = '&users[0][password]=' . urlencode($arg['password']);
 		$firstname = '&users[0][firstname]=' . urlencode(strtoupper($arg['firstname']));

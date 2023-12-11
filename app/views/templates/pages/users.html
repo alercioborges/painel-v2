@@ -1,0 +1,72 @@
+{% extends 'pages/base.twig' %}
+
+{% block content %}
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				{{ success_message('success') }}
+				<h3 class="card-title">Lista de usuários</h3>				
+				<div class="card-tools">					
+					<div class="input-group input-group-sm" style="width: 150px;">			
+						<input type="text" name="table_search" class="form-control float-right" placeholder="Search">						
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-default">
+								<i class="fas fa-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.card-header -->			
+			<div class="card-body table-responsive p-0">
+				<table id="users-list" class="table table-hover text-nowrap">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th>E-mail</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for data in USERS|filter(v => v.id != 1) -%}
+						<tr>
+							<td>{{ data.id }}</td>
+							<td>{{ data.fullname }}</td>
+							<td>{{ data.email }}</td>
+							<td>
+								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+
+								<!-- Início Modal de exclusão de usuário -->
+								<!-- Início link excluir Modal -->
+								<a href="#" data-toggle="modal" data-target="#confirm-delete-iduser-{{data.id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+								<!-- Fim link excluir Modal -->
+								<!-- Início da janela do Modal -->
+								<div class="modal fade" id="confirm-delete-iduser-{{data.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h3><b>Exclusão de usuário</b></h3>
+											</div>
+											<div class="modal-body">
+												<p><h5>Deseja realmente excluir o usuário de nome <br>{{data.firstname}} {{data.lastname}} <br>e de e-mail <br>{{data.email}} ?</h5></p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+												<a href="{{ get_full_url() }}/users/{{data.id}}/delete" class="btn btn-danger btn-ok">Deletar</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Fim da da janela do Modal -->
+								<!-- Fim do modal de exclusão de usuário -->
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div><!-- /.card-body -->
+		</div><!-- /.card -->
+	</div>
+</div><!-- /.row -->
+{% endblock %}

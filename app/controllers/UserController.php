@@ -13,9 +13,25 @@ use app\models\User;
 class UserController extends Controller
 {
 	
-	public function create(Reques $request, Response $response): Response
+	public function show(Reques $request, Response $response):Response
 	{
-		$this->view('pages/user-create.html', [
+		$user = new User();
+		
+		$users = $user->getAll();
+
+		$this->view('pages/users.html', [
+			'TITLE' => 'Lissta de usuários',
+			'USERS' => $users 
+
+		]);
+
+		return $response;
+	}
+
+
+	public function create(Reques $request, Response $response):Response
+	{
+		$this->view('pages/users-create.html', [
 			'TITLE' => 'Cadastrar novo usuários',
 			'COOKIE_DATA' => $_COOKIE
 		]);
@@ -23,24 +39,38 @@ class UserController extends Controller
 		return $response;
 	}
 
-	public function save(Reques $request, Response $response): Response
+	public function save(Reques $request, Response $response):Response
 	{
-
-		$user = new User();
-
-		$return_api = $user->save($_POST);
-
-		$validate = new Validate($return_api);
+		$validate = new Validate();
 
 		$data = $validate->validate([
 			'username'	=> 'username:required:max@30',
 			'password'	=> 'required:max@30',
 			'firstname'	=> 'required:max@30',
 			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@30'
+			'email'		=> 'email:required:max@60'
 		]);
+
+		$user = new User();
+
+		$return_api = $user->save($data);
+
+		$validate->validateApi($return_api);
 		
 		return $response;		
-	}	
+	}
+
+
+	public function update(Reques $request, Response $response, array $args):Response
+	{
+		$this->view('pages/users-update.html', [
+			'TITLE' => 'Editar Cadastrastro de Usuário',
+			'IDUSER' => $args['id']
+		]);
+
+		
+
+		return $response;
+	}
 
 }

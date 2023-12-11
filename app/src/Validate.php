@@ -3,21 +3,29 @@
 namespace app\src;
 
 use app\traits\Validations;
+use app\traits\Sanitize;
 
 class Validate
 {
-	use Validations;
+	use Validations, Sanitize;
 
-	function __construct(array $return_api)
+	public function validateApi(array $return_api)
 	{
-		if($return_api['cod'] == 2){
+		if(array_key_exists('cod', $return_api) && $return_api['cod'] == 2){
 			$this->errors['username'][] = flash('username', error($return_api['message']));	
 		}
-		elseif($return_api['cod'] == 1){
+		elseif(array_key_exists('cod', $return_api) && $return_api['cod'] == 1){
 			$this->errors['email'][] = flash('email', error($return_api['message']));	
 		}
-		elseif($return_api['cod'] == 3){
+		elseif(array_key_exists('cod', $return_api) && $return_api['cod'] ==  3) {
 			$this->errors['password'][] = flash('password', error($return_api['message']));	
+		}		
+
+		$this->checkError();
+
+		if(array_key_exists('cod', $return_api) && $return_api['cod'] ==  0) {
+			flash('success', success('Usuário cadastrado com sucesso!'));
+			redirect("/users");
 		}
 	}
 
@@ -40,23 +48,20 @@ class Validate
 			}
 		}
 
-		if ($this->hasErrors()) {
-			setCookieForm($_POST);
-			back();
-		}
+		$this->checkError();
+
+		return $this->sanitize();
 
 	}
 
 
-	protected function validateWithParameter($field, $validation)
-	{
-		
+	private function validateWithParameter($field, $validation)
+	{		
 		$validations = [];
 
 		if (substr_count($validation, '@' ) > 0) {
 			$validations = explode(':', $validation);
 		}
-
 
 		foreach ($validations as $key => $value) {
 			if (substr_count($value, '@' ) > 0) {
@@ -74,7 +79,7 @@ class Validate
 	}
 
 
-	public function hasOneValidation($validate)
+	private function hasOneValidation($validate)
 	{
 		return substr_count($validate, ':') == 0;
 	}
@@ -83,6 +88,14 @@ class Validate
 	private function hasTwoOrMoreValidation($validate)
 	{
 		return substr_count($validate, ':') >= 1;
+	}
+
+	private function checkError()
+	{
+		if ($this->hasErrors()) {
+			setCookieForm($_POST);
+			back();
+		}
 	}
 
 }

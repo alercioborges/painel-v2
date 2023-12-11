@@ -22,7 +22,7 @@ trait Validations{
 
 	protected function username($field)
 	{
-		if(preg_match('/[^a-z0-9\.@_-]/', $_POST[$field])) {
+		if(preg_match('/[^A-Za-z0-9\.@_-]/', $_POST[$field])) {
 			$this->errors[$field][] = flash($field, error('O nome de usuário pode conter apenas caracteres minúsculos alfanuméricos (letras e números), sublinhado (_), hífen (-), ponto (.) ou símbolo arroba (@).'));
 		}
 	}

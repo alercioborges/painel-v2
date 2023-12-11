@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 use core\Controller;
 use app\models\User;
 
-class TesteController extends Controller
+class UsersController extends Controller
 {
 	
 	public function show(Reques $request, Response $response): Response
@@ -17,12 +17,12 @@ class TesteController extends Controller
 
 		$users = $user->getAll();
 
-		$this->view('pages/teste.html', [
-			'TITLE' => 'Usuários',
+		$this->view('pages/users.html', [
+			'TITLE' => 'Lissta de usuários',
 			'USERS' => $users 
 
 		]);
+
 		return $response;
-	}
-	
+	}	
 }

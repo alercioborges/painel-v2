@@ -16,15 +16,20 @@ function flash($index, $message){
 }
 
 function error($message){
-	return "<span class='error-message'>{$message}</span>";
+	return '<div class="alert alert-danger mt-1" role="alert">'.$message.'</div>';
 }
 
 function success($message){
-	return "<span class='success-message'>{$message}</span>";
+	return '<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>'.$message.'</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 }
 
 function back(){
 	app\src\Redirect::back();
+	exit;
+}
+
+function redirect($target){
+	app\src\Redirect::redirect(app\Config::BASE_DIR . $target);
 	exit;
 }
 
