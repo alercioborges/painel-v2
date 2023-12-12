@@ -61,16 +61,38 @@ class UserController extends Controller
 	}
 
 
-	public function update(Reques $request, Response $response, array $args):Response
+	public function edit(Reques $request, Response $response, array $args):Response
 	{
+		$user = new User();
+
+		$user_data = $user->get($args['id']);
+
 		$this->view('pages/users-update.html', [
 			'TITLE' => 'Editar Cadastrastro de Usuário',
-			'IDUSER' => $args['id']
+			'IDUSER' => $args['id'],
+			'USER_DATA' => $user_data
 		]);
-
 		
-
 		return $response;
 	}
 
+
+	public function update(Reques $request, Response $response):Response
+	{
+		$validate = new Validate();
+
+		$data = $validate->validate([
+			'username'	=> 'username:required:max@30',
+			'lastname'	=> 'required:max@30',
+			'email'		=> 'email:required:max@60'
+		]);
+
+		$user = new User();
+
+		$return_api = $user->update($data);
+
+		$validate->validateApi($return_api);
+
+		return $response;
+	}
 }

@@ -13,30 +13,45 @@ class User extends Model
 		return $response['users'];
 	}
 
-	public function save(array $arg)
+	public function save(array $arg):array
 	{
 		$parameter = $this->saveParameters($arg);
 
 		$response = $this->callApi('core_user_create_users', $parameter);
 
-		if (isset($response[0]['username']) && $response[0]['username'] == strtolower($_POST['username'])) {
-			$return_api = array('message' => "Deu certo", 'cod' => 0);
-		}
-		elseif (in_array("Email address already exists: {$_POST['email']}", $response)) {
-			$return_api = array('message' => "Este email já existe", 'cod' => 1);
-		}
-		elseif (in_array("Username already exists: {$_POST['username']}", $response)) {
-			$return_api = array('message' => "Este nome de usuário já existe", 'cod' => 2);
-		}
-		elseif (isset($response['message']) && str_contains($response['message'], 'error/')) {
-			$return_api = array('message' => $response['errorcode'], 'cod' => 3);
-		}		
-		else {
-			$return_api = array_values($response);
-		}
+		$return_api = $this->verifyErrorApi($response);
 
 		return $return_api;	
 	}
 
+
+
+	public function get(int $id):array
+	{
+		$parameter = '&field=id&values[0]=' . $id;
+
+		$response = $this->callApi('core_user_get_users_by_field', $parameter);
+		
+		$return_api = array(
+			'username' => $response[0]['username'],
+			'firstname' => $response[0]['firstname'],
+			'lastname' => $response[0]['lastname'],
+			'email' => $response[0]['email']
+		);
+
+		return $return_api;
+	}
+
+
+	public function update(array $arg)
+	{
+		$parameter = $this->updateParameters($arg);
+
+		$response = $this->callApi('', $parameter);
+
+		$return_api = $this->verifyErrorApi($response);
+
+		return $return_api;
+	}	
 }
 

@@ -9,7 +9,7 @@ $app->get('', 'app\controllers\OverviewController:index');
 
 $app->get('/users', 'app\controllers\UserController:show');
 
-$app->get('/users/{id:[0-9]+}', 'app\controllers\UserController:update');
+$app->get('/users/{id:[0-9]+}', 'app\controllers\UserController:edit');
 
 $app->post('/users/update', 'app\controllers\UserController:update');
 
