@@ -12,6 +12,7 @@
 				<label for="username-input-form" class="col-sm-2 col-form-label">Identificação de Usuário</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="username" id="username-input-form" placeholder="Nome de usuário" value="{{ USER_DATA['username'] }}" >
+					<!--{% if  MSG_ERROR_CREATE['code_error'] == 1 %} value="{{ COOKIE_DATA['deslogin'] }}" {% else %} value="{{data.deslogin}}" {% endif %}-->
 					{{ form_message("username") }}
 				</div>
 			</div>
@@ -43,6 +44,7 @@
 		</div><!-- /.card-body -->
 		<div class="card-footer">
 			<button type="submit" class="btn btn-info">Cadastrar</button>
+			<input type="hidden" name="id" id="id" value="{{ USER_DATA['id'] }}">
 		</div><!-- /.card-footer -->
 	</form>	
 </div><!-- /.card -->

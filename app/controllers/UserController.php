@@ -89,7 +89,7 @@ class UserController extends Controller
 
 		$user = new User();
 
-		$return_api = $user->update($data);
+		$return_api = $user->update($data);		
 
 		$validate->validateApi($return_api);
 

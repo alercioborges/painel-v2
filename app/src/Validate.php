@@ -24,7 +24,7 @@ class Validate
 		$this->checkError();
 
 		if(array_key_exists('cod', $return_api) && $return_api['cod'] ==  0) {
-			flash('success', success('Usuário cadastrado com sucesso!'));
+			flash('success', success($return_api['message']));
 			redirect("/users");
 		}
 	}
