@@ -67,9 +67,11 @@ class UserController extends Controller
 
 		$user_data = $user->get($args['id']);
 
+
+
 		$this->view('pages/users-update.html', [
 			'TITLE' => 'Editar Cadastrastro de Usuário',
-			'IDUSER' => $args['id'],
+			'COOKIE_DATA' => $_COOKIE,
 			'USER_DATA' => $user_data
 		]);
 		
@@ -83,6 +85,7 @@ class UserController extends Controller
 
 		$data = $validate->validate([
 			'username'	=> 'username:required:max@30',
+			'firstname'	=> 'required:max@30',
 			'lastname'	=> 'required:max@30',
 			'email'		=> 'email:required:max@60'
 		]);
@@ -90,6 +93,19 @@ class UserController extends Controller
 		$user = new User();
 
 		$return_api = $user->update($data);		
+
+		$validate->validateApi($return_api);
+
+		return $response;
+	}
+
+	public function delete(Reques $request, Response $response, array $args):Response
+	{
+		$user = new User();
+
+		$return_api = $user->delete($args['id']);
+
+		$validate = new Validate();
 
 		$validate->validateApi($return_api);
 

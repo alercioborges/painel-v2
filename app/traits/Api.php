@@ -14,7 +14,7 @@ trait Api{
 
 	private $format = '&moodlewsrestformat=json&';
 
-	protected function callApi(String $function, String $parameters):array
+	protected function callApi(String $function, String $parameters):mixed
 	{
 		$url = $this->uri . $function . $this->format . $parameters;
 

@@ -59,6 +59,23 @@ class User extends Model
 	}
 
 
+	public function delete(int $id):array
+	{
+		$parameter = '&userids[0]=' . $id;
+
+		$response = $this->callApi('core_user_delete_users', $parameter);
+
+		if (empty($response)) {
+			$return_api = array('message' => "Usuário excluído com sucesso!", 'cod' => 0);
+		}
+		else{
+			$return_api = array_values($response);
+		}
+
+		return $return_api;
+	}
+
+
 	private function verifyErrorApiSave(array $response):array
 	{
 		if (isset($response[0]['username']) && $response[0]['username'] == strtolower($_POST['username'])) {
