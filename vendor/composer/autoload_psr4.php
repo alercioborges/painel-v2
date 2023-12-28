@@ -22,4 +22,5 @@ return array(
     'Middlewares\\' => array($vendorDir . '/middlewares/trailing-slash/src'),
     'Fig\\Http\\Message\\' => array($vendorDir . '/fig/http-message-util/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'ClanCats\\Hydrahon\\' => array($vendorDir . '/clancats/hydrahon/src'),
 );

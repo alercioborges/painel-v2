@@ -19,6 +19,7 @@ $app->get('/users/{id:[0-9]+}/delete', 'app\controllers\UserController:delete');
 $app->get('/course-categories', 'app\controllers\CourseCategoryController:show');
 $app->get('/course-categories/create', 'app\controllers\CourseCategoryController:create');
 
+$app->get('/teste', 'app\controllers\TesteController:show');
 
 
 $app->run();

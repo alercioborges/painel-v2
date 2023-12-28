@@ -22,15 +22,13 @@ class CourseCategoryController extends Controller
 			'COURSE_CATEGORY' => $courseCategories
 		]);
 
-		dd($courseCategories);
-
 		return $response;
 	}
 
 	public function create(Reques $request, Response $response):Response
 	{
 		$this->view('pages/course-categories-create.html', [
-			'TITLE' => 'Cadastrar categoria de curso'
+			'TITLE' => 'Criar categoria de curso'
 		]);
 
 		return $response;

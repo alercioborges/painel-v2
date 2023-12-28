@@ -159,24 +159,37 @@
 		"/C/xampp/htdocs/painel-v2",
 		"/C/xampp/htdocs/painel-v2/app",
 		"/C/xampp/htdocs/painel-v2/app/controllers",
-		"/C/xampp/htdocs/painel-v2/app/functions",
 		"/C/xampp/htdocs/painel-v2/app/models",
-		"/C/xampp/htdocs/painel-v2/app/src",
 		"/C/xampp/htdocs/painel-v2/app/traits",
-		"/C/xampp/htdocs/painel-v2/app/views",
-		"/C/xampp/htdocs/painel-v2/app/views/templates",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/partials",
+		"/C/xampp/htdocs/painel-v2/core",
 		"/C/xampp/htdocs/painel-v2/public",
 		"/C/xampp/htdocs/painel-v2/public/assets",
 		"/C/xampp/htdocs/painel-v2/public/assets/css"
 	],
 	"file_history":
 	[
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories-create.html",
-		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategoryController.php",
+		"/C/Users/alerc/Desktop/bkps_senac_bahia/links_bps_tarefa.txt",
+		"/C/Users/alerc/Desktop/links_bps_tarefa.txt",
+		"/C/xampp/htdocs/painel-v2/app/traits/QueryBuilder.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
+		"/C/xampp/htdocs/painel-v2/core/Model.php",
+		"/C/xampp/htdocs/painel-v2/composer.json",
+		"/C/xampp/htdocs/painel-v2/app/Config.php",
+		"/C/Users/alerc/Desktop/painel-v2/app/Config.php",
+		"/C/xampp/htdocs/painel-v2/index.php",
 		"/C/xampp/htdocs/painel-v2/public/index.php",
+		"/C/Users/alerc/Desktop/index.html",
+		"/C/Users/alerc/Desktop/link_api_painel",
+		"/C/Users/alerc/Desktop/painel-v2/public/index.php",
+		"/C/Users/alerc/Desktop/alercio_php_ini.txt",
+		"/C/Users/alerc/AppData/Local/Temp/scp16673/var/www/sites/directweb.eduead.com.br/html/url_alternativa_login_dorina",
+		"/C/xampp/htdocs/painel-v2/app/traits/Api.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-update.html",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-create.html",
+		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategoryController.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories-create.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories.html",
+		"/C/xampp/htdocs/painel-v2/public/assets/resource/adminlte/pages/forms/advanced.html",
 		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategory.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-category.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
@@ -184,9 +197,7 @@
 		"/C/xampp/htdocs/painel-v2/app/controllers/HiController.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
 		"/C/xampp/htdocs/painel-v2/app/models/User.php",
-		"/C/xampp/htdocs/painel-v2/app/traits/Api.php",
 		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-update.html",
 		"/C/xampp/htdocs/painel-v2/app/src/Flash.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/user-create.html",
 		"/C/xampp/htdocs/painel-v2/app/traits/Validations.php",
@@ -202,16 +213,13 @@
 		"/C/Users/alerc/AppData/Local/Temp/scp12976/var/www/sites/directweb.eduead.com.br/html/apiwp/index.php",
 		"/C/Users/alerc/Desktop/api_moodle_uscs",
 		"/C/xampp/htdocs/painel-v2/core/Modal.php",
-		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/OverviewController.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa7648.28725/Model.php",
 		"/C/xampp/htdocs/painel-v2/core/Database.php",
-		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/xampp/htdocs/curso-php-7/banco-de-dados/pdo/connection.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa10676.41197/Model.php",
 		"/C/xampp/htdocs/painel-v2/core/Teste.php",
 		"/C/xampp/htdocs/painel-v2/core/Controller.php",
-		"/C/xampp/htdocs/painel-v2/composer.json",
 		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa6760.48281/Database.php",
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/DB/Sql.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/overview.html",
@@ -226,7 +234,6 @@
 		"/C/xampp/htdocs/painel-v2/app/src/Load.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/partials/footer.twig",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/partials/header.twig",
-		"/C/xampp/htdocs/painel-v2/index.php",
 		"/C/xampp/htdocs/painel-v2/app/src/GetFullUrl.php",
 		"/C/xampp/htdocs/painel/routes/redirect.php",
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/index.php",
@@ -288,23 +295,11 @@
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Model/User.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp30955/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp15500/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp23055/var/www/sites/directweb.eduead.com.br/html/painel/src/routes.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp09326/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp09040/var/www/sites/directweb.eduead.com.br/html/painel/core/Model.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp11598/var/www/sites/directweb.eduead.com.br/html/painel/src/controllers/HomeController.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp14821/var/www/sites/directweb.eduead.com.br/html/painel/composer.lock",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp45751/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp48745/var/www/sites/directweb.eduead.com.br/html/painel/core/Request.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp47537/var/www/sites/directweb.eduead.com.br/html/painel/core/Model.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp49272/var/www/sites/directweb.eduead.com.br/html/painel/core/Controller.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp46800/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp20722/var/www/sites/directweb.eduead.com.br/html/painel/core/Controller.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp22216/var/www/sites/directweb.eduead.com.br/html/painel/core/Database.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp18695/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php"
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp23055/var/www/sites/directweb.eduead.com.br/html/painel/src/routes.php"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -318,6 +313,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"getTableName",
+			"onke",
+			"event",
+			"select2",
+			"Minimal",
+			"Select2 (Bootstrap4 Theme)",
 			"delete",
 			"username",
 			"$this->$validation",
@@ -424,11 +425,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 38.0
 	},
 	"input":
 	{
-		"height": 48.0
+		"height": 62.0
 	},
 	"layout":
 	{
@@ -461,7 +462,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -45,10 +45,12 @@ trait Api{
 
 	private function setUserDataApiParameter(array $arg):String
 	{
+		mb_internal_encoding('UTF-8');
+		
 		$username = '&users[0][username]=' . strtolower($arg['username']);
 		$auth = '&users[0][auth]=manual';
-		$firstname = '&users[0][firstname]=' . urlencode(strtoupper($arg['firstname']));
-		$lastname = '&users[0][lastname]=' . urlencode(strtoupper($arg['lastname']));
+		$firstname = '&users[0][firstname]=' . urlencode(mb_strtoupper($arg['firstname']));
+		$lastname = '&users[0][lastname]=' . urlencode(mb_strtoupper($arg['lastname']));
 		$email = '&users[0][email]=' . strtolower($arg['email']);
 
 		$parameter = $username.$auth.$firstname.$lastname.$email;

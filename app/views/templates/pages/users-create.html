@@ -20,7 +20,7 @@
 			<div class="form-group row">
 				<label for="firstname-input-form" class="col-sm-2 col-form-label">Nome</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="firstname" id="firstname-input-form" placeholder="Nome" value="{{ COOKIE_DATA['firstname'] }}">
+					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="firstname" id="firstname-input-form" placeholder="Nome" value="{{ COOKIE_DATA['firstname'] }}">
 					{{ form_message("firstname") }}
 				</div>
 			</div>
@@ -28,7 +28,7 @@
 			<div class="form-group row">
 				<label for="lastname-input-form" class="col-sm-2 col-form-label">Sobrenome</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="lastname" id="lastname-input-form" placeholder="Sobrenome" value="{{ COOKIE_DATA['lastname'] }}">
+					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="lastname" id="lastname-input-form" placeholder="Sobrenome" value="{{ COOKIE_DATA['lastname'] }}">
 					{{ form_message("lastname") }}
 				</div>
 			</div>
