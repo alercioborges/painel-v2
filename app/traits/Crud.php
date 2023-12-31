@@ -6,19 +6,23 @@ use core\Database;
 
 use ClanCats\Hydrahon\Builder;
 use ClanCats\Hydrahon\Query\Sql\FetchableInterface;
+use ClanCats\Hydrahon\Query\Sql\Insert;
 
-trait QueryBuilder{
+trait Crud{
 
     protected static $_h;
     
-    public function __construct() {
+    public function __construct()
+    {
         self::_checkH();
     }
 
-    public static function _checkH() {
+    public static function _checkH()
+    {
         if(self::$_h == null) {
             $connection = Database::getInstance();
-            self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection) {
+            self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
+            {
                 $statement = $connection->prepare($queryString);
                 $statement->execute($queryParameters);
 
@@ -26,19 +30,28 @@ trait QueryBuilder{
                 {
                     return $statement->fetchAll(\PDO::FETCH_ASSOC);
                 }
+                elseif($query instanceof Insert)
+                {
+                    return $connection->lastInsertId();
+                }
+                else 
+                {
+                    return $statement->rowCount();
+                }   
             });
         }
-        
-        self::$_h = self::$_h->table( self::getTableName() );
     }
 
-    public static function getTableName($table) {
-        return $table;
+    protected function setTable($table)
+    {
+        return self::$_h->table($table);;
     }
 
-    public static function select($fields = []) {
+
+    protected function select(array $fields = [], String $table_name) {
         self::_checkH();
-        return self::$_h->select($fields);
+        $table = self::$_h->table($table_name);
+        return $table->select($fields);
     }
 
     public static function insert($fields = []) {

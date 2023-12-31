@@ -32,11 +32,12 @@
 						{% for data in USERS|filter(v => v.id != 1) -%}
 						<tr>
 							<td>{{ data.id }}</td>
-							<td>{{ data.fullname }}</td>
+							<td>{{ data.firstname }} {{ data.lastname }}</td>
 							<td>{{ data.email }}</td>
 							<td>
 								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
 
+								{% if data.is_admin == false %}
 								<!-- Início Modal de exclusão de usuário -->
 								<!-- Início link excluir Modal -->
 								<a href="#" data-toggle="modal" data-target="#confirm-delete-iduser-{{data.id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
@@ -61,6 +62,8 @@
 							</div>
 							<!-- Fim da da janela do Modal -->
 							<!-- Fim do modal de exclusão de usuário -->
+							{% endif %}
+							
 						</td>
 					</tr>
 					{% endfor %}
