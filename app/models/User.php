@@ -6,6 +6,7 @@ use core\Model;
 
 class User extends Model
 {
+
 	public function getAll():array
 	{
 		$admins = $this->select(['value'], 'mdl_config')
@@ -20,7 +21,8 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
-		$users = $this->select(['id', 'firstname', 'lastname', 'email'], 'mdl_user')		
+		$users = $this->select(['id', 'firstname', 'lastname', 'email', 'suspended'], 'mdl_user')
+		->where('deleted', '=', '0')		
 		->get();		
 
 		foreach ($users as $key => $value) {
@@ -68,7 +70,7 @@ class User extends Model
 	}
 
 
-	public function update(array $arg)
+	public function edit(array $arg)
 	{
 		$parameter = $this->updateParameters($arg);
 
@@ -80,7 +82,7 @@ class User extends Model
 	}
 
 
-	public function delete(int $id):array
+	public function destroy(int $id):array
 	{
 		$parameter = '&userids[0]=' . $id;
 
@@ -94,6 +96,21 @@ class User extends Model
 		}
 
 		return $return_api;
+	}
+
+
+	public function suspend(int $id):array
+	{
+		$user_suspend = $this->update('mdl_user')
+		->set('suspended', 1)
+		->where('id', $id)
+		->execute();
+
+		if ($user_suspend) {
+			$return_suspend = array('message' => "Cadastro de usuário suspenso!", 'cod' => 0);
+		}
+
+		return $return_suspend;
 	}
 
 

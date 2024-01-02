@@ -38,6 +38,13 @@
 								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
 
 								{% if data.is_admin == false %}
+
+								{% if data.suspended == 0 %}
+								<a href="{{ get_full_url() }}/users/{{data.id}}/suspend" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Suspender</a>
+								{% else %}
+								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-warning btn-xs"><i class="fa fa-eye-slash"></i> Ativar conta</a>
+								{% endif %}
+								
 								<!-- Início Modal de exclusão de usuário -->
 								<!-- Início link excluir Modal -->
 								<a href="#" data-toggle="modal" data-target="#confirm-delete-iduser-{{data.id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>

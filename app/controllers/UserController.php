@@ -67,8 +67,6 @@ class UserController extends Controller
 
 		$user_data = $user->get($args['id']);
 
-
-
 		$this->view('pages/users-update.html', [
 			'TITLE' => 'Editar Cadastrastro de Usuário',
 			'COOKIE_DATA' => $_COOKIE,
@@ -92,7 +90,7 @@ class UserController extends Controller
 
 		$user = new User();
 
-		$return_api = $user->update($data);		
+		$return_api = $user->edit($data);		
 
 		$validate->validateApi($return_api);
 
@@ -103,11 +101,24 @@ class UserController extends Controller
 	{
 		$user = new User();
 
-		$return_api = $user->delete($args['id']);
+		$return_api = $user->destroy($args['id']);
 
 		$validate = new Validate();
 
 		$validate->validateApi($return_api);
+
+		return $response;
+	}
+
+	public function suspend(Reques $request, Response $response, array $args):Response
+	{
+		$user = new User();
+
+		$return_suspend = $user->suspend($args['id']);
+
+		$validate = new Validate();
+
+		$validate->validateApi($return_suspend);
 
 		return $response;
 	}

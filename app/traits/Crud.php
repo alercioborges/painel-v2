@@ -42,12 +42,6 @@ trait Crud{
         }
     }
 
-    protected function setTable($table)
-    {
-        return self::$_h->table($table);;
-    }
-
-
     protected function select(array $fields = [], String $table_name) {
         self::_checkH();
         $table = self::$_h->table($table_name);
@@ -59,14 +53,16 @@ trait Crud{
         return self::$_h->insert($fields);
     }
 
-    public static function updateData($fields = []) {
-        self::_checkH();
-        return self::$_h->update($fields);
-    }
+    public static function update($table_name)
+    {
+       self::_checkH();
+       $table = self::$_h->table($table_name);
+       return $table->update();
+   }
 
-    public static function deleteData() {
-        self::_checkH();
-        return self::$_h->delete();
-    }
+   public static function delete() {
+    self::_checkH();
+    return self::$_h->delete();
+}
 
 }
