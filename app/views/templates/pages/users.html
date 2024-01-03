@@ -32,7 +32,7 @@
 						{% for data in USERS|filter(v => v.id != 1) -%}
 						<tr>
 							<td>{{ data.id }}</td>
-							<td>{{ data.firstname }} {{ data.lastname }}</td>
+							<td><a href="{{ get_full_url() }}/users/{{data.id}}/profile" class="link-secondary" >{{ data.firstname }} {{ data.lastname }}</a></td>
 							<td>{{ data.email }}</td>
 							<td>
 								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
@@ -42,7 +42,7 @@
 								{% if data.suspended == 0 %}
 								<a href="{{ get_full_url() }}/users/{{data.id}}/suspend" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Suspender</a>
 								{% else %}
-								<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-warning btn-xs"><i class="fa fa-eye-slash"></i> Ativar conta</a>
+								<a href="{{ get_full_url() }}/users/{{data.id}}/unsuspend" class="btn btn-warning btn-xs"><i class="fa fa-eye-slash"></i> Ativar conta</a>
 								{% endif %}
 								
 								<!-- Início Modal de exclusão de usuário -->

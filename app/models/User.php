@@ -57,16 +57,8 @@ class User extends Model
 		$parameter = '&field=id&values[0]=' . $id;
 
 		$response = $this->callApi('core_user_get_users_by_field', $parameter);
-		
-		$return_api = array(
-			'id' => $response[0]['id'],
-			'username' => $response[0]['username'],
-			'firstname' => $response[0]['firstname'],
-			'lastname' => $response[0]['lastname'],
-			'email' => $response[0]['email']
-		);
 
-		return $return_api;
+		return $response[0];
 	}
 
 
@@ -107,12 +99,30 @@ class User extends Model
 		->execute();
 
 		if ($user_suspend) {
-			$return_suspend = array('message' => "Cadastro de usuário suspenso!", 'cod' => 0);
+			$return_suspend = array('message' => "Conta de usuário suspensa!", 'cod' => 0);
 		}
 
 		return $return_suspend;
 	}
 
+	public function unsuspend(int $id):array
+	{
+		$user_unsuspend = $this->update('mdl_user')
+		->set('suspended', 0)
+		->where('id', $id)
+		->execute();
+
+		if ($user_unsuspend) {
+			$return_unsuspend = array('message' => "Conta de usuário ativada!", 'cod' => 0);
+		}
+
+		return $return_unsuspend;
+	}
+
+	public function redefinePassword(int $id):array
+	{
+		
+	}
 
 	private function verifyErrorApiSave(array $response):array
 	{

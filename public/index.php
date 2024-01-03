@@ -14,8 +14,14 @@ $app->get('/users/create', 'app\controllers\UserController:create');
 $app->post('/users/create', 'app\controllers\UserController:save');
 
 
+$app->get('/users/{id:[0-9]+}/profile', 'app\controllers\UserController:profile');
+
+$app->post('/users/{id:[0-9]+}/reset-password', 'app\controllers\UserController:resetPassword');
+
+
 
 $app->get('/users/{id:[0-9]+}/suspend', 'app\controllers\UserController:suspend');
+$app->get('/users/{id:[0-9]+}/unsuspend', 'app\controllers\UserController:unsuspend');
 
 $app->get('/users/{id:[0-9]+}/delete', 'app\controllers\UserController:delete');
 
