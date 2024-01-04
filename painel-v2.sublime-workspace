@@ -161,6 +161,9 @@
 		"/C/xampp/htdocs/painel-v2/app/controllers",
 		"/C/xampp/htdocs/painel-v2/app/models",
 		"/C/xampp/htdocs/painel-v2/app/traits",
+		"/C/xampp/htdocs/painel-v2/app/views",
+		"/C/xampp/htdocs/painel-v2/app/views/templates",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages",
 		"/C/xampp/htdocs/painel-v2/core",
 		"/C/xampp/htdocs/painel-v2/public",
 		"/C/xampp/htdocs/painel-v2/public/assets",
@@ -168,6 +171,10 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/public/index.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-profile.html",
+		"/C/xampp/htdocs/painel-v2/app/models/User.php",
 		"/C/Users/alerc/Desktop/bkps_senac_bahia/links_bps_tarefa.txt",
 		"/C/Users/alerc/Desktop/links_bps_tarefa.txt",
 		"/C/xampp/htdocs/painel-v2/app/traits/QueryBuilder.php",
@@ -177,7 +184,6 @@
 		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/Users/alerc/Desktop/painel-v2/app/Config.php",
 		"/C/xampp/htdocs/painel-v2/index.php",
-		"/C/xampp/htdocs/painel-v2/public/index.php",
 		"/C/Users/alerc/Desktop/index.html",
 		"/C/Users/alerc/Desktop/link_api_painel",
 		"/C/Users/alerc/Desktop/painel-v2/public/index.php",
@@ -195,8 +201,6 @@
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/profile.html",
 		"/C/xampp/htdocs/painel-v2/app/controllers/HiController.php",
-		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
-		"/C/xampp/htdocs/painel-v2/app/models/User.php",
 		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
 		"/C/xampp/htdocs/painel-v2/app/src/Flash.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/user-create.html",
@@ -294,8 +298,7 @@
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp11135/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Model/User.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp30955/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp15500/var/www/sites/directweb.eduead.com.br/html/painel/composer.json",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp23055/var/www/sites/directweb.eduead.com.br/html/painel/src/routes.php"
+		"/C/Users/alercio.borges/AppData/Local/Temp/scp15500/var/www/sites/directweb.eduead.com.br/html/painel/composer.json"
 	],
 	"find":
 	{

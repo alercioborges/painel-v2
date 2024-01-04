@@ -119,10 +119,27 @@ class User extends Model
 		return $return_unsuspend;
 	}
 
+
+
+
+
 	public function redefinePassword(int $id):array
 	{
-		
+		$user_data = $this->get($id);
+
+		$parameter = $user_data['username'];
+
+		$response = $this->callApi('core_auth_request_password_reset', $parameter);
+		dd($response);
+		return $response;
+
+
 	}
+
+
+
+
+
 
 	private function verifyErrorApiSave(array $response):array
 	{

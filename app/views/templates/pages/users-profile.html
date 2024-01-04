@@ -4,7 +4,7 @@
 <pre>
 {{ dump(USER) }}
 </pre>
-<form action="POST" method="{{get_full_url()}}/users/{{USER['id']}}/reset-password">
-	<input type="button" name="reset_password" value="Redefinir senha">
+<form method="POST" action="{{get_full_url()}}/users/{{USER['id']}}/reset-password">
+	<input type="submit" name="reset-password">
 </form>
 {% endblock %}
