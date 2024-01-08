@@ -27,17 +27,36 @@ trait Validations{
 		}
 	}
 
-
-
 	protected function max($field, $max)
 	{
 		if (strlen($_POST[$field]) > $max) {
 			$this->errors[$field][] = flash($field, error("O número de caracteres para este campo não pode ser maior que {$max}"));
 		}
 	}
-	
 
-	public function hasErrors(array $formData = [])
+	protected function api(array $return_api)
+	{
+		if(array_key_exists('success', $return_api) && $return_api['success'] == false){
+			$this->errors[$return_api['field']][] = flash($return_api['field'], error($return_api['message']));	
+		}
+
+		$this->checkError();
+
+		if(array_key_exists('success', $return_api) && $return_api['success'] ==  true) {
+			flash('success', success($return_api['message']));
+			redirect("/users");
+		}
+	}
+
+	private function checkError()
+	{
+		if ($this->hasErrors()) {
+			setCookieForm($_POST);
+			back();
+		}
+	}
+
+	private function hasErrors(array $formData = [])
 	{
 		return !empty($this->errors);
 	}

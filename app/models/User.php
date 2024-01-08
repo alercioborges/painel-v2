@@ -127,36 +127,44 @@ class User extends Model
 	{
 		$user_data = $this->get($id);
 
-		$parameter = $user_data['username'];
+		$parameter = '&username=' . $user_data['username'];
 
 		$response = $this->callApi('core_auth_request_password_reset', $parameter);
-		dd($response);
-		return $response;
 
+		return $response;
 
 	}
 
-
-
-
-
-
 	private function verifyErrorApiSave(array $response):array
 	{
+		$return_api = [];
+
 		if (isset($response[0]['username']) && $response[0]['username'] == strtolower($_POST['username'])) {
-			$return_api = array('message' => "Usuário cadastrado com sucesso!", 'cod' => 0);
+			$return_api = array(
+				'message' => "Usuário cadastrado com sucesso!",
+				'success' => true
+			);
 		}
 		elseif (in_array("Email address already exists: {$_POST['email']}", $response)) {
-			$return_api = array('message' => "Este email já existe", 'cod' => 1);
+			$return_api = array(
+				'message' => "Este email já existe",
+				'success' => false,
+				'field' => 'email'
+			);
 		}
 		elseif (in_array("Username already exists: {$_POST['username']}", $response)) {
-			$return_api = array('message' => "Este nome de usuário já existe", 'cod' => 2);
+			$return_api = array(
+				'message' => "Este nome de usuário já existe",
+				'success' => false,
+				'field' => 'username'
+			);
 		}
 		elseif (isset($response['message']) && str_contains($response['message'], 'error/')) {
-			$return_api = array('message' => $response['errorcode'], 'cod' => 3);
-		}		
-		else {
-			$return_api = array_values($response);
+			$return_api = array(
+				'message' => $response['errorcode'],
+				'success' => false,
+				'field' => 'password'
+			);
 		}
 
 		return $return_api;
@@ -164,19 +172,29 @@ class User extends Model
 
 	private function verifyErrorApiUpdate(array $response):array
 	{
+		$return_api = [];
+
 		if(isset($response['warnings'][0])){
 			if(array_key_exists('message', $response['warnings'][0]) && str_contains($response['warnings'][0]['message'], 'Duplicate entry')) {
-				$return_api = array('message' => "Nome de usuário já existe", 'cod' => 2);
+				$return_api = array(
+					'message' => "Nome de usuário já existe",
+					'success' => false,
+					'field' => 'username'
+				);
 			}
 			elseif (array_key_exists('message', $response['warnings'][0]) && str_contains($response['warnings'][0]['message'], 'Duplicate email address')) {
-				$return_api = array('message' => "E-mail já existe", 'cod' => 1);
+				$return_api = array(
+					'message' => "E-mail já existe",
+					'success' => false,
+					'field' => 'email'
+				);
 			}
 		}
 		elseif ($response[0] == NULL) {
-			$return_api = array('message' => "Usuário atualizado com sucesso!", 'cod' => 0);
-		}
-		else{
-			$return_api = array_values($response);
+			$return_api = array(
+				'message' => "Usuário atualizado com sucesso!",
+				'success' => true
+			);
 		}
 
 		return $return_api;

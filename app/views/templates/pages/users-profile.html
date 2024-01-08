@@ -1,10 +1,14 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{{ success_message('success') }}
+
+
 <pre>
 {{ dump(USER) }}
 </pre>
 <form method="POST" action="{{get_full_url()}}/users/{{USER['id']}}/reset-password">
-	<input type="submit" name="reset-password">
+	<input type="submit" name="reset-password" class="btn btn-primary" value="Solicitar redefinição de senha">
 </form>
 {% endblock %}

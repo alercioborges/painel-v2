@@ -9,24 +9,12 @@ class Validate
 {
 	use Validations, Sanitize;
 
+
 	public function validateApi(array $return_api)
 	{
-		if(array_key_exists('cod', $return_api) && $return_api['cod'] == 2){
-			$this->errors['username'][] = flash('username', error($return_api['message']));	
-		}
-		elseif(array_key_exists('cod', $return_api) && $return_api['cod'] == 1){
-			$this->errors['email'][] = flash('email', error($return_api['message']));	
-		}
-		elseif(array_key_exists('cod', $return_api) && $return_api['cod'] ==  3) {
-			$this->errors['password'][] = flash('password', error($return_api['message']));	
-		}		
-
-		$this->checkError();
-
-		if(array_key_exists('cod', $return_api) && $return_api['cod'] ==  0) {
-			flash('success', success($return_api['message']));
-			redirect("/users");
-		}
+		$api_validation = $this->api($return_api);
+		
+		return $api_validation;
 	}
 
 	public function validate($rules)
@@ -88,14 +76,6 @@ class Validate
 	private function hasTwoOrMoreValidation($validate)
 	{
 		return substr_count($validate, ':') >= 1;
-	}
-
-	private function checkError()
-	{
-		if ($this->hasErrors()) {
-			setCookieForm($_POST);
-			back();
-		}
-	}
+	}	
 
 }
