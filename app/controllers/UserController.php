@@ -155,12 +155,7 @@ class UserController extends Controller
 	{
 		$user = new User();
 
-		$return_api = $user->redefinePassword($args['id']);
-
-		if (isset($return_api['status']) && $return_api['status'] == 'emailpasswordconfirmmaybesent') {
-			flash('success', success('E-mail de redefinição de senha enviado com sucesso!'));
-			redirect("/users/{$args['id']}/profile");
-		}
+		$user->redefinePassword($args['id']);		
 		
 		return $response;
 	}

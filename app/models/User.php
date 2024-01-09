@@ -80,11 +80,13 @@ class User extends Model
 
 		$response = $this->callApi('core_user_delete_users', $parameter);
 
+		$return_api = [];
+
 		if (empty($response)) {
-			$return_api = array('message' => "Usuário excluído com sucesso!", 'cod' => 0);
-		}
-		else{
-			$return_api = array_values($response);
+			$return_api = array(
+				'message' => "Usuário excluído com sucesso!",
+				'success' => true
+			);
 		}
 
 		return $return_api;
@@ -98,8 +100,13 @@ class User extends Model
 		->where('id', $id)
 		->execute();
 
+		$return_suspend = [];
+
 		if ($user_suspend) {
-			$return_suspend = array('message' => "Conta de usuário suspensa!", 'cod' => 0);
+			$return_suspend = array(
+				'message' => "Conta de usuário suspensa!",
+				'success' => true
+			);
 		}
 
 		return $return_suspend;
@@ -112,8 +119,13 @@ class User extends Model
 		->where('id', $id)
 		->execute();
 
+		$return_unsuspend = [];
+
 		if ($user_unsuspend) {
-			$return_unsuspend = array('message' => "Conta de usuário ativada!", 'cod' => 0);
+			$return_unsuspend = array(
+				'message' => "Conta de usuário ativada!",
+				'success' => true
+			);
 		}
 
 		return $return_unsuspend;
@@ -123,7 +135,7 @@ class User extends Model
 
 
 
-	public function redefinePassword(int $id):array
+	public function redefinePassword(int $id):void
 	{
 		$user_data = $this->get($id);
 
@@ -131,7 +143,10 @@ class User extends Model
 
 		$response = $this->callApi('core_auth_request_password_reset', $parameter);
 
-		return $response;
+		if (isset($response['status']) && $response['status'] == 'emailpasswordconfirmmaybesent') {
+			flash('success', success('E-mail de redefinição de senha enviado com sucesso!'));
+			redirect("/users/{$id}/profile");
+		}
 
 	}
 
