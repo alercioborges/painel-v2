@@ -1,14 +1,29 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
-
 {{ success_message('success') }}
+<div class="container" style="border: solid 2px black;">	
+	<div class="float-md-end">
+		<form method="POST" action="{{get_full_url()}}/users/{{USER['id']}}/reset-password">
+			<input type="submit" name="reset-password" class="btn btn-primary" value="Solicitar redefinição de senha">
+		</form>
+	</div>
+	<div class="row">
+		<div class="col-4">
+			<span>
+				<img src="{{USER['profileimageurl']}}">
+			</span>			
+		</div>
+		<div class="col-4">
+			<span class="d-flex align-items-center justify-content-center mt-4" >{{USER['fullname']}}"</span>			
+		</div>
+	</div>
+</div>
 
 
 <pre>
-{{ dump(USER) }}
+	{{ dump(USER) }}
 </pre>
-<form method="POST" action="{{get_full_url()}}/users/{{USER['id']}}/reset-password">
-	<input type="submit" name="reset-password" class="btn btn-primary" value="Solicitar redefinição de senha">
-</form>
+
+
 {% endblock %}

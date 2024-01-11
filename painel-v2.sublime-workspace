@@ -171,11 +171,12 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-profile.html",
+		"/C/xampp/htdocs/painel-v2/public/index.php",
+		"/C/xampp/htdocs/painel-v2/index.php",
 		"/C/Users/alerc/Desktop/login_page_usc.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
 		"/C/xampp/htdocs/painel-v2/app/models/User.php",
-		"/C/xampp/htdocs/painel-v2/public/index.php",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-profile.html",
 		"/C/Users/alerc/Desktop/bkps_senac_bahia/links_bps_tarefa.txt",
 		"/C/Users/alerc/Desktop/links_bps_tarefa.txt",
 		"/C/xampp/htdocs/painel-v2/app/traits/QueryBuilder.php",
@@ -184,7 +185,6 @@
 		"/C/xampp/htdocs/painel-v2/composer.json",
 		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/Users/alerc/Desktop/painel-v2/app/Config.php",
-		"/C/xampp/htdocs/painel-v2/index.php",
 		"/C/Users/alerc/Desktop/index.html",
 		"/C/Users/alerc/Desktop/link_api_painel",
 		"/C/Users/alerc/Desktop/painel-v2/public/index.php",
@@ -302,7 +302,7 @@
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 42.0
 	},
 	"find_in_files":
 	{
@@ -429,7 +429,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 42.0
 	},
 	"input":
 	{
@@ -466,7 +466,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 80.0
 	},
 	"save_all_on_build": true,
 	"select_file":
