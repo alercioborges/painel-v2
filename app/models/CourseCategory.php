@@ -13,4 +13,17 @@ class CourseCategory extends Model
 
 		return $response;
 	}
+
+	public function create(array $arg):array
+	{
+		$parameter = $this->saveCourseCategory($arg);
+
+		$response = $this->callApi('core_course_create_categories', $parameter);
+
+		$return_api = $this->verifyErrorApiSave($response);
+
+		return $return_api;	
+	}
+
+
 }

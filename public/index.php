@@ -21,10 +21,15 @@ $app->group('/users', function (Slim\Routing\RouteCollectorProxy $group) {
 
 });
 
-$app->get('/course-categories', 'app\controllers\CourseCategoryController:show');
-$app->get('/course-categories/create', 'app\controllers\CourseCategoryController:create');
+$app->group('/courses', function (Slim\Routing\RouteCollectorProxy $course_group) {
+	$course_group->group('/categories', function (Slim\Routing\RouteCollectorProxy $category_group) {
 
-$app->get('/teste', 'app\controllers\TesteController:show');
+		$category_group->get('', 'app\controllers\CourseCategoryController:show');
+		$category_group->get('/create', 'app\controllers\CourseCategoryController:create');		
+	
+	});
 
+
+});
 
 $app->run();
