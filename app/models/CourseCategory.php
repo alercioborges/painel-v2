@@ -14,11 +14,13 @@ class CourseCategory extends Model
 		return $response;
 	}
 
-	public function create(array $arg):array
+	public function save(array $arg):array
 	{
 		$parameter = $this->saveCourseCategory($arg);
 
 		$response = $this->callApi('core_course_create_categories', $parameter);
+
+		dd($response);
 
 		$return_api = $this->verifyErrorApiSave($response);
 

@@ -25,7 +25,8 @@ $app->group('/courses', function (Slim\Routing\RouteCollectorProxy $course_group
 	$course_group->group('/categories', function (Slim\Routing\RouteCollectorProxy $category_group) {
 
 		$category_group->get('', 'app\controllers\CourseCategoryController:show');
-		$category_group->get('/create', 'app\controllers\CourseCategoryController:create');		
+		$category_group->get('/create', 'app\controllers\CourseCategoryController:create');	
+		$category_group->post('/create', 'app\controllers\CourseCategoryController:save');		
 	
 	});
 

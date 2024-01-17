@@ -34,5 +34,12 @@ class CourseCategoryController extends Controller
 		return $response;
 	}
 
+	public function save(Reques $request, Response $response):Response
+	{
+		dd($_POST);
+
+		return $response;
+	}
+
 
 }
