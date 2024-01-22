@@ -4,7 +4,8 @@
         "slim/psr7": "^1.6",
         "twig/twig": "^3.7",
         "middlewares/trailing-slash": "^2.0",
-        "clancats/hydrahon": "^1.1"
+        "clancats/hydrahon": "^1.1",
+        "zeuxisoo/slim-whoops": "0.7.*"
     },
 
     "autoload": {

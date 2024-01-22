@@ -24,6 +24,15 @@ class ComposerStaticInit8508340950e9a74257c1936522f0b25a
         array (
             'app\\' => 4,
         ),
+        'Z' => 
+        array (
+            'Zeuxisoo\\Whoops\\Slim\\Tests\\' => 27,
+            'Zeuxisoo\\Whoops\\Slim\\' => 21,
+        ),
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -67,6 +76,18 @@ class ComposerStaticInit8508340950e9a74257c1936522f0b25a
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Zeuxisoo\\Whoops\\Slim\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/tests',
+        ),
+        'Zeuxisoo\\Whoops\\Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim',
+        ),
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
         'Twig\\' => 
         array (

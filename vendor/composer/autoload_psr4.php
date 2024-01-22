@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'core\\' => array($baseDir . '/core'),
     'app\\' => array($baseDir . '/app'),
+    'Zeuxisoo\\Whoops\\Slim\\Tests\\' => array($vendorDir . '/zeuxisoo/slim-whoops/tests'),
+    'Zeuxisoo\\Whoops\\Slim\\' => array($vendorDir . '/zeuxisoo/slim-whoops/src/Zeuxisoo/Whoops/Slim'),
+    'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),

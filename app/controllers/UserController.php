@@ -16,8 +16,15 @@ class UserController extends Controller
 	public function show(Reques $request, Response $response):Response
 	{
 		$user = new User();
-		
+
 		$users = $user->getAll();
+
+		$qtd = 5;
+		$atual = isset($_GET['page']) ? intval($_GET['page']) : 1;
+		$page = array_chunk($users, $qtd);
+		$contar = count($page);
+		$resultado = $page[$atual - 1];
+
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
