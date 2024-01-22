@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 use core\Controller;
 
 use app\src\Validate;
+use app\src\Paginate;
 use app\models\User;
 
 class UserController extends Controller
@@ -19,11 +20,9 @@ class UserController extends Controller
 
 		$users = $user->getAll();
 
-		$qtd = 5;
-		$atual = isset($_GET['page']) ? intval($_GET['page']) : 1;
-		$page = array_chunk($users, $qtd);
-		$contar = count($page);
-		$resultado = $page[$atual - 1];
+		$pagination = new Paginate(30, $users);
+
+		$pages = $pagination->page();
 
 
 		$this->view('pages/users.html', [

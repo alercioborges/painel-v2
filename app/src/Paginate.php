@@ -2,51 +2,39 @@
 
 namespace app\src;
 
+use app\traits\Links;
 
 class Paginate
 {
-	private $page;
+
+	use Links;
+
 	private $perPage;
-	private $offset;
-	Private $records;
-	Private $pages;
+	private $list;
 
-	private function current()
+	public function __construct(int $perPage, array $list)
 	{
-		$this->page = $_GET['page'] ?? 1;
+		$this->perPage = $perPage;
+		$this->list = $list;
 	}
 
-	private function perPage($perPage)
+	public function current()
 	{
-		$this->perPage = $perPage ?? 30;
+		$current = isset($_GET['page']) ? intval($_GET['page']) : 1;
+		return $current;
 	}
 
-	private function offset()
+	public function page()
 	{
-		$this->offset = ($this->page * $this->perPage) - $this->perPage;
+		$page = array_chunk($this->list, $this->perPage);
+		return $page;
 	}
 
-	public function records($records)
+	public function pages()
 	{
-		$this->records = $records;
-	}
-
-	private function pages()
-	{
-		$this->pages = ceil($this->records / $this->perPage);
-	}
-
-	public function sqlPaginate()
-	{
-		return " ->limit({$this->perPage})->offset({$this->offset})";
-	}
-
-	public function paginate($perPage)
-	{
-		$this->current();
-		$this->perPage($perPage);
-		$this->offset();
-		$this->pages();
-	}
+		$pages = count($page);
+		return $pages;
+	}	
 
 }
+
