@@ -7,7 +7,7 @@ use core\Model;
 class User extends Model
 {
 
-	public function getAll():array
+	public function getAll(int $page, int $perPage):array
 	{
 		$admins = $this->select(['value'], 'mdl_config')
 		->where('name', '=', 'siteadmins')
@@ -21,8 +21,14 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
+		$records = count($this->select(['id'], 'mdl_user')
+		->where('deleted', '=', '0')
+		->get());
+
+		$pages = ceil($records / $perPage);		
+
 		$users = $this->select(['id', 'firstname', 'lastname', 'email', 'suspended'], 'mdl_user')
-		->where('deleted', '=', '0')		
+		->where('deleted', '=', '0')->limit($page, $perPage)
 		->get();		
 
 		foreach ($users as $key => $value) {
@@ -33,7 +39,12 @@ class User extends Model
 			}
 		}
 
-		return $users;
+		$user_data = array(
+			'users' => $users, 
+			"pages" => $pages
+		);
+
+		return $user_data;
 	}
 
 

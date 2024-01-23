@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"user",
+				"users"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
 				"echo",
 				"echo()"
 			],
@@ -160,6 +168,7 @@
 		"/C/xampp/htdocs/painel-v2/app",
 		"/C/xampp/htdocs/painel-v2/app/controllers",
 		"/C/xampp/htdocs/painel-v2/app/models",
+		"/C/xampp/htdocs/painel-v2/app/src",
 		"/C/xampp/htdocs/painel-v2/app/traits",
 		"/C/xampp/htdocs/painel-v2/app/views",
 		"/C/xampp/htdocs/painel-v2/app/views/templates",
@@ -171,17 +180,28 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
+		"/C/xampp/htdocs/painel-v2/app/models/User.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
+		"/C/xampp/htdocs/painel-v2/app/traits/Links.php",
+		"/C/xampp/htdocs/painel-v2/core/Model.php",
+		"/C/xampp/htdocs/painel-v2/bootstrap.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories-create.html",
+		"/C/Users/alerc/Desktop/url_api_uscs.txt",
+		"/C/Users/alerc/Desktop/logar.php",
+		"/C/Users/alerc/Desktop/links curso livre.txt",
+		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategoryController.php",
+		"/C/xampp/htdocs/painel-v2/app/models/CourseCategory.php",
+		"/C/Users/alerc/Desktop/api_moodle_uscs",
+		"/C/Users/alerc/AppData/Local/Temp/Rar$DIa8604.19175/logar.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-profile.html",
 		"/C/xampp/htdocs/painel-v2/public/index.php",
 		"/C/xampp/htdocs/painel-v2/index.php",
 		"/C/Users/alerc/Desktop/login_page_usc.php",
-		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
-		"/C/xampp/htdocs/painel-v2/app/models/User.php",
 		"/C/Users/alerc/Desktop/bkps_senac_bahia/links_bps_tarefa.txt",
 		"/C/Users/alerc/Desktop/links_bps_tarefa.txt",
 		"/C/xampp/htdocs/painel-v2/app/traits/QueryBuilder.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
-		"/C/xampp/htdocs/painel-v2/core/Model.php",
 		"/C/xampp/htdocs/painel-v2/composer.json",
 		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/Users/alerc/Desktop/painel-v2/app/Config.php",
@@ -193,13 +213,10 @@
 		"/C/xampp/htdocs/painel-v2/app/traits/Api.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-update.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users-create.html",
-		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategoryController.php",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories-create.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories.html",
 		"/C/xampp/htdocs/painel-v2/public/assets/resource/adminlte/pages/forms/advanced.html",
 		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategory.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-category.html",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/profile.html",
 		"/C/xampp/htdocs/painel-v2/app/controllers/HiController.php",
 		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
@@ -208,7 +225,6 @@
 		"/C/xampp/htdocs/painel-v2/app/traits/Validations.php",
 		"/C/xampp/htdocs/painel-v2/app/src/Validate.php",
 		"/C/xampp/htdocs/painel-v2/app/src/Redirect.php",
-		"/C/xampp/htdocs/painel-v2/bootstrap.php",
 		"/C/xampp/htdocs/painel-v2/app/functions/helpers.php",
 		"/C/xampp/htdocs/painel-v2/app/functions/twig.php",
 		"/C/xampp/htdocs/painel-v2/public/assets/css/styles.css",
@@ -216,7 +232,6 @@
 		"/C/Users/alerc/AppData/Local/Temp/scp55055/var/www/sites/directweb.eduead.com.br/html/apiglpi/composer.json",
 		"/C/Users/alerc/Desktop/token flpi.txt",
 		"/C/Users/alerc/AppData/Local/Temp/scp12976/var/www/sites/directweb.eduead.com.br/html/apiwp/index.php",
-		"/C/Users/alerc/Desktop/api_moodle_uscs",
 		"/C/xampp/htdocs/painel-v2/core/Modal.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/OverviewController.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/Rar$DIa7648.28725/Model.php",
@@ -292,17 +307,11 @@
 		"/C/Users/alercio.borges/Desktop/mvc_dlim_estrutura.php",
 		"/C/xampp/htdocs/painel/src/Views/partials/header.php",
 		"/C/Users/alercio.borges/AppData/Local/Temp/scp38969/var/www/sites/directweb.eduead.com.br/html/painel/index.php",
-		"/C/Users/alercio.borges/Desktop/apistripe/enrol.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp45537/var/www/sites/directweb.eduead.com.br/html/painel/routes/home.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp41675/var/www/sites/directweb.eduead.com.br/html/painel/src/Controllers/Teste.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp28707/var/www/sites/directweb.eduead.com.br/html/painel/routes/index.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp11135/var/www/sites/directweb.eduead.com.br/html/painel/src/Config.php",
-		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/vendor/ecommerce/php-classes/src/Model/User.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp30955/var/www/sites/directweb.eduead.com.br/html/painel/public/index.php"
+		"/C/Users/alercio.borges/Desktop/apistripe/enrol.php"
 	],
 	"find":
 	{
-		"height": 42.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
@@ -429,11 +438,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 42.0
+		"height": 31.0
 	},
 	"input":
 	{
-		"height": 62.0
+		"height": 78.0
 	},
 	"layout":
 	{
@@ -466,7 +475,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 80.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":

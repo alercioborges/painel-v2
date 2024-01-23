@@ -17,12 +17,22 @@ class UserController extends Controller
 	public function show(Reques $request, Response $response):Response
 	{
 		$user = new User();
+		$users = $user->getAll(30, 30);
+		dd($users);
+		
 
-		$users = $user->getAll();
+		if (isset($_GET['page'])) {
+			if ($_GET['page'] == 2) {
+				$users = $user->getAll(30, 30);
+				
+			}
+		} else {
+			$users = $user->getAll(0, 30);
+		}
 
-		$pagination = new Paginate(30, $users);
+		//$pagination = new Paginate(30, $users);
 
-		$pages = $pagination->page();
+		//$pages = $pagination->page();
 
 
 		$this->view('pages/users.html', [

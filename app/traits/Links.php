@@ -29,9 +29,27 @@ trait Links{
 
 			return $links;
 		}
+
+		public function links()
+		{
+			if ($this->pages() > 0) {
+				$links = '<ul class="pagination">';
+				$links .= $this->previous();
+
+				for ($i = $this->page() - $this->maxLinks; $i <= $this->page() + $this->maxLinks;; $i++) {
+
+					$class = ($i == $this->page()) ? 'actual' : '';
+
+					if ($i > 0 && $i <= $this->pages()) {
+						$links .= "<li class='page-item'><a href='?page" .$i. "' class=" .$class. ">{$i}</a></li>";
+					}
+				}
+
+				$links .= $this->next();
+				$links .= '</ul>';
+
+				return $links;
+
+			}
+		}
 	}
-
-
-
-
-}

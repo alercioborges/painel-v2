@@ -11,7 +11,6 @@ class Model
 {
 	use Api;
 	use Crud;
-	use Pagination;
 }
 
 

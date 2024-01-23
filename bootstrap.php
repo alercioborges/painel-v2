@@ -21,4 +21,3 @@ $app->add(new TrailingSlash(false));
 $app->add(new WhoopsMiddleware());
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
