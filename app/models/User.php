@@ -9,8 +9,10 @@ class User extends Model
 
 	public function getAll(int $page, int $perPage):array
 	{
-		$admins = $this->select(['value'], 'mdl_config')
-		->where('name', '=', 'siteadmins')
+		$admins = $this->selectCondition(
+			['value'],
+			'mdl_config',
+			['name', '=', 'siteadmins'])
 		->get();
 
 		$user_admins = $admins[0]['value'];
@@ -21,46 +23,53 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
-		$records = count($this->select(['id'], 'mdl_user')
-		->where('deleted', '=', '0')
-		->get());
-
-		$pages = ceil($records / $perPage);		
-
-		$users = $this->select(['id', 'firstname', 'lastname', 'email', 'suspended'], 'mdl_user')
-		->where('deleted', '=', '0')->limit($page, $perPage)
-		->get();		
-
+		$users = $this->paginationCondition(
+			['id', 'firstname', 'lastname', 'email', 'suspended'],
+			'mdl_user',
+			['deleted', '=', '0'],
+			$page,
+			$perPage
+		);
+		
 		foreach ($users as $key => $value) {
-			if (array_intersect($user_admins, $users[$key])) {
+			if (in_array($users[$key]['id'], $user_admins)) {
 				$users[$key] += ['is_admin' => true];
 			} else {
 				$users[$key] += ['is_admin' => false];
 			}
 		}
 
-		$user_data = array(
-			'users' => $users, 
-			"pages" => $pages
+		$recods = count($this->selectCondition(['id'], 'mdl_user', ['deleted', '=', '0'])->get());
+		$pages = ceil($recods / $perPage);
+		
+		$users_data = array(
+			'USERS' => $users,
+			'PAGES' => $pages
 		);
 
-		return $user_data;
+		return $users_data;
 	}
-
-
 
 
 	public function save(array $arg):array
 	{
-		$parameter = $this->saveParameters($arg);
+		$check_data = $this->verifyUserDataExists($arg['username'], $arg['email']);
 
-		$response = $this->callApi('core_user_create_users', $parameter);
+		if ($check_data == NULL){
 
-		$return_api = $this->verifyErrorApiSave($response);
+			$parameter = $this->saveParameters($arg);
 
-		return $return_api;	
+			$response = $this->callApi('core_user_create_users', $parameter);
+
+			$return_api = $this->verifyErrorApiSave($response);
+
+			return $return_api;
+
+		} else {
+
+			return $check_data;
+		} 
 	}
-
 
 
 	public function get(int $id):array
@@ -143,9 +152,6 @@ class User extends Model
 	}
 
 
-
-
-
 	public function redefinePassword(int $id):void
 	{
 		$user_data = $this->get($id);
@@ -158,8 +164,39 @@ class User extends Model
 			flash('success', success('E-mail de redefinição de senha enviado com sucesso!'));
 			redirect("/users/{$id}/profile");
 		}
+	}
+
+
+	private function verifyUserDataExists(String $username, String $email)
+	{
+		$return_api = [];
+
+		$parameter = '&field=email&values[0]=' . $email;
+		$response = $this->callApi('core_user_get_users_by_field', $parameter);
+
+		if ($response != NULL) {
+			$return_api = array(
+				'message' => "Este e-mail já existe",
+				'success' => false,
+				'field' => 'email'
+			);
+		}
+
+		$parameter = '&field=username&values[0]=' . $username;
+		$response = $this->callApi('core_user_get_users_by_field', $parameter);		
+
+		if ($response != NULL) {
+			$return_api = array(
+				'message' => "Este nome de usuário já existe",
+				'success' => false,
+				'field' => 'username'
+			);
+		}
+
+		return $return_api;
 
 	}
+
 
 	private function verifyErrorApiSave(array $response):array
 	{
@@ -171,21 +208,8 @@ class User extends Model
 				'success' => true
 			);
 		}
-		elseif (in_array("Email address already exists: {$_POST['email']}", $response)) {
-			$return_api = array(
-				'message' => "Este email já existe",
-				'success' => false,
-				'field' => 'email'
-			);
-		}
-		elseif (in_array("Username already exists: {$_POST['username']}", $response)) {
-			$return_api = array(
-				'message' => "Este nome de usuário já existe",
-				'success' => false,
-				'field' => 'username'
-			);
-		}
-		elseif (isset($response['message']) && str_contains($response['message'], 'error/')) {
+
+		elseif (array_key_exists('message', $response) && str_contains($response['message'], 'error/')) {
 			$return_api = array(
 				'message' => $response['errorcode'],
 				'success' => false,
@@ -201,14 +225,14 @@ class User extends Model
 		$return_api = [];
 
 		if(isset($response['warnings'][0])){
-			if(array_key_exists('message', $response['warnings'][0]) && str_contains($response['warnings'][0]['message'], 'Duplicate entry')) {
+			if(array_key_exists('warningcode', $response['warnings'][0]) && str_contains($response['warnings'][0]['warningcode'], 'dmlwriteexception')) {
 				$return_api = array(
 					'message' => "Nome de usuário já existe",
 					'success' => false,
 					'field' => 'username'
 				);
 			}
-			elseif (array_key_exists('message', $response['warnings'][0]) && str_contains($response['warnings'][0]['message'], 'Duplicate email address')) {
+			elseif (array_key_exists('warningcode', $response['warnings'][0]) && str_contains($response['warnings'][0]['warningcode'], 'useremailduplicate')) {
 				$return_api = array(
 					'message' => "E-mail já existe",
 					'success' => false,
@@ -216,7 +240,7 @@ class User extends Model
 				);
 			}
 		}
-		elseif ($response[0] == NULL) {
+		elseif ($response['warnings'] == NULL) {
 			$return_api = array(
 				'message' => "Usuário atualizado com sucesso!",
 				'success' => true

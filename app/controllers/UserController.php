@@ -16,29 +16,18 @@ class UserController extends Controller
 	
 	public function show(Reques $request, Response $response):Response
 	{
+		$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
 		$user = new User();
-		$users = $user->getAll(30, 30);
-		dd($users);
 		
+		$users = $user->getAll($page, 30);
 
-		if (isset($_GET['page'])) {
-			if ($_GET['page'] == 2) {
-				$users = $user->getAll(30, 30);
-				
-			}
-		} else {
-			$users = $user->getAll(0, 30);
-		}
-
-		//$pagination = new Paginate(30, $users);
-
-		//$pages = $pagination->page();
-
+		//dd($users);
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
-			'USERS' => $users 
-
+			'USERS' => $users['USERS'],
+			'PAGES' =>  $users['PAGES']
 		]);
 
 		return $response;

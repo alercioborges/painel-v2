@@ -20,6 +20,7 @@ trait View{
 
 		$this->twig->addExtension(new \Twig\Extension\DebugExtension());
 		$this->twig->addGlobal('session', $_SESSION);
+		$this->twig->addGlobal('get', $_GET);
 
 	}
 

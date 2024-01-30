@@ -29,7 +29,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for data in USERS|filter(v => v.id != 1) -%}
+						{% for data in USERS %}
 						<tr>
 							<td>{{ data.id }}</td>
 							<td><a href="{{ get_full_url() }}/users/{{data.id}}/profile" class="link-secondary" >{{ data.firstname }} {{ data.lastname }}</a></td>
@@ -69,8 +69,7 @@
 							</div>
 							<!-- Fim da da janela do Modal -->
 							<!-- Fim do modal de exclusão de usuário -->
-							{% endif %}
-							
+							{% endif %}							
 						</td>
 					</tr>
 					{% endfor %}
@@ -80,8 +79,23 @@
 	</div><!-- /.card -->
 </div><!-- /.row -->
 
-
-<a href="?page=2">[2]</a>
+<nav aria-label="Navegação da página">
+	<ul class="pagination justify-content-center">
+		{% if get['page'] > 1 %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ get['page'] -1 }}" tabindex="-1">Anterior</a>
+		</li>
+		{% endif %}
+			{% for i in 1..PAGES %}
+				<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+			{% endfor %}
+		{% if get['page'] < PAGES %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ get['page'] +1 }}">Próximo</a>
+		</li>
+		{% endif %}
+	</ul>
+</nav>
 
 
 {% endblock %}

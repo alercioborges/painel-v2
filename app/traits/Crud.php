@@ -42,27 +42,29 @@ trait Crud{
         }
     }
 
-    protected function select(array $fields = [], String $table_name) {
+    protected function select(array $columns = [], String $table_name)
+    {
         self::_checkH();
         $table = self::$_h->table($table_name);
-        return $table->select($fields);
+        return $table->select($columns);        
     }
 
-    public static function insert($fields = []) {
-        self::_checkH();
-        return self::$_h->insert($fields);
-    }
 
-    public static function update($table_name)
+    protected function update(String $table_name)
     {
-       self::_checkH();
-       $table = self::$_h->table($table_name);
-       return $table->update();
-   }
+        self::_checkH();
+        $table = self::$_h->table($table_name);
+        return $table->update(); 
+    }
 
-   public static function delete() {
-    self::_checkH();
-    return self::$_h->delete();
-}
+    protected function selectCondition(array $fields = [], String $table_name, array $condicion)
+    {
+        return $this->select($fields, $table_name)->where($condicion[0], $condicion[1], $condicion[2]);
+    }
 
+    public function paginationCondition(array $fields = [], String $table_name, array $condicion, int $page, int $perPage)
+    {
+        $offset = ($page - 1) * $perPage;     
+        return $this->selectCondition($fields, $table_name, $condicion)->limit($perPage)->offset($offset)->get();
+    }
 }
