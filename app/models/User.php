@@ -9,10 +9,10 @@ class User extends Model
 
 	public function getAll(int $page, int $perPage):array
 	{
-		$admins = $this->selectCondition(
+		$admins = $this->select(
 			['value'],
-			'mdl_config',
-			['name', '=', 'siteadmins'])
+			'mdl_config')
+		->where('name', '=', 'siteadmins')
 		->get();
 
 		$user_admins = $admins[0]['value'];
@@ -23,13 +23,16 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
-		$users = $this->paginationCondition(
+		$offset = ($page - 1) * $perPage; 
+
+		$users = $this->select(
 			['id', 'firstname', 'lastname', 'email', 'suspended'],
-			'mdl_user',
-			['deleted', '=', '0'],
-			$page,
-			$perPage
-		);
+			'mdl_user')
+		->where('deleted', '=', '0')
+		->where('id', '!=', '1')
+		->limit($perPage)
+		->offset($offset)
+		->get();
 		
 		foreach ($users as $key => $value) {
 			if (in_array($users[$key]['id'], $user_admins)) {
@@ -39,7 +42,7 @@ class User extends Model
 			}
 		}
 
-		$recods = count($this->selectCondition(['id'], 'mdl_user', ['deleted', '=', '0'])->get());
+		$recods = count($this->select(['id'], 'mdl_user')->where('deleted', '=', '0')->where('id', '!=', '1')->get());
 		$pages = ceil($recods / $perPage);
 		
 		$users_data = array(

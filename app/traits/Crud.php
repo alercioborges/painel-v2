@@ -55,16 +55,5 @@ trait Crud{
         self::_checkH();
         $table = self::$_h->table($table_name);
         return $table->update(); 
-    }
-
-    protected function selectCondition(array $fields = [], String $table_name, array $condicion)
-    {
-        return $this->select($fields, $table_name)->where($condicion[0], $condicion[1], $condicion[2]);
-    }
-
-    public function paginationCondition(array $fields = [], String $table_name, array $condicion, int $page, int $perPage)
-    {
-        $offset = ($page - 1) * $perPage;     
-        return $this->selectCondition($fields, $table_name, $condicion)->limit($perPage)->offset($offset)->get();
-    }
+    }  
 }

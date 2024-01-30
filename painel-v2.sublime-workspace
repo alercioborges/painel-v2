@@ -180,9 +180,12 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/app/traits/Crud.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
-		"/C/xampp/htdocs/painel-v2/app/models/User.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
+		"/C/xampp/htdocs/painel-v2/app/models/User.php",
+		"/C/Users/alerc/Desktop/painel_login_dorina.txt",
+		"/C/xampp/htdocs/painel-v2/urls_api.txt",
 		"/C/xampp/htdocs/painel-v2/app/traits/Links.php",
 		"/C/xampp/htdocs/painel-v2/core/Model.php",
 		"/C/xampp/htdocs/painel-v2/bootstrap.php",
@@ -304,14 +307,11 @@
 		"/C/xampp/htdocs/painel/src/Views/pages/base.html",
 		"/C/xampp/htdocs/painel/src/Views/partials/header.html",
 		"/C/xampp/htdocs/painel/src/Views/partials/footer.html",
-		"/C/Users/alercio.borges/Desktop/mvc_dlim_estrutura.php",
-		"/C/xampp/htdocs/painel/src/Views/partials/header.php",
-		"/C/Users/alercio.borges/AppData/Local/Temp/scp38969/var/www/sites/directweb.eduead.com.br/html/painel/index.php",
-		"/C/Users/alercio.borges/Desktop/apistripe/enrol.php"
+		"/C/Users/alercio.borges/Desktop/mvc_dlim_estrutura.php"
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
@@ -325,6 +325,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tabindex",
 			"cod",
 			"getTableName",
 			"onke",
