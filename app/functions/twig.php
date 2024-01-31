@@ -15,15 +15,20 @@ $form_message = new Twig\TwigFunction('form_message', function($index)
 	echo app\src\Flash::get($index);
 });
 
-$success_message= new Twig\TwigFunction('success_message', function($index)
+$success_message = new Twig\TwigFunction('success_message', function($index)
 {
 	echo app\src\Flash::get($index);
 });
 
-
+$pagination = new Twig\TwigFunction('pagination', function($pages)
+{
+	$file = path() . "\\app\\views\\templates\\partials\\pagination.twig";
+	echo htmlentities(require $file);
+});
 
 return[
 	$get_full_url,
 	$form_message,
-	$success_message
+	$success_message,
+	$pagination
 ];

@@ -20,7 +20,7 @@ class UserController extends Controller
 
 		$user = new User();
 		
-		$users = $user->getAll($page, 10);
+		$users = $user->getAll($page, 4);
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',

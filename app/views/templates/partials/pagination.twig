@@ -1,0 +1,50 @@
+<!-- Pagination Links -->
+<nav aria-label="Navegação da página">
+	<ul class="pagination justify-content-center">
+		{% if get['page'] > 1 %}
+			<li class="page-item">
+				<a class="page-link" href="?page={{ get['page'] -1 }}">
+					<span aria-hidden="true">«</span>
+					<span class="sr-only">Anterior</span>
+				</a>
+			</li>
+		{% endif %}
+		{% if $pages <= 10  %}
+			{% for i in 1..$pages %}
+				<li class="page-item {% if get['page'] == i %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+			{% endfor %}
+		{% elseif get['page'] <= 8 %}
+			{% for i in 1..10 %}
+				<li class="page-item {% if get['page'] == i %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
+			{% endfor %}
+			<li class="page-item disabled"><span class="page-link">…</span></li>
+			<li class="page-item"><a class="page-link" href="?page={{ $pages }}">{{ $pages }}</a></li>
+		{% elseif get['page'] >= 9 and get['page'] <= $pages - 6%}
+			<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+			<li class="page-item disabled"><span class="page-link">…</span></li>
+			{% for i in get['page'] - 3..get['page'] + 6 %}
+				{% if i != $pages %}
+					<li class="page-item {% if get['page'] == i %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
+				{% endif %}
+			{% endfor %}
+			<li class="page-item disabled"><span class="page-link">…</span></li>
+			<li class="page-item"><a class="page-link" href="?page={{ $pages }}">{{ $pages }}</a></li>
+			{% elseif get['page'] <= $pages + 6 %}
+				<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+				<li class="page-item disabled"><span class="page-link">…</span></li>
+				{% for i in $pages - 10..$pages %}
+					<li class="page-item {% if get['page'] == i %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% endfor %}
+
+		{% endif %}
+		{% if get['page'] < $pages %}
+			<li class="page-item">
+				<a class="page-link" href="?page={{ get['page'] +1 }}">
+					<span aria-hidden="true">»</span>
+					<span class="sr-only">Próximo</span>
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>
+<!-- /.Pagination Links -->
