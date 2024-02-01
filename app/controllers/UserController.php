@@ -12,15 +12,12 @@ use app\src\Paginate;
 use app\models\User;
 
 class UserController extends Controller
-{
-	
+{	
 	public function show(Reques $request, Response $response):Response
 	{
-		$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-
 		$user = new User();
 		
-		$users = $user->getAll($page, 4);
+		$users = $user->getAll(30);
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',

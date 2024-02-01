@@ -7,7 +7,7 @@ use core\Model;
 class User extends Model
 {
 
-	public function getAll(int $page, int $perPage):array
+	public function getAll(int $perPage):array
 	{
 		$admins = $this->select(
 			['value'],
@@ -23,6 +23,7 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
+		$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 		$offset = ($page - 1) * $perPage; 
 
 		$users = $this->select(
