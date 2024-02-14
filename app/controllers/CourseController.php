@@ -22,7 +22,8 @@ class CourseController extends Controller
 		dd($courses);
 
 		$this->view('pages/courses.html', [
-			'TITLE' => 'Lissta de cursos'
+			'TITLE' => 'Lissta de cursos',
+			'COURSES' => $courses
 		]);
 
 		return $response;
