@@ -6,61 +6,71 @@ use core\Model;
 
 class Course extends Model
 {
-
 	public function getAll()
 	{
+		$allRows = $this->select([
+			'c.id as category_id',
+			'c.name as category_name',
+			'c.parent as parent_id'],
+			'mdl_course_categories as c')
+		->orderBy('c.sortorder')->get();		
 
-		$categories = $this->select(
-			['id', 'name', 'path'],
-			'mdl_course_categories'
-		)->orderBy('sortorder')->get();
+		// Filtrar apenas as categorias raízes (aquelas que não têm pai)
+		$rootCategories = array_filter($allRows, function($row) {
+			return $row['parent_id'] === 0;
+		});
 
-		$courses = [];
+        // Criar uma função recursiva para montar a árvore de categorias
+		$buildTree = function($parentId) use (&$buildTree, $allRows) {
+			$categories = [];
 
-		foreach ($categories as $key => $value) {
+			foreach ($allRows as $row) {
+				if ($row['parent_id'] === $parentId) {
+					$category = [
+						'category_id' => $row['category_id'],
+						'category_name' => $row['category_name'],
+						'courses' => []
+					];
 
-			$courses[$key]['id_category'] = $value['id'];
-			$courses[$key]['name_category'] = $value['name'];
-			$courses[$key]['path'] = $value['path'];
-			$courses[$key]['courses'] = $this->select([ 
-				'mdl_course.id',
-				'mdl_course.fullname',
-				'mdl_course.idnumber',
-				'mdl_course.category'],
-				'mdl_course'
-			)->where('category', $value['id'])->get();
+					if ($category['courses'] !== null) {
+                        // Adiciona o curso ao array de cursos da categoria
+						$category['courses'] = $this->select([ 
+							'mdl_course.id',
+							'mdl_course.fullname',
+							'mdl_course.idnumber',
+							'mdl_course.category'],
+							'mdl_course'
+						)->where('category', $row['category_id'])->get();
+					}
 
-			$path  = $this->select(
-				['path'],
-				'mdl_course_categories'
-			)->where('path', 'LIKE', "/{$value['id']}/%")->get();
+                    // Recursivamente chama a função para adicionar subcategorias e agrupar cursos
+					$category['subcategories'] = $buildTree($row['category_id']);
 
-			if ($path != NULL) {
-
-				$id_subcategorie = [];
-
-				foreach ($path  as $key_path => $value_path) {
-					$path_categories[$key_path] = explode('/', $value_path['path']);
-
-					if (!in_array($path_categories[$key_path][2], $id_subcategorie)) {
-						$id_subcategorie[] = $path_categories[$key_path][2];
-					}					
-
-				}
-
-				foreach ($id_subcategorie as $key_sub => $value_sub) {
-					$courses[$key]['subcategory'][$key_sub] = $id_subcategorie[$key_sub];
-
-					$subcategories = $this->select(
-						['id', 'name', 'path'],
-						'mdl_course_categories'
-					)->where('id', $courses[$key]['subcategory'][$key_sub])->get();
+					$categories[] = $category;
 				}
 			}
-		}
 
-		return $courses;
+			return $categories;
+		};
+
+        // Construir a árvore de categorias a partir das categorias raízes
+		$resultados = array_map(function($row) use ($buildTree) {
+			return [
+				'category_id' => $row['category_id'],
+				'category_name' => $row['category_name'],
+				'courses' => $this->select([ 
+					'mdl_course.id',
+					'mdl_course.fullname',
+					'mdl_course.idnumber',
+					'mdl_course.category'],
+					'mdl_course'
+				)->where('category', $row['category_id'])->get(),
+				'subcategories' => $buildTree($row['category_id'])
+			];
+		}, $rootCategories);		
+
+        // Retorna os resultados
+		return $resultados;
 	}
-
 }
 

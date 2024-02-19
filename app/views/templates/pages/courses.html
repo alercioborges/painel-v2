@@ -23,11 +23,11 @@
 
 				{% for data in COURSES %}
 					
-					<a class="" data-toggle="collapse" href="#courses-category-{{data.id_category}}" aria-expanded="false" aria-controls="collapseExample">
-					{{ data.name_category }}
+					<a class="" data-toggle="collapse" href="#courses-category-{{data.category_id}}" aria-expanded="false" aria-controls="collapseExample">
+					{{ data.category_name }}
 					</a><br>
 
-					<div class="collapse" id="courses-category-{{data.id_category}}">
+					<div class="collapse" id="courses-category-{{data.category_id}}">
 						<div class="card card-body">
 							{% for course in data.courses %}
 								{{ course.fullname }}<br>

@@ -9,8 +9,6 @@ use core\Controller;
 
 use app\models\Course;
 
-
-
 class CourseController extends Controller
 {	
 	public function show(Reques $request, Response $response):Response
@@ -18,8 +16,6 @@ class CourseController extends Controller
 		$course = new Course();
 
 		$courses = $course->getAll();
-
-		dd($courses);
 
 		$this->view('pages/courses.html', [
 			'TITLE' => 'Lissta de cursos',
