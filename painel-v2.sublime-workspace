@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"a",
+				"abbr"
+			],
+			[
 				"user",
 				"users"
 			],
@@ -180,6 +184,10 @@
 	"file_history":
 	[
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/courses.html",
+		"/C/xampp/htdocs/painel-v2/app/models/Course.php",
+		"/C/Users/alerc/Desktop/acesso_rita_forn_professor.txt",
+		"/C/Users/alerc/Desktop/bkp_17_11_2021/Moodle - Pasta/configurações do moodle.txt",
+		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/CourseController.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
 		"/C/xampp/htdocs/painel-v2/public/index.php",
@@ -209,7 +217,6 @@
 		"/C/xampp/htdocs/painel-v2/app/traits/QueryBuilder.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/TesteController.php",
 		"/C/xampp/htdocs/painel-v2/composer.json",
-		"/C/xampp/htdocs/painel-v2/app/Config.php",
 		"/C/Users/alerc/Desktop/painel-v2/app/Config.php",
 		"/C/Users/alerc/Desktop/index.html",
 		"/C/Users/alerc/Desktop/link_api_painel",
@@ -303,14 +310,11 @@
 		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGenerator.php",
 		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.php",
 		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.php",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.html",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/header.html",
-		"/C/xampp/htdocs/painel/src/Views/pages/base.html",
-		"/C/xampp/htdocs/painel/src/Views/partials/header.html"
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.html"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 46.0
 	},
 	"find_in_files":
 	{
@@ -324,6 +328,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"array",
+			"parentId",
+			"listarCategoriasSubcategoriasCursosMoodle",
+			"id_subcategorie",
 			"tabindex",
 			"cod",
 			"getTableName",
@@ -438,7 +446,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -475,7 +483,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

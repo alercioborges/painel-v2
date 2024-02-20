@@ -21,27 +21,58 @@
 			</div><!-- /.card-header -->
 			<div class="card-body p-0">
 
-				{% for data in COURSES %}
-					
-					<a class="" data-toggle="collapse" href="#courses-category-{{data.category_id}}" aria-expanded="false" aria-controls="collapseExample">
-					{{ data.category_name }}
-					</a><br>
+				<ol>
+					{% for item in COURSES %}
+					<li>
+						<strong>Category Name:</strong> {{ item.category_name }}
+						<ul>
+							{% if item.courses is not empty %}
+							<li><strong>Courses:</strong>
+								<ul>
+									{% for course in item.courses %}
+									<li>{{ course.fullname }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+							{% endif %}
+							{% if item.subcategories is not empty %}
+							<li><strong>Subcategories:</strong>
+								{{ _self.renderSubcategories(item.subcategories) }}
+							</li>
+							{% endif %}
+						</ul>
+					</li>
+					{% endfor %}
+				</ol>
 
-					<div class="collapse" id="courses-category-{{data.category_id}}">
-						<div class="card card-body">
-							{% for course in data.courses %}
-								{{ course.fullname }}<br>
-							{% endfor %}
-						</div>
-					</div><bt>
-				{% endfor %}
+				{% macro renderSubcategories(subcategories) %}
+				<ul>
+					{% for subcategory in subcategories %}
+					<li>
+						<strong>Category Name:</strong> {{ subcategory.category_name }}
+						<ul>
+							{% if subcategory.courses is not empty %}
+							<li><strong>Courses:</strong>
+								<ul>
+									{% for course in subcategory.courses %}
+									<li>{{ course.fullname }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+							{% endif %}
+							{% if subcategory.subcategories is not empty %}
+							<li><strong>Subcategories:</strong>
+								{{ _self.renderSubcategories(subcategory.subcategories) }}
+							</li>
+							{% endif %}
+						</ul>
+					</li>
+					{% endfor %}
+				</ul>
+				{% endmacro %}
 
-				<pre>
-					{{ dump(COURSES) }}
-				</pre>
-
-				</div><!-- /.card-body -->
-			</div><!-- /.card -->
-		</div>
-	</div><!-- /.row -->
-	{% endblock %}
+			</div><!-- /.card-body -->
+		</div><!-- /.card -->
+	</div>
+</div><!-- /.row -->
+{% endblock %}

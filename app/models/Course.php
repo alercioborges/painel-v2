@@ -22,6 +22,7 @@ class Course extends Model
 
         // Criar uma função recursiva para montar a árvore de categorias
 		$buildTree = function($parentId) use (&$buildTree, $allRows) {
+			
 			$categories = [];
 
 			foreach ($allRows as $row) {
@@ -29,6 +30,7 @@ class Course extends Model
 					$category = [
 						'category_id' => $row['category_id'],
 						'category_name' => $row['category_name'],
+						'category_parent_id'  => $row['parent_id'],
 						'courses' => []
 					];
 
@@ -58,6 +60,7 @@ class Course extends Model
 			return [
 				'category_id' => $row['category_id'],
 				'category_name' => $row['category_name'],
+				'category_parent_id'  => $row['parent_id'],
 				'courses' => $this->select([ 
 					'mdl_course.id',
 					'mdl_course.fullname',
