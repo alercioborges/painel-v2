@@ -21,9 +21,9 @@
 			</div><!-- /.card-header -->
 			<div class="card-body p-0">
 
-				<ol>
+				<ul class="list-unstyled">
 					{% for item in COURSES %}
-					<li>
+					<li class="listitem list-group-item list-group-item-action">
 						<strong>Category Name:</strong> {{ item.category_name }}
 						<ul>
 							{% if item.courses is not empty %}
@@ -43,7 +43,7 @@
 						</ul>
 					</li>
 					{% endfor %}
-				</ol>
+				</ul>
 
 				{% macro renderSubcategories(subcategories) %}
 				<ul>
@@ -55,15 +55,15 @@
 							<li><strong>Courses:</strong>
 								<ul>
 									{% for course in subcategory.courses %}
-									<li>{{ course.fullname }}</li>
+										<li>{{ course.fullname }}</li>
 									{% endfor %}
 								</ul>
 							</li>
 							{% endif %}
 							{% if subcategory.subcategories is not empty %}
-							<li><strong>Subcategories:</strong>
-								{{ _self.renderSubcategories(subcategory.subcategories) }}
-							</li>
+								<li><strong>Subcategories:</strong>
+									{{ _self.renderSubcategories(subcategory.subcategories) }}
+								</li>
 							{% endif %}
 						</ul>
 					</li>
@@ -73,6 +73,6 @@
 
 			</div><!-- /.card-body -->
 		</div><!-- /.card -->
-	</div>
+	</div><!-- /.col -->
 </div><!-- /.row -->
 {% endblock %}
