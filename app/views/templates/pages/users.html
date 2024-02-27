@@ -79,61 +79,7 @@
 </div><!-- /.card -->
 </div><!-- /.row -->
 
-<!-- Pagination Links -->
-<nav aria-label="Navegação da página">
-	<ul class="pagination justify-content-center">
-		{% if PAGES == 1 %}
-			<li class="page-item active"><a class="page-link" href="?page=1">1</a></li>
-		{% else %}
-			{% if get['page'] > 1 %}
-				<li class="page-item">
-					<a class="page-link" href="?page={{ get['page'] -1 }}">
-						<span aria-hidden="true">«</span>
-						<span class="sr-only">Anterior</span>
-					</a>
-				</li>
-			{% endif %}		
-			{% if PAGES <= 10  %}
-				{% for i in 1..PAGES %}				
-					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-				{% endfor %}
-			{% elseif get['page'] <= 8 %}
-				{% for i in 1..10 %}				
-					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
-				{% endfor %}
-				<li class="page-item disabled"><span class="page-link">…</span></li>
-				<li class="page-item"><a class="page-link" href="?page={{ PAGES }}">{{ PAGES }}</a></li>
-			{% elseif get['page'] >= 9 and get['page'] <= PAGES - 6%}
-				<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-				<li class="page-item disabled"><span class="page-link">…</span></li>
-				{% for i in get['page'] - 3..get['page'] + 6 %}
-					{% if i != PAGES %}
-						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
-					{% endif %}
-				{% endfor %}
-				<li class="page-item disabled"><span class="page-link">…</span></li>
-				<li class="page-item"><a class="page-link" href="?page={{ PAGES }}">{{ PAGES }}</a></li>
-				{% elseif get['page'] <= PAGES + 6 %}
-					<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-					<li class="page-item disabled"><span class="page-link">…</span></li>
-					{% for i in PAGES - 10..PAGES %}
-						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-					{% endfor %}
-			{% endif %}
-			{% if get['page'] < PAGES %}
-				<li class="page-item">
-					<a class="page-link" href="?page={{ get['page'] +1 }}">
-						<span aria-hidden="true">»</span>
-						<span class="sr-only">Próximo</span>
-					</a>
-				</li>
-			{% endif %}
-		{% endif %}
-	</ul>
-</nav>
-<!-- /.Pagination Links -->
-
-
-
+{% import "./partials/pagination.twig" as pagination %}
+{{ pagination.input(PAGES) }}
 
 {% endblock %}
