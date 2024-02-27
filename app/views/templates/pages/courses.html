@@ -23,56 +23,106 @@
 
 				<ul class="list-unstyled">
 					{% for item in COURSES %}
-					<li class="listitem list-group-item list-group-item-action">
-						<strong>Category Name:</strong> {{ item.category_name }}
-						<ul>
-							{% if item.courses is not empty %}
-							<li><strong>Courses:</strong>
-								<ul>
-									{% for course in item.courses %}
-									<li>{{ course.fullname }}</li>
-									{% endfor %}
-								</ul>
-							</li>
-							{% endif %}
-							{% if item.subcategories is not empty %}
-							<li><strong>Subcategories:</strong>
-								{{ _self.renderSubcategories(item.subcategories) }}
-							</li>
-							{% endif %}
-						</ul>
-					</li>
-					{% endfor %}
-				</ul>
+						<li class="listitem list-group-item">
 
-				{% macro renderSubcategories(subcategories) %}
-				<ul>
-					{% for subcategory in subcategories %}
-					<li>
-						<strong>Category Name:</strong> {{ subcategory.category_name }}
-						<ul>
-							{% if subcategory.courses is not empty %}
-							<li><strong>Courses:</strong>
-								<ul>
-									{% for course in subcategory.courses %}
-										<li>{{ course.fullname }}</li>
-									{% endfor %}
-								</ul>
-							</li>
-							{% endif %}
-							{% if subcategory.subcategories is not empty %}
-								<li><strong>Subcategories:</strong>
-									{{ _self.renderSubcategories(subcategory.subcategories) }}
+							<div id="accordion">
+								<div class="card">
+									<div class="card-header" id="head-category">
+											<h5 class="mb-0">
+											<button class="btn btn-link" data-toggle="collapse" data-target="#category-{{ item.category_id }}" aria-expanded="true" aria-controls="collapseOne">
+											{{ item.category_name }}
+											</button>
+										</h5>
+									</div>
+
+								<div id="category-{{ item.category_id }}" class="collapse" aria-labelledby="head-category" data-parent="#accordion">
+
+									<ul>
+
+										{% if item.courses is not empty %}
+											<li class="listitem list-group-item"><strong>Courses:</strong>
+												<ul>
+													{% for course in item.courses %}
+														<li class="listitem">{{ course.fullname }}</li>
+													{% endfor %}
+												</ul>
+											</li>
+										{% endif %}
+											{% if item.subcategories is not empty %}
+
+												<div id="accordion">
+													<div class="card">
+														<div class="card-header" id="head-category">
+															<h5 class="mb-0">
+																<button class="btn btn-link" data-toggle="collapse" data-target="#category-{{ item.category_id }}" aria-expanded="true" aria-controls="collapseOne">
+																</button>
+															</h5>
+														</div>
+													</div>
+												</div>
+
+												
+											{{ _self.renderSubcategories(item.subcategories) }}
+										</li>
+										{% endif %}
+									</ul>
 								</li>
-							{% endif %}
+								{% endfor %}
+							</div>
 						</ul>
-					</li>
-					{% endfor %}
-				</ul>
-				{% endmacro %}
 
-			</div><!-- /.card-body -->
-		</div><!-- /.card -->
-	</div><!-- /.col -->
-</div><!-- /.row -->
-{% endblock %}
+
+						{% macro renderSubcategories(subcategories) %}
+						<ul>
+							{% for subcategory in subcategories %}
+							<li class="listitem list-group-item">
+								<strong>Category Name:</strong> {{ subcategory.category_name }}
+								<ul>
+									{% if subcategory.courses is not empty %}
+									<li class="listitem list-group-item"><strong>Courses:</strong>
+										<ul>
+											{% for course in subcategory.courses %}
+											<li class="listitem">{{ course.fullname }}</li>
+											{% endfor %}
+										</ul>
+									</li>
+									{% endif %}
+									{% if subcategory.subcategories is not empty %}
+									<li class="listitem list-group-item"><strong>Subcategories:</strong>
+										{{ _self.renderSubcategories(subcategory.subcategories) }}
+									</li>
+									{% endif %}
+								</ul>
+							</li>
+							{% endfor %}
+						</ul>
+						{% endmacro %}
+
+					</div><!-- /.card-body -->
+
+
+
+
+
+					<div id="accordion">
+						<div class="card">
+							<div class="card-header" id="head-category">
+								<h5 class="mb-0">
+									<button class="btn btn-link" data-toggle="collapse" data-target="#category-category_id" aria-expanded="true" aria-controls="collapseOne">
+										category_name
+									</button>
+								</h5>
+							</div>
+
+							<div id="category-" class="collapse" aria-labelledby="head-category" data-parent="#accordion">
+								<div class="card-body">
+									Cursos
+								</div>
+							</div>
+						</div>
+
+
+					</div><!-- /.card -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+			{% endblock %}

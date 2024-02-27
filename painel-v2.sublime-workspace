@@ -184,6 +184,8 @@
 	"file_history":
 	[
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/courses.html",
+		"/C/Users/alerc/Desktop/url_api_uscs.txt",
+		"/C/Users/alerc/Desktop/token_url_mw_uscs.txt",
 		"/C/xampp/htdocs/painel-v2/app/models/Course.php",
 		"/C/Users/alerc/Desktop/acesso_rita_forn_professor.txt",
 		"/C/Users/alerc/Desktop/bkp_17_11_2021/Moodle - Pasta/configurações do moodle.txt",
@@ -202,7 +204,6 @@
 		"/C/xampp/htdocs/painel-v2/core/Model.php",
 		"/C/xampp/htdocs/painel-v2/bootstrap.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/course-categories-create.html",
-		"/C/Users/alerc/Desktop/url_api_uscs.txt",
 		"/C/Users/alerc/Desktop/logar.php",
 		"/C/Users/alerc/Desktop/links curso livre.txt",
 		"/C/xampp/htdocs/painel-v2/app/controllers/CourseCategoryController.php",
@@ -309,8 +310,7 @@
 		"/C/xampp/htdocs/painel/vendor/symfony/asset/Exception/AssetNotFoundException.php",
 		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGenerator.php",
 		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.php",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.php",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.html"
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.php"
 	],
 	"find":
 	{
@@ -328,6 +328,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"macro",
+			"maccro",
+			"collapseOne",
+			"fullname",
+			"Courses:",
+			"<li ",
+			"courses",
+			"<li",
+			"<ul ",
+			"<<ul",
+			"<<ul ",
+			"<li",
+			"li",
+			"ul",
+			"class=\"list-unstyled\"",
 			"array",
 			"parentId",
 			"listarCategoriasSubcategoriasCursosMoodle",
@@ -450,7 +465,7 @@
 	},
 	"input":
 	{
-		"height": 78.0
+		"height": 84.0
 	},
 	"layout":
 	{
