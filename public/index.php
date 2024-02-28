@@ -6,7 +6,10 @@ $app->get('', 'app\controllers\OverviewController:index');
 
 $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 
+	$group->get('/users', 'app\controllers\AdministratorController:show');
 	$group->get('/users/create', 'app\controllers\AdministratorController:create');
+
+	$group->post('/users/create', 'app\controllers\AdministratorController:save');
 
 });
 

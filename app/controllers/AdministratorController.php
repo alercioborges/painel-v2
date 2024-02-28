@@ -8,21 +8,18 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 use core\Controller;
 
 use app\models\Administrator;
+use app\src\Validate;
 
 class AdministratorController extends Controller
 {
 	
 	public function show(Reques $request, Response $response):Response
 	{
-		$admins = new Administrator();
+		$admin = new Administrator();
 
-		$allAdmins = $admins->getAll();
+		$admins = $admin->getAll();
 
-		dd($allAdmins);
-		
-		$this->view('pages/teste.html', [
-			'TITLE' => 'Teste'
-		]);
+		dd($admins);
 
 		return $response;
 
@@ -37,6 +34,23 @@ class AdministratorController extends Controller
 		]);
 
 		return $response;
+	}
+
+	public function save(Reques $request, Response $response):Response
+	{
+		$validate = new Validate();
+
+		$data = $validate->validate([			
+			'firstname'	=> 'required:max@30',
+			'lastname'	=> 'required:max@30',
+			'email'		=> 'email:required:max@60',
+			'password'	=> 'required:max@30'
+		]);
+
+		$admin = new Administrator();
+
+		$admin = $admin->save($data);
+
 	}
 
 }

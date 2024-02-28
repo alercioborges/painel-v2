@@ -16,4 +16,11 @@ class Administrator extends Model
 
 		return $admins;
 	}
+
+	public function save($adminDara)
+	{
+		dd($adminDara);
+	}
+
+
 }
