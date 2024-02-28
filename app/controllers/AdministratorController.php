@@ -9,7 +9,7 @@ use core\Controller;
 
 use app\models\Administrator;
 
-class TesteController extends Controller
+class AdministratorController extends Controller
 {
 	
 	public function show(Reques $request, Response $response):Response
@@ -26,6 +26,17 @@ class TesteController extends Controller
 
 		return $response;
 
+	}
+
+
+	public function create(Reques $request, Response $response):Response
+	{
+		$this->view('pages/admins-create.html', [
+			'TITLE' => 'Cadastrar novo administrador',
+			'COOKIE_DATA' => $_COOKIE
+		]);
+
+		return $response;
 	}
 
 }

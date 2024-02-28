@@ -4,6 +4,11 @@ require "../bootstrap.php";
 
 $app->get('', 'app\controllers\OverviewController:index');
 
+$app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
+
+	$group->get('/users/create', 'app\controllers\AdministratorController:create');
+
+});
 
 $app->group('/users', function (Slim\Routing\RouteCollectorProxy $group) {
 
@@ -22,7 +27,6 @@ $app->group('/users', function (Slim\Routing\RouteCollectorProxy $group) {
 });
 
 $app->group('/courses', function (Slim\Routing\RouteCollectorProxy $course_group) {
-
 
 	$course_group->get('', 'app\controllers\CourseController:show');
 
