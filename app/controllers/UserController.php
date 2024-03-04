@@ -8,7 +8,6 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 use core\Controller;
 
 use app\src\Validate;
-use app\src\Paginate;
 use app\models\User;
 
 class UserController extends Controller
@@ -17,7 +16,7 @@ class UserController extends Controller
 	{
 		$user = new User();
 		
-		$users = $user->getAll(30);
+		$users = $user->getAll(5);
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',

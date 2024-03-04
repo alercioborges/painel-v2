@@ -24,7 +24,6 @@ trait View{
 
 	}
 
-
 	protected function functions()
 	{
 		$functions = Load::file('/app/functions/twig.php');
