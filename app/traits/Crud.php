@@ -55,5 +55,12 @@ trait Crud{
         self::_checkH();
         $table = self::$_h->table($table_name);
         return $table->update(); 
+    }
+
+    protected function insert(array $data = [], String $table_name)
+    {
+        self::_checkH();
+        $table = self::$_h->table($table_name);
+        return $table->insert($data)->execute();
     }  
 }

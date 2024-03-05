@@ -19,7 +19,9 @@ class Administrator extends Model
 
 	public function save($adminDara)
 	{
-		dd($adminDara);
+		$admin = $this->insert([$adminDara], 'tbl_adminstrator');
+
+		dd($admin);
 	}
 
 

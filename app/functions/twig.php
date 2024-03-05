@@ -1,10 +1,11 @@
 <?php
 
-function renderTemplate(String $view, array $data = []) {
-	$loader = new \Twig\Loader\FilesystemLoader('../app/views/templates/partials/output/');
-	$twig = new \Twig\Environment($loader);
-	$twig->addGlobal('session', $_SESSION);
-	$twig->addGlobal('get', $_GET);
+use app\src\LoaderTwig;
+
+function renderTemplate(String $view, array $data = []) {	
+	$loadTwig = new LoaderTwig();
+	$twig = $loadTwig->twig('../app/views/templates/partials/output/');
+	
 	$template = $twig->load($view);   
 	return $template->display($data);
 }

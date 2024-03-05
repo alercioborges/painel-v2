@@ -51,6 +51,6 @@ class AdministratorController extends Controller
 
 		$admin = $admin->save($data);
 
+		return $response;
 	}
-
 }

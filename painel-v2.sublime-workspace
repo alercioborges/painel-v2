@@ -184,11 +184,19 @@
 	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/painel-v2/app/controllers/AdministratorController.php",
+		"/C/xampp/htdocs/painel-v2/app/models/Administrator.php",
+		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/admins-create.html",
+		"/C/xampp/htdocs/painel-v2/tbl_administrator.sql",
+		"/C/xampp/htdocs/painel-v2/app/traits/Crud.php",
+		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
+		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
+		"/C/xampp/htdocs/painel-v2/app/functions/twig.php",
+		"/C/xampp/htdocs/painel-v2/app/src/LoaderTwig.php",
+		"/C/Users/alerc/Desktop/url_api_uscs.txt",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/partials/pagination.twig",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/users.html",
-		"/C/xampp/htdocs/painel-v2/app/controllers/UserController.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/courses.html",
-		"/C/Users/alerc/Desktop/url_api_uscs.txt",
 		"/C/Users/alerc/Desktop/token_url_mw_uscs.txt",
 		"/C/xampp/htdocs/painel-v2/app/models/Course.php",
 		"/C/Users/alerc/Desktop/acesso_rita_forn_professor.txt",
@@ -197,9 +205,6 @@
 		"/C/xampp/htdocs/painel-v2/app/controllers/CourseController.php",
 		"/C/xampp/htdocs/painel-v2/public/index.php",
 		"/C/xampp/htdocs/painel-v2/app/models/User.php",
-		"/C/xampp/htdocs/painel-v2/app/functions/twig.php",
-		"/C/xampp/htdocs/painel-v2/app/traits/View.php",
-		"/C/xampp/htdocs/painel-v2/app/traits/Crud.php",
 		"/C/Users/alerc/Desktop/painel_login_dorina.txt",
 		"/C/xampp/htdocs/painel-v2/urls_api.txt",
 		"/C/xampp/htdocs/painel-v2/app/traits/Links.php",
@@ -306,16 +311,11 @@
 		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/Property.php",
 		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCache.php",
 		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactory.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactoryInterface.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheInterface.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/FileLocator.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/asset/Exception/AssetNotFoundException.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGenerator.php",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.php"
+		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactoryInterface.php"
 	],
 	"find":
 	{
-		"height": 32.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -329,6 +329,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"this",
 			"PAGES",
 			"macro",
 			"maccro",
@@ -463,7 +464,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 32.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -500,7 +501,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 60.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
