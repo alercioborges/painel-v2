@@ -43,7 +43,7 @@ class AdministratorController extends Controller
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30',
 			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@60',
+			'email'		=> 'email:required:max@60:unique@administrator',
 			'password'	=> 'required:max@30'
 		]);
 

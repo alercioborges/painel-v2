@@ -6,22 +6,27 @@ use core\Model;
 
 class Administrator extends Model
 {
+
+	protected $table  = 'tbl_adminstrator';
+
 	public function getAll()
 	{
 		$admins = $this->select(
 			['firstname',
 			'lastname',
 			'email'],
-			'tbl_adminstrator')->get();
+			$this->table)->get();
 
 		return $admins;
 	}
 
 	public function save($adminDara)
 	{
-		$admin = $this->insert([$adminDara], 'tbl_adminstrator');
+		$admin = $this->insert([$adminDara], $this->table);
 
-		dd($admin);
+		if ($admin) {
+			echo "successo";
+		}
 	}
 
 

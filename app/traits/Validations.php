@@ -34,6 +34,17 @@ trait Validations{
 		}
 	}
 
+	protected function unique($field, $model)
+	{
+		$model = 'app\\models\\' . ucfirst($model);
+		$model = new $model();
+		$find = $model->find($field, $_POST[$field]);
+
+		if ($find AND !empty($_POST[$field])) {
+			$this->errors[$field][] = flash($field, error("Este e-mail já existe."));
+		}
+	}
+
 	protected function api(array $return_api)
 	{
 		if(array_key_exists('success', $return_api) && $return_api['success'] == false){
