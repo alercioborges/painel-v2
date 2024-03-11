@@ -42,11 +42,21 @@ trait Crud{
         }
     }
 
-    protected function select(array $columns = [], String $table_name)
+    protected function select()
     {
         self::_checkH();
-        $table = self::$_h->table($table_name);
-        return $table->select($columns);        
+        
+        $args = func_get_args();
+
+        if (func_num_args() == 1) {
+            $table = self::$_h->table($args[0]);
+            return $table->select(['*']);   
+        } elseif (func_num_args() == 2) {
+            $table = self::$_h->table($args[1]);
+            return $table->select($args[0]);
+        } else {
+            throw new \Exception("Something wrong when reporting the arguments");            
+        }
     }
 
 
@@ -56,6 +66,7 @@ trait Crud{
         $table = self::$_h->table($table_name);
         return $table->update(); 
     }
+    
 
     protected function insert(array $data = [], String $table_name)
     {

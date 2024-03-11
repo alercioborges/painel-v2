@@ -17,9 +17,13 @@ class AdministratorController extends Controller
 	{
 		$admin = new Administrator();
 
-		$admins = $admin->getAll();
+		$admins = $admin->getAll(2);
 
-		dd($admins);
+		$this->view('pages/admins.html', [
+			'TITLE' => 'Lissta de administradores',
+			'ADMINS' => $admins['ADMINS'],
+			'PAGES' => $admins['PAGES']
+		]);
 
 		return $response;
 

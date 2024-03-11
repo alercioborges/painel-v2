@@ -3,21 +3,25 @@
 namespace app\models;
 
 use core\Model;
+use app\src\Paginate;
 
 class Administrator extends Model
 {
 
-	protected $table  = 'tbl_adminstrator';
+	private $table  = 'tbl_adminstrator';
 
-	public function getAll()
+	public function getAll(int $perPage)
 	{
-		$admins = $this->select(
-			['firstname',
-			'lastname',
-			'email'],
-			$this->table)->get();
+		$allAdmins = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table);
 
-		return $admins;
+		$paginate = Paginate::pagination($perPage, $allAdmins);
+
+		$admins_data = array(
+			'ADMINS' => $paginate['dataInPage'],
+			'PAGES' => $paginate['pages']
+		);
+
+		return $admins_data;
 	}
 
 	public function save($adminDara)

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use core\Model;
+use app\src\Paginate;
 
 class User extends Model
 {
@@ -23,17 +24,15 @@ class User extends Model
 			$user_admins = array($user_admins);
 		}
 
-		$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
-		$offset = ($page - 1) * $perPage; 
-
-		$users = $this->select(
+		$allUsers = $this->select(
 			['id', 'firstname', 'lastname', 'email', 'suspended'],
 			'mdl_user')
 		->where('deleted', '=', '0')
-		->where('id', '!=', '1')
-		->limit($perPage)
-		->offset($offset)
-		->get();
+		->where('id', '!=', '1');
+
+		$paginate = Paginate::pagination($perPage, $allUsers);
+
+		$users = $paginate['dataInPage'];
 		
 		foreach ($users as $key => $value) {
 			if (in_array($users[$key]['id'], $user_admins)) {
@@ -41,14 +40,11 @@ class User extends Model
 			} else {
 				$users[$key] += ['is_admin' => false];
 			}
-		}
-
-		$recods = count($this->select(['id'], 'mdl_user')->where('deleted', '=', '0')->where('id', '!=', '1')->get());
-		$pages = ceil($recods / $perPage);
+		}		
 		
 		$users_data = array(
 			'USERS' => $users,
-			'PAGES' => $pages
+			'PAGES' => $paginate['pages']
 		);
 
 		return $users_data;
