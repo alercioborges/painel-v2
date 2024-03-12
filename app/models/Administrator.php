@@ -8,7 +8,7 @@ use app\src\Paginate;
 class Administrator extends Model
 {
 
-	private $table  = 'tbl_adminstrator';
+	protected $table  = 'tbl_adminstrator';
 
 	public function getAll(int $perPage)
 	{
@@ -29,7 +29,8 @@ class Administrator extends Model
 		$admin = $this->insert([$adminDara], $this->table);
 
 		if ($admin) {
-			echo "successo";
+			flash('success', success("Administrador cadastrado com sucesso"));
+			redirect("/admin/users");
 		}
 	}
 
