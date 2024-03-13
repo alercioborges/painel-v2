@@ -1,17 +1,17 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
-<div class="card card-info">
-	<div class="card-header">
-		<h3 class="card-title">Editar Cadastrastro de Usuário</h3>
-	</div><!-- /.card-header -->
-	<!-- form start -->
+<h3 class="card-title">{{ TITLE }}</h3>
+<div class="card-tools"></div>
+</div><!-- /.card-header -->
+<div class="card-body p-0">
+
 	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/users/update">
 		<div class="card-body">
 			<div class="form-group row">
 				<label for="username-input-form" class="col-sm-2 col-form-label">Identificação de Usuário</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="username" id="username-input-form" placeholder="Nome de usuário" {% if  session.username is defined %} value="{{ COOKIE_DATA['username'] }}" {% else %} value="{{ USER_DATA['username'] }}" {% endif %} >				
+					<input type="text" class="form-control" name="username" id="username-input-form" placeholder="Nome de usuário" {% if  COOKIE_DATA['username'] is defined %} value="{{ COOKIE_DATA['username'] }}" {% else %} value="{{ USER_DATA['username'] }}" {% endif %} >				
 					{{ form_message("username") }}
 				</div>
 			</div>
@@ -40,11 +40,7 @@
 				<div class="offset-sm-2 col-sm-10">					
 				</div>
 			</div>
-		</div><!-- /.card-body -->
-		<div class="card-footer">
-			<button type="submit" class="btn btn-info">Atualizar</button>
-			<input type="hidden" name="id" id="id" value="{{ USER_DATA['id'] }}">
-		</div><!-- /.card-footer -->
-	</form>	
-</div><!-- /.card -->
+		</div>
+	</form>
+</div><!-- /.card-body -->
 {% endblock %}

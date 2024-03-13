@@ -38,7 +38,7 @@ class UserController extends Controller
 		return $response;
 	}
 
-	public function save(Reques $request, Response $response):Response
+	public function save(Reques $request)
 	{
 		$validate = new Validate();
 
@@ -55,8 +55,7 @@ class UserController extends Controller
 		$return_api = $user->save($data);
 
 		$validate->validateApi($return_api);
-		
-		return $response;		
+
 	}
 
 
@@ -76,7 +75,7 @@ class UserController extends Controller
 	}
 
 
-	public function update(Reques $request, Response $response):Response
+	public function update(Reques $request)
 	{
 		$validate = new Validate();
 
@@ -93,10 +92,9 @@ class UserController extends Controller
 
 		$validate->validateApi($return_api);
 
-		return $response;
 	}
 
-	public function delete(Reques $request, Response $response, array $args):Response
+	public function delete(Reques $request, Response $response, array $args)
 	{
 		$user = new User();
 
@@ -106,10 +104,9 @@ class UserController extends Controller
 
 		$validate->validateApi($return_api);
 
-		return $response;
 	}
 
-	public function suspend(Reques $request, Response $response, array $args):Response
+	public function suspend(Reques $request, Response $response, array $args)
 	{
 		$user = new User();
 
@@ -119,10 +116,9 @@ class UserController extends Controller
 
 		$validate->validateApi($suspend);
 
-		return $response;
 	}
 
-	public function unsuspend(Reques $request, Response $response, array $args):Response
+	public function unsuspend(Reques $request, Response $response, array $args)
 	{
 		$user = new User();
 
@@ -132,7 +128,6 @@ class UserController extends Controller
 
 		$validate->validateApi($unsuspend);
 
-		return $response;
 	}
 
 	public function profile(Reques $request, Response $response, array $args):Response
@@ -150,13 +145,12 @@ class UserController extends Controller
 		return $response;
 	}
 
-	public function resetPassword(Reques $request, Response $response, array $args):Response
+	public function resetPassword(Reques $request, Response $response, array $args)
 	{
 		$user = new User();
 
-		$user->redefinePassword($args['id']);		
-		
-		return $response;
+		$user->redefinePassword($args['id']);
+
 	}
 
 }

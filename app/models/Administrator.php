@@ -27,12 +27,15 @@ class Administrator extends Model
 	public function save($adminDara)
 	{
 		$admin = $this->insert([$adminDara], $this->table);
-
-		if ($admin) {
-			flash('success', success("Administrador cadastrado com sucesso"));
-			redirect("/admin/users");
-		}
+		return $admin;
 	}
+
+	public function get($idAdmin)
+	{
+		$admin = $this->select(['firstname', 'lastname', 'email'], $this->table)->where('id', $idAdmin) ->get();
+		return $admin[0];
+	}
+
 
 
 }

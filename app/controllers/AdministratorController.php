@@ -40,21 +40,42 @@ class AdministratorController extends Controller
 		return $response;
 	}
 
-	public function save(Reques $request, Response $response):Response
+	public function save(Reques $request)
 	{
 		$validate = new Validate();
 
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30',
 			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@60:unique@administrator',
-			'password'	=> 'required:max@30'
+			'email'		=> 'email:required:max@60:unique@administrator'
 		]);
 
 		$admin = new Administrator();
 
 		$admin = $admin->save($data);
 
+		if ($admin) {
+			flash('success', success("Administrador criado com sucesso"));
+			redirect("/admin/users");
+		}
+
+	}
+
+
+	public function edit(Reques $request, Response $response, array $args):Response
+	{
+		$admin = new Administrator();
+
+		$admin = $admin->get($args['id']);
+
+		$this->view('pages/admins-update.html', [
+			'TITLE' => 'Editar Cadastrar de administrador',
+			'ADMIN' => $admin,
+			'COOKIE_DATA' => $_COOKIE
+		]);
+
+
 		return $response;
 	}
+
 }

@@ -8,6 +8,7 @@ $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 
 	$group->get('/users', 'app\controllers\AdministratorController:show');
 	$group->get('/users/create', 'app\controllers\AdministratorController:create');
+	$group->get('/users/edit/{id:[0-9]+}', 'app\controllers\AdministratorController:edit');
 
 	$group->post('/users/create', 'app\controllers\AdministratorController:save');
 
