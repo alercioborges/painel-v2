@@ -45,9 +45,10 @@ class AdministratorController extends Controller
 		$validate = new Validate();
 
 		$data = $validate->validate([			
-			'firstname'	=> 'required:max@30',
-			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@60:unique@administrator'
+			'firstname'	=> 'required:max@30:uppercase',
+			'lastname'	=> 'required:max@30:uppercase',
+			'email'		=> 'email:required:max@60:unique@administrator',
+			'password' => 'required:max@30'
 		]);
 
 		$admin = new Administrator();
@@ -74,8 +75,31 @@ class AdministratorController extends Controller
 			'COOKIE_DATA' => $_COOKIE
 		]);
 
-
 		return $response;
 	}
 
+	public function update(Reques $request, Response $response, array $args):Response
+	{
+		$validate = new Validate();
+
+		$data = $validate->validate([			
+			'firstname'	=> 'required:max@30:uppercase',
+			'lastname'	=> 'required:max@30:uppercase',
+			'email'		=> 'email:required:max@60'
+		]);
+
+		$admin = new Administrator();
+
+		$admin = $admin->edit($args['id'], $data);		
+
+		if ($admin['success']) {
+			flash('success', success($admin['message']));
+			redirect("/admin/users");
+		} else {
+			flash('email', error($admin['message']));
+			back();
+		}
+
+		return $response;
+	}
 }

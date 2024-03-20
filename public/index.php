@@ -3,6 +3,7 @@
 require "../bootstrap.php";
 
 $app->get('', 'app\controllers\OverviewController:index');
+$app->get('/teste', 'app\controllers\TesteController:show');
 
 $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 
@@ -11,6 +12,7 @@ $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 	$group->get('/users/edit/{id:[0-9]+}', 'app\controllers\AdministratorController:edit');
 
 	$group->post('/users/create', 'app\controllers\AdministratorController:save');
+	$group->post('/users/update/{id:[0-9]+}', 'app\controllers\AdministratorController:update');
 
 });
 

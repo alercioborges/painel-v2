@@ -34,7 +34,7 @@ trait Validations{
 		}
 	}
 
-	protected function unique($field, $model)
+	 protected function unique($field, $model)
 	{
 		$model = 'app\\models\\' . ucfirst($model);
 		$model = new $model();
@@ -43,6 +43,11 @@ trait Validations{
 		if ($find AND !empty($_POST[$field])) {
 			$this->errors[$field][] = flash($field, error("Este e-mail já existe."));
 		}
+	}
+
+	protected function uppercase($field)
+	{
+		$_POST[$field] = mb_strtoupper($_POST[$field]);
 	}
 
 	protected function api(array $return_api)

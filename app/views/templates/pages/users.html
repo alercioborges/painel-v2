@@ -5,7 +5,7 @@
 <h3 class="card-title">{{ TITLE }}</h3>				
 <div class="card-tools">					
 	<div class="input-group input-group-sm" style="width: 150px;">			
-		<input type="text" name="table_search" class="form-control float-right" placeholder="Search">						
+		<input type="text" name="table_search" class="form-control float-right" placeholder="Search">			
 		<div class="input-group-append">
 			<button type="submit" class="btn btn-default">
 				<i class="fas fa-search"></i>
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 </div>
-</div><!-- /.card-header -->			
+</div><!-- /.card-header -->	
 <div class="card-body table-responsive p-0">
 	<table id="users-list" class="table table-hover text-nowrap">
 		<thead>
@@ -60,16 +60,15 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<!-- Fim da da janela do Modal -->
-				<!-- Fim do modal de exclusão de usuário -->
-				{% endif %}							
-			</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+					</div>					
+					<!-- Fim da da janela do Modal -->
+					<!-- Fim do modal de exclusão de usuário -->
+					{% endif %}							
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div><!-- /. card-body table-responsive -->
 
 {{ pagination(PAGES) }}

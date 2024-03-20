@@ -7,7 +7,7 @@
 <div class="card-body p-0">
 
 
-	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/admin/users/create">
+	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/admin/users/update/{{ ADMIN['id'] }}">
 		<div class="card-body">					
 
 			<div class="form-group row">
@@ -43,4 +43,6 @@
 		</div><!-- /.card-footer -->
 	</form>
 </div><!-- /.card-body -->
+
+{{ dump(COOKIE_DATA) }}
 {% endblock %}

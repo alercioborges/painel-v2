@@ -7,23 +7,15 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 
 use core\Controller;
 
-use app\models\Administrator;
-
 class TesteController extends Controller
 {
 	
 	public function show(Reques $request, Response $response):Response
-	{
-		$admins = new Administrator();
-
-		$allAdmins = $admins->getAll();
-
-		dd($allAdmins);
-		
+	{		
 		$this->view('pages/teste.html', [
 			'TITLE' => 'Teste'
 		]);
-
+		
 		return $response;
 
 	}

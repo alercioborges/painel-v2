@@ -32,10 +32,27 @@ class Administrator extends Model
 
 	public function get($idAdmin)
 	{
-		$admin = $this->select(['firstname', 'lastname', 'email'], $this->table)->where('id', $idAdmin) ->get();
+		$admin = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table)->where('id', $idAdmin) ->get();
 		return $admin[0];
 	}
 
+	public function edit($id, $dara)
+	{
+		$checkEmail = $this->select(['email'], $this->table)->where('email', $dara['email'])->where('id', '!=', $id)->get();
 
+		if ($checkEmail AND !empty($checkEmail)) {
+			return array(
+				'success' => false,
+				'message' => 'Este e-mail já existe'
+			);
+		} else {
+			$admin = $this->update($this->table)->set($dara)->where('id', $id)->execute();
+			return array(
+				'success' => true,
+				'message' => 'Cadastro de administrador alterado com sucesso'
+			);
+		}
+		
+	}
 
 }
