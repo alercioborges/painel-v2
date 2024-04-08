@@ -96,10 +96,30 @@ class AdministratorController extends Controller
 			flash('success', success($admin['message']));
 			redirect("/admin/users");
 		} else {
+			setCookieForm($_POST);
 			flash('email', error($admin['message']));
 			back();
 		}
 
 		return $response;
 	}
+
+
+	public function delete(Reques $request, Response $response, array $args):Response
+	{
+		$admin = new Administrator();
+
+		$deleted = $admin->destroy($args['id']);
+
+		if ($deleted == 1) {
+			flash('success', success("Usuário exclído com sucesso"));
+			redirect("/admin/users");
+		}
+
+
+		return $response;
+		
+	}
+
+
 }

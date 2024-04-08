@@ -41,7 +41,7 @@ trait Validations{
 		$find = $model->find($field, $_POST[$field]);
 
 		if ($find AND !empty($_POST[$field])) {
-			$this->errors[$field][] = flash($field, error("Este e-mail já existe."));
+			$this->errors[$field][] = flash($field, error("Este {$field} já existe."));
 		}
 	}
 

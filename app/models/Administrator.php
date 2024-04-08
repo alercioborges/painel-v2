@@ -55,4 +55,10 @@ class Administrator extends Model
 		
 	}
 
+	public function destroy($id)
+	{
+		$deleted = $this->delete($this->table)->where('id', $id)->execute();
+		return $deleted;
+	}
+
 }
