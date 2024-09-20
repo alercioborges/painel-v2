@@ -12,7 +12,6 @@ $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 	$group->get('/users/edit/{id:[0-9]+}', 'app\controllers\AdministratorController:edit');
 	$group->get('/users/delete/{id:[0-9]+}', 'app\controllers\AdministratorController:delete');
 
-
 	$group->post('/users/create', 'app\controllers\AdministratorController:save');
 	$group->post('/users/edit/{id:[0-9]+}', 'app\controllers\AdministratorController:update');
 

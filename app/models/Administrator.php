@@ -36,9 +36,9 @@ class Administrator extends Model
 		return $admin[0];
 	}
 
-	public function edit($id, $dara)
+	public function edit(int $id, array $data)
 	{
-		$checkEmail = $this->select(['email'], $this->table)->where('email', $dara['email'])->where('id', '!=', $id)->get();
+		$checkEmail = $this->select(['email'], $this->table)->where('email', $data['email'])->where('id', '!=', $id)->get();
 
 		if ($checkEmail AND !empty($checkEmail)) {
 			return array(
@@ -46,7 +46,7 @@ class Administrator extends Model
 				'message' => 'Este e-mail já existe'
 			);
 		} else {
-			$admin = $this->update($this->table)->set($dara)->where('id', $id)->execute();
+			$admin = $this->update($this->table)->set($data)->where('id', $id)->execute();
 			return array(
 				'success' => true,
 				'message' => 'Cadastro de administrador alterado com sucesso'

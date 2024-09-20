@@ -87,11 +87,11 @@ class UserController extends Controller
 		]);
 
 		$user = new User();
-
+		
 		$return_api = $user->edit($data);		
 
 		$validate->validateApi($return_api);
-
+		
 	}
 
 	public function delete(Reques $request, Response $response, array $args)

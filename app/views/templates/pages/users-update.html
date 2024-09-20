@@ -5,7 +5,6 @@
 <div class="card-tools"></div>
 </div><!-- /.card-header -->
 <div class="card-body p-0">
-
 	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/users/update">
 		<div class="card-body">
 			<div class="form-group row">
@@ -41,6 +40,10 @@
 				</div>
 			</div>
 		</div>
+		<div class="card-footer">
+			<input type="hidden" name="id" value="{{ USER_DATA['id'] }}" >
+			<button type="submit" class="btn btn-info">Cadastrar</button>
+		</div><!-- /.card-footer -->
 	</form>
 </div><!-- /.card-body -->
 {% endblock %}

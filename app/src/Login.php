@@ -3,13 +3,14 @@
 namespace app\src;
 
 use app\models\Model;
+use app\src\Passthru;
 
 class Login
 {
 	
 	public function login($data, Modle $model)
 	{
-		$user = 'select email where email = $data->email';
+		$user = $model->select(['email'], $model->table)->where('email', $dat['email']);
 
 		if (!$user) {
 			return false;

@@ -68,7 +68,7 @@ trait Crud{
     }
     
 
-    protected function insert(array $data = [], String $table_name)
+    protected function insert(array $data, String $table_name)
     {
         self::_checkH();
         $table = self::$_h->table($table_name);

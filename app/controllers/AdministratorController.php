@@ -17,7 +17,7 @@ class AdministratorController extends Controller
 	{
 		$admin = new Administrator();
 
-		$admins = $admin->getAll(2);
+		$admins = $admin->getAll(30);
 
 		$this->view('pages/admins.html', [
 			'TITLE' => 'Lissta de administradores',
@@ -91,7 +91,7 @@ class AdministratorController extends Controller
 		$admin = new Administrator();
 
 		$admin = $admin->edit($args['id'], $data);		
-
+		
 		if ($admin['success']) {
 			flash('success', success($admin['message']));
 			redirect("/admin/users");
