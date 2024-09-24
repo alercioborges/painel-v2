@@ -24,7 +24,7 @@ class Administrator extends Model
 		return $admins_data;
 	}
 
-	public function save($adminDara)
+	public function save(array $adminDara)
 	{
 		$admin = $this->insert([$adminDara], $this->table);
 		return $admin;
@@ -38,21 +38,8 @@ class Administrator extends Model
 
 	public function edit(int $id, array $data)
 	{
-		$checkEmail = $this->select(['email'], $this->table)->where('email', $data['email'])->where('id', '!=', $id)->get();
-
-		if ($checkEmail AND !empty($checkEmail)) {
-			return array(
-				'success' => false,
-				'message' => 'Este e-mail já existe'
-			);
-		} else {
-			$admin = $this->update($this->table)->set($data)->where('id', $id)->execute();
-			return array(
-				'success' => true,
-				'message' => 'Cadastro de administrador alterado com sucesso'
-			);
-		}
-		
+		$admin = $this->update($this->table)->set($data)->where('id', $id)->execute();
+		return $admin;		
 	}
 
 	public function destroy($id)

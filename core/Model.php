@@ -18,4 +18,12 @@ class Model
 		return $resultFind;
 	}
 
+
+	public function findExist($field, $value, $key, $id)
+	{
+		$resultFind = $this->select([$field], $this->table)->where($field, $value)->where($key, '<>', $id)->get();
+		return $resultFind;
+	}
+ 
+
 }

@@ -9,6 +9,7 @@ use core\Controller;
 
 use app\models\Administrator;
 use app\src\Validate;
+use app\src\Login;
 
 class AdministratorController extends Controller
 {
@@ -55,10 +56,8 @@ class AdministratorController extends Controller
 
 		$admin = $admin->save($data);
 
-		if ($admin) {
-			flash('success', success("Administrador criado com sucesso"));
-			redirect("/admin/users");
-		}
+		flash('success', success("Administrador criado com sucesso"));
+		redirect("/admin/users");
 
 	}
 
@@ -85,22 +84,16 @@ class AdministratorController extends Controller
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
-			'email'		=> 'email:required:max@60'
+			'email'		=> "email:required:max@60:unique@administrator({$args['id']})"
 		]);
-
+		
 		$admin = new Administrator();
 
-		$admin = $admin->edit($args['id'], $data);		
-		
-		if ($admin['success']) {
-			flash('success', success($admin['message']));
-			redirect("/admin/users");
-		} else {
-			setCookieForm($_POST);
-			flash('email', error($admin['message']));
-			back();
-		}
+		$admin = $admin->edit($args['id'], $data);
 
+		flash('success', success("Cadastro de administrador alterado com sucesso"));
+		redirect("/admin/users");
+		
 		return $response;
 	}
 
@@ -116,10 +109,8 @@ class AdministratorController extends Controller
 			redirect("/admin/users");
 		}
 
-
 		return $response;
 		
 	}
-
 
 }

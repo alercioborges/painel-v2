@@ -16,9 +16,9 @@ class Login
 			return false;
 		}
 
-		if (Passthru::verift($dara->password, $user->password))
+		if (Passthru::verift($dara['password'], $user->password))
 		{
-			
+			return true;
 		}
 	}
 	

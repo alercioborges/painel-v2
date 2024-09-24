@@ -34,16 +34,25 @@ trait Validations{
 		}
 	}
 
-	 protected function unique($field, $model)
+	protected function unique($field, $model)
 	{
-		$model = 'app\\models\\' . ucfirst($model);
-		$model = new $model();
-		$find = $model->find($field, $_POST[$field]);
+		$id = $this->getUserId($model);
 
-		if ($find AND !empty($_POST[$field])) {
+		if ($id == NULL) {
+			$model = 'app\\models\\' . ucfirst($model);
+			$model = new $model();
+			$find = $model->find($field, $_POST[$field]);
+		} else {
+			$model = 'app\\models\\' . ucfirst(trim(preg_replace('/\(.*/', '', $model)));
+			$model = new $model();			
+			$find = $model->findExist($field, $_POST[$field], 'id', $id);
+		}
+
+		if ($find) {
 			$this->errors[$field][] = flash($field, error("Este {$field} já existe."));
 		}
 	}
+	
 
 	protected function uppercase($field)
 	{
@@ -75,6 +84,15 @@ trait Validations{
 	private function hasErrors(array $formData = [])
 	{
 		return !empty($this->errors);
+	}
+
+
+	Private function getUserId(String $model) 
+	{
+		if (preg_match('/\(\d+\)$/', $model)) {
+			preg_match('/\((\d+)\)/', $model, $id);
+			return $id[1];
+		}
 	}
 
 }
