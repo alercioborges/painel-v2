@@ -10,6 +10,26 @@ class User extends Model
 
 	public function getAll(int $perPage):array
 	{
+		/*
+		$parameter = array(
+			'criteria[0][key]' => 'email',
+			'criteria[0][value]' => '%'
+		);
+
+		$response = $this->callApi('core_user_get_users', http_build_query($parameter));
+		*/
+
+		$parameter = array(
+			'field' => 'id',
+			'values[0]' => 2
+		);
+
+		$response = $this->callApi('core_user_get_users_by_field', http_build_query($parameter));
+
+		dd($response);
+
+
+
 		$admins = $this->select(
 			['value'],
 			'mdl_config')
