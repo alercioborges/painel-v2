@@ -13,18 +13,30 @@ use app\models\User;
 class UserController extends Controller
 {	
 	public function show(Reques $request, Response $response):Response
-	{
+	{		
 		$user = new User();
-		
-		$users = $user->getAll(30);
 
-		$this->view('pages/users.html', [
-			'TITLE' => 'Lissta de usuários',
-			'USERS' => $users['USERS'],
-			'PAGES' =>  $users['PAGES']
-		]);
+		$render['TITLE'] = 'Lissta de usuários';
+		$pathPage = 'pages/users.html';
+
+		try {
+
+			$users = $user->getAll(30);
+			
+			$render['USERS'] = $users['USERS'];
+			$render['PAGES'] = $users['PAGES'];
+
+			$this->view($pathPage, $render);
+
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));			
+			$this->view($pathPage, $render);
+			
+		}
 
 		return $response;
+
 	}
 
 
@@ -78,7 +90,7 @@ class UserController extends Controller
 	public function update(Reques $request)
 	{
 		$validate = new Validate();
-
+		
 		$data = $validate->validate([
 			'username'	=> 'username:required:max@30',
 			'firstname'	=> 'required:max@30',

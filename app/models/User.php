@@ -10,64 +10,35 @@ class User extends Model
 
 	public function getAll(int $perPage):array
 	{
-		/*
 		$parameter = array(
 			'criteria[0][key]' => 'email',
 			'criteria[0][value]' => '%'
 		);
 
-		$response = $this->callApi('core_user_get_users', http_build_query($parameter));
-		*/
+		$response = $this->callApi('core_user_get_users', http_build_query($parameter));		
 
-		$parameter = array(
-			'field' => 'id',
-			'values[0]' => 2
-		);
-
-		$response = $this->callApi('core_user_get_users_by_field', http_build_query($parameter));
-
-		dd($response);
-
-
-
-		$admins = $this->select(
-			['value'],
-			'mdl_config')
-		->where('name', '=', 'siteadmins')
-		->get();
-
-		$user_admins = $admins[0]['value'];
-
-		if (str_contains($user_admins, ',')) {
-			$user_admins = explode(',', $user_admins);
-		} else {
-			$user_admins = array($user_admins);
+		foreach ($response['users'] as $key => $value) {
+			if ($value['id'] != 1) {
+				$allUsers[] = array(
+					'id' => $value['id'],
+					'firstname' => $value['firstname'],
+					'lastname' => $value['lastname'],
+					'email' => $value['email'],					
+					'lastaccess' => date('d/m/Y H:i:s', $value['lastaccess']),
+					'suspended' => $value['suspended']
+				);
+			}
 		}
-
-		$allUsers = $this->select(
-			['id', 'firstname', 'lastname', 'email', 'suspended'],
-			'mdl_user')
-		->where('deleted', '=', '0')
-		->where('id', '!=', '1');
 
 		$paginate = Paginate::pagination($perPage, $allUsers);
 
-		$users = $paginate['dataInPage'];
-		
-		foreach ($users as $key => $value) {
-			if (in_array($users[$key]['id'], $user_admins)) {
-				$users[$key] += ['is_admin' => true];
-			} else {
-				$users[$key] += ['is_admin' => false];
-			}
-		}		
-		
 		$users_data = array(
-			'USERS' => $users,
+			'USERS' => $paginate['dataInPage'],
 			'PAGES' => $paginate['pages']
 		);
 
 		return $users_data;
+
 	}
 
 

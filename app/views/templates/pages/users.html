@@ -1,9 +1,14 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{% if session['api_error'] %}	
+		{{ api_error('api_error') }}	
+{% else %}	
+
 {{ success_message('success') }}
 <h3 class="card-title">{{ TITLE }}</h3>				
-<div class="card-tools">					
+<div class="card-tools">				
 	<div class="input-group input-group-sm" style="width: 150px;">			
 		<input type="text" name="table_search" class="form-control float-right" placeholder="Search">			
 		<div class="input-group-append">
@@ -21,6 +26,8 @@
 				<th>#</th>
 				<th>Nome</th>
 				<th>E-mail</th>
+				<th>Último acesso</th>
+				<th>Suspenso</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,41 +36,16 @@
 				<td>{{ data.id }}</td>
 				<td><a href="{{ get_full_url() }}/users/{{data.id}}/profile" class="link-secondary" >{{ data.firstname }} {{ data.lastname }}</a></td>
 				<td>{{ data.email }}</td>
+				<td>{{ data.lastaccess }}</td>
 				<td>
-					<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-
-					{% if data.is_admin == false %}
-
-					{% if data.suspended == 0 %}
-					<a href="{{ get_full_url() }}/users/{{data.id}}/suspend" class="btn btn-warning btn-xs"><i class="fa fa-eye"></i> Suspender</a>
+					{% if data.suspended %}
+					SIM
 					{% else %}
-					<a href="{{ get_full_url() }}/users/{{data.id}}/unsuspend" class="btn btn-warning btn-xs"><i class="fa fa-eye-slash"></i> Ativar conta</a>
+					NÂO					
 					{% endif %}
-
-					<!-- Início Modal de exclusão de usuário -->
-					<!-- Início link excluir Modal -->
-					<a href="#" data-toggle="modal" data-target="#confirm-delete-iduser-{{data.id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-					<!-- Fim link excluir Modal -->
-					<!-- Início da janela do Modal -->
-					<div class="modal fade" id="confirm-delete-iduser-{{data.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h3><b>Exclusão de usuário</b></h3>
-								</div>
-								<div class="modal-body">
-									<p><h6>Deseja realmente excluir o usuário de nome {{data.firstname}} {{data.lastname}} <br>e de e-mail {{data.email}}?</h6></p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-									<a href="{{ get_full_url() }}/users/{{data.id}}/delete" class="btn btn-danger btn-ok">Deletar</a>
-								</div>
-							</div>
-						</div>
-					</div>					
-					<!-- Fim da da janela do Modal -->
-					<!-- Fim do modal de exclusão de usuário -->
-					{% endif %}							
+				</td>				
+				<td>
+					<a href="{{ get_full_url() }}/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>							
 				</td>
 			</tr>
 			{% endfor %}
@@ -72,5 +54,7 @@
 </div><!-- /. card-body table-responsive -->
 
 {{ pagination(PAGES) }}
+
+{% endif %}
 
 {% endblock %}

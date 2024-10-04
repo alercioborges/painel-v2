@@ -30,6 +30,11 @@ $success_message = new Twig\TwigFunction('success_message', function($index)
 	echo app\src\Flash::get($index);
 });
 
+$api_error = new Twig\TwigFunction('api_error', function($index)
+{
+	echo app\src\Flash::get($index) . '</section></div>';
+});
+
 $pagination = new Twig\TwigFunction('pagination', function($numPages)
 {
 	return renderTemplate('pagination.twig', ['numPages' => $numPages]);
@@ -39,5 +44,6 @@ return[
 	$get_full_url,
 	$form_message,
 	$success_message,
+	$api_error,
 	$pagination
 ];
