@@ -50,7 +50,7 @@ class UserController extends Controller
 		return $response;
 	}
 
-	public function save(Reques $request)
+	public function save(Reques $request, Response $response):Response
 	{
 		$validate = new Validate();
 
@@ -62,32 +62,51 @@ class UserController extends Controller
 			'email'		=> 'email:required:max@60'
 		]);
 
-		$user = new User();
+		try{
 
-		$return_api = $user->save($data);
+			$user = new User();
+			$return_api = $user->save($data);
+			$validate->validateApi($return_api);
 
-		$validate->validateApi($return_api);
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));
+			redirect('/users');
+
+		}
+
+		return $response;
 
 	}
 
 
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
-		$user = new User();
+		
+		try{
 
-		$user_data = $user->get($args['id']);
+			$user = new User();
+			$user_data = $user->get($args['id']);
 
-		$this->view('pages/users-update.html', [
-			'TITLE' => 'Editar Cadastrastro de Usuário',
-			'COOKIE_DATA' => $_COOKIE,
-			'USER_DATA' => $user_data
-		]);
+			$this->view('pages/users-update.html', [
+				'TITLE' => 'Editar Cadastrastro de Usuário',
+				'COOKIE_DATA' => $_COOKIE,
+				'USER_DATA' => $user_data
+			]);
+
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));
+			redirect('/users');
+
+		}
 		
 		return $response;
+
 	}
 
 
-	public function update(Reques $request)
+	public function update(Reques $request, Response $response, array $args):Response
 	{
 		$validate = new Validate();
 		
@@ -98,11 +117,18 @@ class UserController extends Controller
 			'email'		=> 'email:required:max@60'
 		]);
 
-		$user = new User();
-		
-		$return_api = $user->edit($data);		
+		try{
 
-		$validate->validateApi($return_api);
+			$user = new User();		
+			$return_api = $user->edit($data);
+			$validate->validateApi($return_api);
+
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));
+			redirect('/users');
+
+		}
 		
 	}
 
@@ -143,25 +169,41 @@ class UserController extends Controller
 	}
 
 	public function profile(Reques $request, Response $response, array $args):Response
-	{
-		$user = new User();
+	{		
+		try{
 
-		$user_data = $user->get($args['id']);
+			$user = new User();
+			$user_data = $user->get($args['id']);
 
-		$this->view('pages/users-profile.html', [
-			'TITLE' => 'Página de perfil do usuários',
-			'USER' => $user_data
+			$this->view('pages/users-profile.html', [
+				'TITLE' => 'Página de perfil do usuários',
+				'USER' => $user_data
+			]);
 
-		]);
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));
+			redirect('/users');
+
+		}
 
 		return $response;
 	}
 
+
 	public function resetPassword(Reques $request, Response $response, array $args)
 	{
-		$user = new User();
+		try{
 
-		$user->redefinePassword($args['id']);
+			$user = new User();
+			$user->redefinePassword($args['id']);
+
+		} catch (\Exception $e) {
+
+			flash('api_error', error($e->getMessage()));
+			redirect('/users');
+
+		}
 
 	}
 

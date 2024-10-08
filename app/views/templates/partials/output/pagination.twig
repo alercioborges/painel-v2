@@ -4,7 +4,7 @@
 <!-- Pagination Links -->
 <nav class="mt-4" aria-label="Navegação da página">
 	<ul class="pagination justify-content-center">
-		{% if numPages == 1 %}
+		{% if numPages <= 1 %}
 			<li class="page-item"><a class="page-link"></a></li>
 		{% else %}
 			{% if get['page'] > 1 %}

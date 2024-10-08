@@ -12,8 +12,8 @@ class Administrator extends Model
 
 	public function getAll(int $perPage)
 	{
-		$allAdmins = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table);
-
+		$allAdmins = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table)->get();
+		
 		$paginate = Paginate::pagination($perPage, $allAdmins);
 
 		$admins_data = array(

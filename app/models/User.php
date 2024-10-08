@@ -3,10 +3,13 @@
 namespace app\models;
 
 use core\Model;
+use app\traits\ApiUser;
+use app\src\Api;
 use app\src\Paginate;
 
 class User extends Model
 {
+	use ApiUser;
 
 	public function getAll(int $perPage):array
 	{
@@ -15,7 +18,7 @@ class User extends Model
 			'criteria[0][value]' => '%'
 		);
 
-		$response = $this->callApi('core_user_get_users', http_build_query($parameter));		
+		$response = Api::callApi('core_user_get_users', http_build_query($parameter));		
 
 		foreach ($response['users'] as $key => $value) {
 			if ($value['id'] != 1) {
@@ -50,7 +53,7 @@ class User extends Model
 
 			$parameter = $this->saveParameters($arg);
 
-			$response = $this->callApi('core_user_create_users', $parameter);
+			$response = Api::callApi('core_user_create_users', $parameter);
 
 			$return_api = $this->verifyErrorApiSave($response);
 
@@ -67,7 +70,7 @@ class User extends Model
 	{
 		$parameter = '&field=id&values[0]=' . $id;
 
-		$response = $this->callApi('core_user_get_users_by_field', $parameter);
+		$response = Api::callApi('core_user_get_users_by_field', $parameter);
 
 		return $response[0];
 	}
@@ -77,7 +80,7 @@ class User extends Model
 	{
 		$parameter = $this->updateParameters($arg);
 
-		$response = $this->callApi('core_user_update_users', $parameter);
+		$response = Api::callApi('core_user_update_users', $parameter);
 
 		$return_api = $this->verifyErrorApiUpdate($response);
 
@@ -89,7 +92,7 @@ class User extends Model
 	{
 		$parameter = '&userids[0]=' . $id;
 
-		$response = $this->callApi('core_user_delete_users', $parameter);
+		$response = Api::callApi('core_user_delete_users', $parameter);
 
 		$return_api = [];
 
@@ -149,7 +152,7 @@ class User extends Model
 
 		$parameter = '&username=' . $user_data['username'];
 
-		$response = $this->callApi('core_auth_request_password_reset', $parameter);
+		$response = Api::callApi('core_auth_request_password_reset', $parameter);
 
 		if (isset($response['status']) && $response['status'] == 'emailpasswordconfirmmaybesent') {
 			flash('success', success('E-mail de redefinição de senha enviado com sucesso!'));
@@ -163,7 +166,7 @@ class User extends Model
 		$return_api = [];
 
 		$parameter = '&field=email&values[0]=' . $email;
-		$response = $this->callApi('core_user_get_users_by_field', $parameter);
+		$response = Api::callApi('core_user_get_users_by_field', $parameter);
 
 		if ($response != NULL) {
 			$return_api = array(
@@ -174,7 +177,7 @@ class User extends Model
 		}
 
 		$parameter = '&field=username&values[0]=' . $username;
-		$response = $this->callApi('core_user_get_users_by_field', $parameter);		
+		$response = Api::callApi('core_user_get_users_by_field', $parameter);		
 
 		if ($response != NULL) {
 			$return_api = array(

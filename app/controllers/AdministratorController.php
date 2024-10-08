@@ -19,7 +19,7 @@ class AdministratorController extends Controller
 		$admin = new Administrator();
 
 		$admins = $admin->getAll(30);
-
+		
 		$this->view('pages/admins.html', [
 			'TITLE' => 'Lissta de administradores',
 			'ADMINS' => $admins['ADMINS'],

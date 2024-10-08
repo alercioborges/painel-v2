@@ -9,7 +9,7 @@ trait Sanitize{
 		$sanitized = [];
 
 		foreach ($_POST as $field => $value) {
-			$sanitized[$field] = htmlspecialchars($value);
+			$sanitized[$field] = htmlspecialchars($value, ENT_QUOTES);
 		}
 
 		return $sanitized;
