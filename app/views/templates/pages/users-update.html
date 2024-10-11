@@ -1,6 +1,11 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{% if session['api_error'] %}	
+	{{ api_error('api_error') }}	
+{% else %}
+
 <h3 class="card-title">{{ TITLE }}</h3>
 <div class="card-tools"></div>
 </div><!-- /.card-header -->

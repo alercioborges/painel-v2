@@ -1,6 +1,11 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{% if session['api_error'] %}	
+{{ api_error('api_error') }}	
+{% else %}
+
 {{ success_message('success') }}
 <div class="container" style="border: solid 2px black;">	
 	<div class="float-md-end">
@@ -23,5 +28,6 @@
 	{{ dump(USER) }}
 </pre>
 
+{% endif %}
 
 {% endblock %}

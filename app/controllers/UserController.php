@@ -62,9 +62,10 @@ class UserController extends Controller
 			'email'		=> 'email:required:max@60'
 		]);
 
+		$user = new User();
+		
 		try{
-
-			$user = new User();
+			
 			$return_api = $user->save($data);
 			$validate->validateApi($return_api);
 
@@ -82,22 +83,24 @@ class UserController extends Controller
 
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
-		
+		$user = new User();
+
+		$render['TITLE'] = 'Editar Cadastrastro de Usuário';
+		$pathPage = 'pages/users-update.html';		
+
 		try{
 
-			$user = new User();
 			$user_data = $user->get($args['id']);
 
-			$this->view('pages/users-update.html', [
-				'TITLE' => 'Editar Cadastrastro de Usuário',
-				'COOKIE_DATA' => $_COOKIE,
-				'USER_DATA' => $user_data
-			]);
+			$render['COOKIE_DATA'] = $_COOKIE;
+			$render['USER_DATA'] = $user_data;			
+
+			$this->view($pathPage, $render);
 
 		} catch (\Exception $e) {
 
-			flash('api_error', error($e->getMessage()));
-			redirect('/users');
+			flash('api_error', error($e->getMessage()));			
+			$this->view($pathPage, $render);		
 
 		}
 		
@@ -117,9 +120,10 @@ class UserController extends Controller
 			'email'		=> 'email:required:max@60'
 		]);
 
-		try{
+		$user = new User();			
 
-			$user = new User();		
+		try{
+			
 			$return_api = $user->edit($data);
 			$validate->validateApi($return_api);
 
@@ -170,20 +174,23 @@ class UserController extends Controller
 
 	public function profile(Reques $request, Response $response, array $args):Response
 	{		
+		$user = new User();
+
+		$render['TITLE'] = 'Página de perfil do usuários';
+		$pathPage = 'pages/users-profile.html';
+
 		try{
 
-			$user = new User();
 			$user_data = $user->get($args['id']);
 
-			$this->view('pages/users-profile.html', [
-				'TITLE' => 'Página de perfil do usuários',
-				'USER' => $user_data
-			]);
+			$render['USER'] = $user_data;
+
+			$this->view($pathPage, $render);
 
 		} catch (\Exception $e) {
 
 			flash('api_error', error($e->getMessage()));
-			redirect('/users');
+			$this->view($pathPage, $render);
 
 		}
 
@@ -193,15 +200,16 @@ class UserController extends Controller
 
 	public function resetPassword(Reques $request, Response $response, array $args)
 	{
+		$user = new User();
+
 		try{
 
-			$user = new User();
 			$user->redefinePassword($args['id']);
 
 		} catch (\Exception $e) {
 
 			flash('api_error', error($e->getMessage()));
-			redirect('/users');
+			redirect("/users/{$args['id']}/profile");
 
 		}
 
