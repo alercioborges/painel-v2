@@ -2,6 +2,9 @@
 
 require "../bootstrap.php";
 
+$app->get('/login', 'app\controllers\LoginController:index');
+$app->post('/login', 'app\controllers\LoginController:login');
+
 $app->get('', 'app\controllers\OverviewController:index');
 $app->get('/teste', 'app\controllers\TesteController:show');
 
