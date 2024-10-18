@@ -69,7 +69,7 @@ trait Validations{
 
 		if(array_key_exists('success', $return_api) && $return_api['success'] ==  true) {
 			flash('success', success($return_api['message']));
-			redirect("/users");
+			redirect("/lms/users");
 		}
 	}
 

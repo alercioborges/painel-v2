@@ -7,33 +7,24 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 
 use core\Controller;
 
-use app\src\Validate;
 use app\models\User;
+use app\models\Role;
+use app\src\Validate;
 
 class UserController extends Controller
-{	
+{
+	
 	public function show(Reques $request, Response $response):Response
-	{		
+	{
 		$user = new User();
 
-		$render['TITLE'] = 'Lissta de usuários';
-		$pathPage = 'pages/users.html';
-
-		try {
-
-			$users = $user->getAll(30);
-			
-			$render['USERS'] = $users['USERS'];
-			$render['PAGES'] = $users['PAGES'];
-
-			$this->view($pathPage, $render);
-
-		} catch (\Exception $e) {
-
-			flash('api_error', error($e->getMessage()));			
-			$this->view($pathPage, $render);
-			
-		}
+		$users = $user->getAll(30);
+		
+		$this->view('pages/users.html', [
+			'TITLE' => 'Lissta de usuários',
+			'USERS' => $users['USERS'],
+			'PAGES' => $users['PAGES']
+		]);
 
 		return $response;
 
@@ -42,177 +33,89 @@ class UserController extends Controller
 
 	public function create(Reques $request, Response $response):Response
 	{
-		$this->view('pages/users-create.html', [
-			'TITLE' => 'Cadastrar novo usuários',
+		$role = new Role();
+
+		$roles = $role->getRoles();
+		dd($roles);
+		$this->view('pages/user-create.html', [
+			'TITLE' => 'Cadastrar novo usuário',
 			'COOKIE_DATA' => $_COOKIE
 		]);
 
 		return $response;
 	}
 
-	public function save(Reques $request, Response $response):Response
+	public function save(Reques $request)
 	{
 		$validate = new Validate();
 
-		$data = $validate->validate([
-			'username'	=> 'username:required:max@30',
-			'password'	=> 'required:max@30',
-			'firstname'	=> 'required:max@30',
-			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@60'
+		$data = $validate->validate([			
+			'firstname'	=> 'required:max@30:uppercase',
+			'lastname'	=> 'required:max@30:uppercase',
+			'email'		=> 'email:required:max@60:unique@user',
+			'role' 		=> 'required',
+			'password' 	=> 'required:max@30'
 		]);
-
+		dd($data);
 		$user = new User();
-		
-		try{
-			
-			$return_api = $user->save($data);
-			$validate->validateApi($return_api);
 
-		} catch (\Exception $e) {
+		$user = $user->save($data);
 
-			flash('api_error', error($e->getMessage()));
-			redirect('/users');
-
-		}
-
-		return $response;
+		flash('success', success("Usuário criado com sucesso"));
+		redirect("/admin/users");
 
 	}
 
 
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
-		$user = new User();
+		$admin = new User();
 
-		$render['TITLE'] = 'Editar Cadastrastro de Usuário';
-		$pathPage = 'pages/users-update.html';		
+		$admin = $admin->get($args['id']);
 
-		try{
+		$this->view('pages/admins-update.html', [
+			'TITLE' => 'Editar Cadastrar de administrador',
+			'ADMIN' => $admin,
+			'COOKIE_DATA' => $_COOKIE
+		]);
 
-			$user_data = $user->get($args['id']);
-
-			$render['COOKIE_DATA'] = $_COOKIE;
-			$render['USER_DATA'] = $user_data;			
-
-			$this->view($pathPage, $render);
-
-		} catch (\Exception $e) {
-
-			flash('api_error', error($e->getMessage()));			
-			$this->view($pathPage, $render);		
-
-		}
-		
 		return $response;
-
 	}
-
 
 	public function update(Reques $request, Response $response, array $args):Response
 	{
 		$validate = new Validate();
-		
-		$data = $validate->validate([
-			'username'	=> 'username:required:max@30',
-			'firstname'	=> 'required:max@30',
-			'lastname'	=> 'required:max@30',
-			'email'		=> 'email:required:max@60'
+
+		$data = $validate->validate([			
+			'firstname'	=> 'required:max@30:uppercase',
+			'lastname'	=> 'required:max@30:uppercase',
+			'email'		=> "email:required:max@60:unique@user({$args['id']})"
 		]);
-
-		$user = new User();			
-
-		try{
-			
-			$return_api = $user->edit($data);
-			$validate->validateApi($return_api);
-
-		} catch (\Exception $e) {
-
-			flash('api_error', error($e->getMessage()));
-			redirect('/users');
-
-		}
 		
-	}
+		$admin = new UUser();
 
-	public function delete(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
+		$admin = $admin->edit($args['id'], $data);
 
-		$return_api = $user->destroy($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($return_api);
-
-	}
-
-	public function suspend(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
-
-		$suspend = $user->suspend($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($suspend);
-
-	}
-
-	public function unsuspend(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
-
-		$unsuspend = $user->unsuspend($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($unsuspend);
-
-	}
-
-	public function profile(Reques $request, Response $response, array $args):Response
-	{		
-		$user = new User();
-
-		$render['TITLE'] = 'Página de perfil do usuários';
-		$pathPage = 'pages/users-profile.html';
-
-		try{
-
-			$user_data = $user->get($args['id']);
-
-			$render['USER'] = $user_data;
-
-			$this->view($pathPage, $render);
-
-		} catch (\Exception $e) {
-
-			flash('api_error', error($e->getMessage()));
-			$this->view($pathPage, $render);
-
-		}
-
+		flash('success', success("Cadastro de administrador alterado com sucesso"));
+		redirect("/admin/users");
+		
 		return $response;
 	}
 
 
-	public function resetPassword(Reques $request, Response $response, array $args)
+	public function delete(Reques $request, Response $response, array $args):Response
 	{
-		$user = new User();
+		$admin = new User();
 
-		try{
+		$deleted = $admin->destroy($args['id']);
 
-			$user->redefinePassword($args['id']);
-
-		} catch (\Exception $e) {
-
-			flash('api_error', error($e->getMessage()));
-			redirect("/users/{$args['id']}/profile");
-
+		if ($deleted == 1) {
+			flash('success', success("Usuário exclído com sucesso"));
+			redirect("/admin/users");
 		}
 
+		return $response;
+		
 	}
 
 }

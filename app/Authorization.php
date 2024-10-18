@@ -1,6 +1,6 @@
 <?php
 
-$login = array(
+return array(
     'admin' => [
         'loggedIn' => 'admin_login',
         'redirect' => '/admin',

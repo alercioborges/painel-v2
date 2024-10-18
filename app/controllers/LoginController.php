@@ -6,6 +6,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Reques;
 
 use core\Controller;
+use app\src\Validate;
+use app\src\Login;
+Use app\models\Administrator;
 
 class LoginController extends Controller
 {
@@ -22,10 +25,18 @@ class LoginController extends Controller
 	}
 
 	public function login(Reques $request, Response $response):Response
-	{		
-		
-		redirect('/');
+	{
+		$validate = new Validate();
 
+		$data = $validate->validate([
+			'email'		=> 'email:required',
+			'password' => 'required'
+		]);
+
+		$login = new Login();
+
+		$loggedIn = $login->login($data, new Administrator);
+		dd($_SESSION);
 		return $response;
 	}
 

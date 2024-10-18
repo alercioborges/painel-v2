@@ -1,0 +1,60 @@
+{% extends 'pages/base.twig' %}
+
+{% block content %}
+
+{% if session['api_error'] %}	
+		{{ api_error('api_error') }}	
+{% else %}	
+
+{{ success_message('success') }}
+<h3 class="card-title">{{ TITLE }}</h3>				
+<div class="card-tools">				
+	<div class="input-group input-group-sm" style="width: 150px;">			
+		<input type="text" name="table_search" class="form-control float-right" placeholder="Search">			
+		<div class="input-group-append">
+			<button type="submit" class="btn btn-default">
+				<i class="fas fa-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+</div><!-- /.card-header -->	
+<div class="card-body table-responsive p-0">
+	<table id="users-list" class="table table-hover text-nowrap">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Último acesso</th>
+				<th>Suspenso</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for data in USERS %}
+			<tr>
+				<td>{{ data.id }}</td>
+				<td><a href="{{ get_full_url() }}/lms/users/{{data.id}}/profile" class="link-secondary" >{{ data.firstname }} {{ data.lastname }}</a></td>
+				<td>{{ data.email }}</td>
+				<td>{{ data.lastaccess }}</td>
+				<td>
+					{% if data.suspended %}
+					SIM
+					{% else %}
+					NÂO					
+					{% endif %}
+				</td>				
+				<td>
+					<a href="{{ get_full_url() }}/lms/users/{{data.id}}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>							
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div><!-- /. card-body table-responsive -->
+
+{{ pagination(PAGES) }}
+
+{% endif %}
+
+{% endblock %}

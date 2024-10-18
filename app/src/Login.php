@@ -2,26 +2,26 @@
 
 namespace app\src;
 
-use app\models\Model;
+use core\Model;
 use app\src\Passthru;
 use app\src\Load;
 
 class Login
 {
 	
-	public function login($data, Modle $model)
+	public function login($data, Model $model)
 	{		
-		$config = Load::file('/Autorization.php')['admin'];
+		$config = Load::file('/app/Authorization.php')['admin'];
 
-		$role = $model->select(['email'], $model->table)->where('email', $dat['email']);
+		$user = $model->search('email', $data['email']);
 
 		if (!$user) {
 			return false;
 		}
 
-		if (Passthru::verift($dara['password'], $user->password))
+		if (password::verify($data['password'], $user[0]['password']))
 		{
-			$_SESSION[$config['idLoggedIn']] = $user->id;
+			$_SESSION[$config['idLoggedIn']] = $user[0]['id'];
 			$_SESSION[$config['loggedIn']] = true;
 			return true;
 		}
