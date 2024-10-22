@@ -43,28 +43,26 @@
 					{{ form_message("email") }}
 				</div>
 			</div>
-			
-
-
 			<div class="form-group row">
-				<label for="rolel-input-form" class="col-sm-2 col-form-label">Tipo de perfil</label>
+				<label for="role-input-form" class="col-sm-2 col-form-label">Tipo de perfil</label>
 				<div class="col-sm-10">
-					<select class="form-select form-control" name="role" id="rolel-input-form">
-						<option value="">Selecione</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+					<select class="form-select form-control" name="role_id" id="role-input-form">					
+							<option value="">Selecione</option>						
+							{% for role in ROLES %}
+								{% if COOKIE_DATA['role_id'] is not empty and COOKIE_DATA['role_id'] == role['id'] %}
+									<option value="{{ role['id'] }}" selected >{{ role['name'] }}</option>
+								{%  else %}
+									<option value="{{ role['id'] }}">{{ role['name'] }}</option>
+								{% endif %}
+							{% endfor %}
 					</select>
 					{{ form_message("role") }}
 				</div>
 			</div>
-			
-
-
 			<div class="form-group row">
 				<label for="password-input-form" class="col-sm-2 col-form-label">Senha</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" name="password" id="password-input-form" placeholder="Senha" value="{{ COOKIE_DATA['password'] }}" />
+					<input type="password" class="form-control" name="password" id="password-input-form" placeholder="Senha"/>
 					{{ form_message("password") }}
 				</div>
 			</div>
@@ -76,8 +74,6 @@
 		<div class="card-footer">
 			<button type="submit" class="btn btn-info">Cadastrar</button>
 		</div><!-- /.card-footer -->
-	</form>				
-
-
+	</form>
 </div><!-- /.card-body -->
 {% endblock %}

@@ -7,13 +7,13 @@
 <div class="card-body p-0">
 
 
-	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/admin/users/edit/{{ ADMIN['id'] }}">
+	<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/admin/users/edit/{{ USER['id'] }}">
 		<div class="card-body">					
 
 			<div class="form-group row">
 				<label for="firstname-input-form" class="col-sm-2 col-form-label">Nome</label>
 				<div class="col-sm-10">
-					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="firstname" id="firstname-input-form" placeholder="Nome" {% if COOKIE_DATA['firstname'] is defined %} value="{{ COOKIE_DATA['firstname'] }}" {% else %} value="{{ ADMIN['firstname'] }}" {% endif %} >
+					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="firstname" id="firstname-input-form" placeholder="Nome" {% if COOKIE_DATA['firstname'] is defined %} value="{{ COOKIE_DATA['firstname'] }}" {% else %} value="{{ USER['firstname'] }}" {% endif %} >
 					{{ form_message("firstname") }}
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 			<div class="form-group row">
 				<label for="lastname-input-form" class="col-sm-2 col-form-label">Sobrenome</label>
 				<div class="col-sm-10">
-					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="lastname" id="lastname-input-form" placeholder="Sobrenome" {% if COOKIE_DATA['lastname'] is defined %} value="{{ COOKIE_DATA['lastname'] }}" {% else %} value="{{ ADMIN['lastname'] }}" {% endif %}>
+					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="lastname" id="lastname-input-form" placeholder="Sobrenome" {% if COOKIE_DATA['lastname'] is defined %} value="{{ COOKIE_DATA['lastname'] }}" {% else %} value="{{ USER['lastname'] }}" {% endif %}>
 					{{ form_message("lastname") }}
 				</div>
 			</div>
@@ -29,10 +29,35 @@
 			<div class="form-group row">
 				<label for="email-input-form" class="col-sm-2 col-form-label">E-mail</label>
 				<div class="col-sm-10">
-					<input type="email" class="form-control" name="email" id="email-input-form" placeholder="E-mail" {% if COOKIE_DATA['email'] is defined %} value="{{ COOKIE_DATA['email'] }}" {% else %} value="{{ ADMIN['email'] }}" {% endif %} >
+					<input type="email" class="form-control" name="email" id="email-input-form" placeholder="E-mail" {% if COOKIE_DATA['email'] is defined %} value="{{ COOKIE_DATA['email'] }}" {% else %} value="{{ USER['email'] }}" {% endif %} >
 					{{ form_message("email") }}
 				</div>
 			</div>
+
+			<div class="form-group row">
+				<label for="role-input-form" class="col-sm-2 col-form-label">Tipo de perfil</label>
+				<div class="col-sm-10">
+					
+					<select class="form-select form-control" name="role_id" id="role-input-form">					
+						<option value="">Selecione</option>						
+							{% for role in ROLES %}
+								{% if COOKIE_DATA['role_id'] is empty %}
+									{% if role['id'] == USER['role_id'] %}
+										<option value="{{ role['id'] }}" selected >{{ role['name'] }}</option>
+									{% else %}
+										<option value="{{ role['id'] }}">{{ role['name'] }}</option>
+									{% endif %}
+								{% elseif COOKIE_DATA['role_id'] == role['id'] %}
+									<option value="{{ role['id'] }}" selected >{{ role['name'] }}</optio>
+								{% else %}
+									<option value="{{ role['id'] }}">{{ role['name'] }}</option>
+								{% endif %}
+							{% endfor %}
+						</select>
+					{{ form_message("role") }}
+				</div>
+			</div>
+			
 			<div class="form-group row">
 				<div class="offset-sm-2 col-sm-10">					
 				</div>
@@ -42,5 +67,5 @@
 			<button type="submit" class="btn btn-info">Cadastrar</button>
 		</div><!-- /.card-footer -->
 	</form>
-</div><!-- /.card-body --> 
+</div><!-- /.card-body -->
 {% endblock %}

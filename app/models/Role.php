@@ -2,15 +2,15 @@
 
 namespace app\models;
 
-use app\models\User;
+use core\Model;
 
-class Role extends User{
-
+class Role extends Model
+{
 	protected $table  = 'tbl_role';
 
 	public function getRoles()
 	{
-		$roles = $this->select(['name'], $this->table)->get();
+		$roles = $this->select(['id', 'name'], $this->table)->orderby('name')->get();
 		return $roles;
 	}
 

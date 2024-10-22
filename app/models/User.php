@@ -13,10 +13,11 @@ class User extends Model
 
 	public function getAll(int $perPage)
 	{
-		$users = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table)->get();
-		
-		$paginate = Paginate::pagination($perPage, $users);
+		$users = $this->select([
+			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.name as role'], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->get();
 
+		$paginate = Paginate::pagination($perPage, $users);
+		
 		$users_data = array(
 			'USERS' => $paginate['dataInPage'],
 			'PAGES' => $paginate['pages']
@@ -25,18 +26,25 @@ class User extends Model
 		return $users_data;
 	}	
 
-	public function save(array $adminDara)
+	public function save(array $userDataa)
 	{		
-		$adminDara['password'] = Password::make($adminDara['password']);
+		$userDataa['password'] = Password::make($userDataa['password']);
+		$user_role['role_id'] = $userDataa['role_id'];
 
-		$admin = $this->insert([$adminDara], $this->table);
-		return $admin;
+		unset($userDataa['role_id']);
+
+		$user_role['user_id'] = $this->insert([$userDataa], $this->table);
+		$this->insert([$user_role], 'tbl_user_role');
+		
+		return $user_role['user_id'];
 	}
 
-	public function get($idAdmin)
+	public function get($user_id)
 	{
-		$admin = $this->select(['id', 'firstname', 'lastname', 'email'], $this->table)->where('id', $idAdmin) ->get();
-		return $admin[0];
+		$user = $this->select([
+			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.id as role_id'], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->where('u.id', $user_id)->get();
+		
+		return $user[0];
 	}
 
 	public function edit(int $id, array $data)

@@ -36,9 +36,10 @@ class UserController extends Controller
 		$role = new Role();
 
 		$roles = $role->getRoles();
-		dd($roles);
+		
 		$this->view('pages/user-create.html', [
 			'TITLE' => 'Cadastrar novo usuário',
+			'ROLES' => $roles,
 			'COOKIE_DATA' => $_COOKIE
 		]);
 
@@ -48,34 +49,44 @@ class UserController extends Controller
 	public function save(Reques $request)
 	{
 		$validate = new Validate();
-
+		
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
 			'email'		=> 'email:required:max@60:unique@user',
-			'role' 		=> 'required',
+			'role_id' 	=> 'required',
 			'password' 	=> 'required:max@30'
 		]);
-		dd($data);
+
 		$user = new User();
 
-		$user = $user->save($data);
+		try {
+			$user = $user->save($data);
 
-		flash('success', success("Usuário criado com sucesso"));
-		redirect("/admin/users");
+			flash('success', success("Usuário criado com sucesso"));
+			redirect("/admin/users");
+			
+		} catch (Exception $e) {
+			flash('error', error($e));
+			redirect("/admin/users");
+			
+		}
 
 	}
 
 
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
-		$admin = new User();
+		$user = new User();
+		$user = $user->get($args['id']);
 
-		$admin = $admin->get($args['id']);
+		$role = new Role();
+		$roles = $role->getRoles();
 
-		$this->view('pages/admins-update.html', [
+		$this->view('pages/user-update.html', [
 			'TITLE' => 'Editar Cadastrar de administrador',
-			'ADMIN' => $admin,
+			'USER' => $user,
+			'ROLES'	=> $roles,
 			'COOKIE_DATA' => $_COOKIE
 		]);
 
@@ -89,12 +100,13 @@ class UserController extends Controller
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
-			'email'		=> "email:required:max@60:unique@user({$args['id']})"
+			'email'		=> "email:required:max@60:unique@user({$args['id']})",
+			'role_id' 	=> 'required'
 		]);
-		
-		$admin = new UUser();
+		dd($data);
+		$user = new User();
 
-		$admin = $admin->edit($args['id'], $data);
+		$user = $user->edit($args['id'], $data);
 
 		flash('success', success("Cadastro de administrador alterado com sucesso"));
 		redirect("/admin/users");
