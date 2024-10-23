@@ -14,7 +14,7 @@ class User extends Model
 	public function getAll(int $perPage)
 	{
 		$users = $this->select([
-			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.name as role'], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->get();
+			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.name as role'], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->orderby('id')->get();
 
 		$paginate = Paginate::pagination($perPage, $users);
 		
@@ -34,9 +34,12 @@ class User extends Model
 		unset($userDataa['role_id']);
 
 		$user_role['user_id'] = $this->insert([$userDataa], $this->table);
-		$this->insert([$user_role], 'tbl_user_role');
+
+		$result['user'] = $user_role['user_id'];
+
+		$result['role'] = $this->insert([$user_role], 'tbl_user_role');
 		
-		return $user_role['user_id'];
+		return $result;
 	}
 
 	public function get($user_id)
@@ -47,16 +50,27 @@ class User extends Model
 		return $user[0];
 	}
 
-	public function edit(int $id, array $data)
+	public function edit(int $id, array $userData)
 	{
-		$admin = $this->update($this->table)->set($data)->where('id', $id)->execute();
-		return $admin;		
+		$user_role['role_id'] = $userData['role_id'];
+		$user_role['user_id'] = $id;
+
+		unset($userData['role_id']);		
+
+		$result['user'] = $this->update($this->table)->set($userData)->where('id', $id)->execute();
+		$result['role'] = $this->update('tbl_user_role')->set($user_role)->where('user_id', $id)->execute();
+
+		return $result;		
 	}
+
+
 
 	public function destroy($id)
 	{
-		$deleted = $this->delete($this->table)->where('id', $id)->execute();
-		return $deleted;
+		$result['user_role'] = $this->delete('tbl_user_role')->where('user_id', $id)->execute();
+		$result['user'] = $this->delete($this->table)->where('id', $id)->execute();
+
+		return $result;
 	}
 
 }

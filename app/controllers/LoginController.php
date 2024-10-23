@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Reques;
 use core\Controller;
 use app\src\Validate;
 use app\src\Login;
-Use app\models\Administrator;
+Use app\models\User;
 
 class LoginController extends Controller
 {
@@ -35,7 +35,7 @@ class LoginController extends Controller
 
 		$login = new Login();
 
-		$loggedIn = $login->login($data, new Administrator);
+		$loggedIn = $login->login($data, new User);
 		dd($_SESSION);
 		return $response;
 	}

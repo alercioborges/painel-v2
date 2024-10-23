@@ -68,10 +68,8 @@ class UserController extends Controller
 			
 		} catch (Exception $e) {
 			flash('error', error($e));
-			redirect("/admin/users");
-			
+			redirect("/admin/users");			
 		}
-
 	}
 
 
@@ -84,7 +82,7 @@ class UserController extends Controller
 		$roles = $role->getRoles();
 
 		$this->view('pages/user-update.html', [
-			'TITLE' => 'Editar Cadastrar de administrador',
+			'TITLE' => 'Editar Cadastrar de usuário',
 			'USER' => $user,
 			'ROLES'	=> $roles,
 			'COOKIE_DATA' => $_COOKIE
@@ -92,6 +90,8 @@ class UserController extends Controller
 
 		return $response;
 	}
+
+
 
 	public function update(Reques $request, Response $response, array $args):Response
 	{
@@ -103,27 +103,33 @@ class UserController extends Controller
 			'email'		=> "email:required:max@60:unique@user({$args['id']})",
 			'role_id' 	=> 'required'
 		]);
-		dd($data);
+		
 		$user = new User();
 
 		$user = $user->edit($args['id'], $data);
 
-		flash('success', success("Cadastro de administrador alterado com sucesso"));
+		flash('success', success("Cadastro de Usuário alterado com sucesso"));
 		redirect("/admin/users");
 		
 		return $response;
 	}
 
 
+
 	public function delete(Reques $request, Response $response, array $args):Response
 	{
-		$admin = new User();
+		$user = new User();
 
-		$deleted = $admin->destroy($args['id']);
+		try {
+			$deleted = $user->destroy($args['id']);
 
-		if ($deleted == 1) {
 			flash('success', success("Usuário exclído com sucesso"));
 			redirect("/admin/users");
+
+		} catch (Exception $e) {
+			flash('error', error("Error ao tentar exclír usuário: {$e}"));
+			redirect("/admin/users");
+
 		}
 
 		return $response;
