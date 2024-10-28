@@ -14,7 +14,7 @@
 				<label for="firstname-input-form" class="col-sm-2 col-form-label">Nome</label>
 				<div class="col-sm-10">
 					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="firstname" id="firstname-input-form" placeholder="Nome" {% if COOKIE_DATA['firstname'] is defined %} value="{{ COOKIE_DATA['firstname'] }}" {% else %} value="{{ USER['firstname'] }}" {% endif %} >
-					{{ form_message("firstname") }}
+					{{ message("firstname") }}
 				</div>
 			</div>
 
@@ -22,7 +22,7 @@
 				<label for="lastname-input-form" class="col-sm-2 col-form-label">Sobrenome</label>
 				<div class="col-sm-10">
 					<input type="text" onkeydown="return /^[a-záàâãéèêíïóôõöúçñ ]+$/i.test(event.key)" class="form-control" name="lastname" id="lastname-input-form" placeholder="Sobrenome" {% if COOKIE_DATA['lastname'] is defined %} value="{{ COOKIE_DATA['lastname'] }}" {% else %} value="{{ USER['lastname'] }}" {% endif %}>
-					{{ form_message("lastname") }}
+					{{ message("lastname") }}
 				</div>
 			</div>
 
@@ -30,7 +30,7 @@
 				<label for="email-input-form" class="col-sm-2 col-form-label">E-mail</label>
 				<div class="col-sm-10">
 					<input type="email" class="form-control" name="email" id="email-input-form" placeholder="E-mail" {% if COOKIE_DATA['email'] is defined %} value="{{ COOKIE_DATA['email'] }}" {% else %} value="{{ USER['email'] }}" {% endif %} >
-					{{ form_message("email") }}
+					{{ message("email") }}
 				</div>
 			</div>
 
@@ -54,7 +54,7 @@
 								{% endif %}
 							{% endfor %}
 						</select>
-					{{ form_message("role") }}
+					{{ message("role") }}
 				</div>
 			</div>
 			

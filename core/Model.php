@@ -24,7 +24,8 @@ class Model
 			'u.lastname',
 			'u.email',
 			'u.password',
-			'r.name as role'],
+			'r.id as role_id',
+			'r.name as role_name'],
 			'tbl_user_role as ur')
 		->innerJoin('tbl_user as u', 'u.id', '=', 'ur.user_id')
 		->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')

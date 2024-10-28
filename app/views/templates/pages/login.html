@@ -22,34 +22,33 @@
         <b class="h1" style="color: black;">Dashboard</b>
       </div>
       <div class="card-body">
-        <form action="{{ get_full_url() }}/login" method="post">
+        <form action="{{ get_full_url() }}/login" method="POST">
           <div class="input-group mb-3">
-            <input type="email" class="form-control border border-dark" name="email" placeholder="Email" value="{{ COOKIE_DATA['email'] }}" maxlength="30" autofocus required>
+            {{ message('error') }}
+            <input type="email" class="form-control border border-dark" name="email" placeholder="Email" value="{{ COOKIE['email'] }}" maxlength="30" autofocus required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>                
               </div>              
             </div>                                  
           </div>
-          {{ form_message("email") }}  
+          {{ message("email") }}  
 
 
           <div class="input-group mb-3">
-            <input type="password" class="form-control border border-dark" name="password" placeholder="Password" maxlength="30" required>
-            {{ form_message("password") }}
+            <input type="password" class="form-control border border-dark" name="password" placeholder="Password" maxlength="30" required>            
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
           </div>
-          {{ form_message("password") }}  
 
           <div class="row">
             <div class="col-8">
               <div class="icheck-primary">
                 <input type="checkbox" id="remember">
-                <label for="remember">
+                <label style="color: grey;" for="remember">
                   Lembre-me
                 </label>
               </div>

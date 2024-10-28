@@ -17,27 +17,39 @@ class LoginController extends Controller
 	{
 		$this->view('pages/login.html', [
 			'TITLE' => 'Acessar',
-			'COOKIE_DATA' => $_COOKIE
+			'COOKIE' => $_COOKIE
 		]);
 
 		return $response;
 
 	}
 
-	public function login(Reques $request, Response $response):Response
+	public function login()
 	{
 		$validate = new Validate();
 
 		$data = $validate->validate([
-			'email'		=> 'email:required',
-			'password' => 'required'
+			'email'		=> 'email:required'
 		]);
 
 		$login = new Login();
 
 		$loggedIn = $login->login($data, new User);
-		dd($_SESSION);
-		return $response;
+
+		if ($loggedIn) {
+			redirect('/');
+		} else {
+			flash('error', error("Nome de usuário e/ou senha incorreto"));
+			redirect('/login');			
+		}		
+	}
+
+	public function logout()
+	{
+		$login = new Login();
+		$login->logout();
+		
+		redirect('/login');
 	}
 
 }

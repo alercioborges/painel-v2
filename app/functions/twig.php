@@ -1,6 +1,7 @@
 <?php
 
 use app\src\LoaderTwig;
+use app\models\User;
 
 function renderTemplate(String $view, array $data = []) {	
 	$loadTwig = new LoaderTwig();
@@ -20,14 +21,9 @@ $get_full_url = new Twig\TwigFunction('get_full_url', function()
 	return $full_url;
 });
 
-$form_message = new Twig\TwigFunction('form_message', function($index)
+$message = new Twig\TwigFunction('message', function($type)
 {
-	echo app\src\Flash::get($index);
-});
-
-$success_message = new Twig\TwigFunction('success_message', function($index)
-{
-	echo app\src\Flash::get($index);
+	echo app\src\Flash::get($type);
 });
 
 $api_error = new Twig\TwigFunction('api_error', function($index)
@@ -40,10 +36,16 @@ $pagination = new Twig\TwigFunction('pagination', function($numPages)
 	return renderTemplate('pagination.twig', ['numPages' => $numPages]);
 });
 
+$userLoggedData = new Twig\TwigFunction('userLoggedData', function()
+{
+	$user = new user();
+	return $user->get($_SESSION['idLoggedIn']);
+});
+
 return[
 	$get_full_url,
-	$form_message,
-	$success_message,
+	$message,
 	$api_error,
+	$userLoggedData,
 	$pagination
 ];

@@ -23,6 +23,7 @@ class UserController extends Controller
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
 			'USERS' => $users['USERS'],
+			'SESSIOM' => $_SESSION,
 			'PAGES' => $users['PAGES']
 		]);
 
@@ -129,11 +130,9 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			flash('error', error("Error ao tentar exclír usuário: {$e}"));
 			redirect("/admin/users");
-
 		}
 
 		return $response;
-		
 	}
 
 }
