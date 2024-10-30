@@ -3,10 +3,11 @@
 use app\src\LoaderTwig;
 use app\models\User;
 
-function renderTemplate(String $view, array $data = []) {	
+function renderTemplate(String $view, array $data = [])
+{	
 	$loadTwig = new LoaderTwig();
 	$twig = $loadTwig->twig('../app/views/templates/partials/output/');
-	
+
 	$template = $twig->load($view);   
 	return $template->display($data);
 }
@@ -26,11 +27,6 @@ $message = new Twig\TwigFunction('message', function($type)
 	echo app\src\Flash::get($type);
 });
 
-$api_error = new Twig\TwigFunction('api_error', function($index)
-{
-	echo app\src\Flash::get($index) . '</section></div>';
-});
-
 $pagination = new Twig\TwigFunction('pagination', function($numPages)
 {
 	return renderTemplate('pagination.twig', ['numPages' => $numPages]);
@@ -45,7 +41,6 @@ $userLoggedData = new Twig\TwigFunction('userLoggedData', function()
 return[
 	$get_full_url,
 	$message,
-	$api_error,
-	$userLoggedData,
-	$pagination
+	$pagination,
+	$userLoggedData
 ];

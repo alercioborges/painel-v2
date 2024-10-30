@@ -8,14 +8,14 @@
 </div><!-- /.card card-info -->
 
 <!-- form start -->
-<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/users/create">
+<form class="form-horizontal" method="POST" action="{{ get_full_url() }}/lms/users/create">
 	<div class="card-body">
 
 		<div class="form-group row">
 			<label for="username-input-form" class="col-sm-2 col-form-label">Identificação de Usuário</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="username" id="username-input-form" placeholder="Nome de usuário" value="{{ COOKIE_DATA['username'] }}" >
-				{{ form_message("username") }}
+				{{ message("username") }}
 			</div>
 		</div>
 
@@ -23,7 +23,7 @@
 			<label for="firstname-input-form" class="col-sm-2 col-form-label">Nome</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" onkeypress="onlyletter(event)" name="firstname" id="firstname-input-form" placeholder="Nome" value="{{ COOKIE_DATA['firstname'] }}">
-				{{ form_message("firstname") }}
+				{{ message("firstname") }}
 			</div>
 		</div>
 
@@ -31,7 +31,7 @@
 			<label for="lastname-input-form" class="col-sm-2 col-form-label">Sobrenome</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" onkeypress="onlyletterspace(event)" name="lastname" id="lastname-input-form" placeholder="Sobrenome" value="{{ COOKIE_DATA['lastname'] }}">
-				{{ form_message("lastname") }}
+				{{ message("lastname") }}
 			</div>
 		</div>
 
@@ -39,7 +39,7 @@
 			<label for="email-input-form" class="col-sm-2 col-form-label">E-mail</label>
 			<div class="col-sm-10">
 				<input type="email" class="form-control" name="email" id="email-input-form" placeholder="E-mail" value="{{ COOKIE_DATA['email'] }}">
-				{{ form_message("email") }}
+				{{ message("email") }}
 			</div>
 		</div>
 		<div class="form-group row">
@@ -47,7 +47,7 @@
 			<div class="col-sm-10">
 				<input type="password" class="form-control" name="password" id="password-input-form" placeholder="Senha" value="{{ COOKIE_DATA['password'] }}" />
 
-				{{ form_message("password") }}
+				{{ message("password") }}
 			</div>
 		</div>
 		<div class="form-group row">
@@ -60,8 +60,5 @@
 	</div><!-- /.card-footer -->
 </form>
 </div><!-- /.card -->
-
-{% endif %}
-
 <script src="{{ get_full_url() }}/assets/js/formvalidation.js"></script>
 {% endblock %}

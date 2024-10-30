@@ -25,14 +25,13 @@ class UserController extends Controller
 			
 			$render['USERS'] = $users['USERS'];
 			$render['PAGES'] = $users['PAGES'];
-
+			
 			$this->view($pathPage, $render);
 
 		} catch (\Exception $e) {
 
-			flash('api_error', error($e->getMessage()));			
-			$this->view($pathPage, $render);
-			
+			flash('api_error', error($e->getMessage()));						
+			$this->view($pathPage, $render);			
 		}
 
 		return $response;

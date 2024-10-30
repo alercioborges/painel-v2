@@ -2,11 +2,11 @@
 
 {% block content %}
 
-{% if session['api_error'] %}	
-{{ api_error('api_error') }}	
+{% if session['api_error'] is defined %}
+	{{ message('api_error') }} </section></div>
 {% else %}
 
-{{ success_message('success') }}
+{{ message('success') }}
 <div class="container" style="border: solid 2px black;">	
 	<div class="float-md-end">
 		<form method="POST" action="{{ get_full_url() }}/lms/users/{{USER['id']}}/reset-password">
