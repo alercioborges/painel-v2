@@ -1,6 +1,11 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{% if session['api_error'] is defined %}
+	{{ message('api_error') }} </section></div>
+{% else %}
+
 <div class="card card-info">
 	<div class="card-header">
 		<h3 class="card-title">Cadastrar novo Usuário</h3>
@@ -61,4 +66,7 @@
 </form>
 </div><!-- /.card -->
 <script src="{{ get_full_url() }}/assets/js/formvalidation.js"></script>
+
+{% endif %}
+
 {% endblock %}

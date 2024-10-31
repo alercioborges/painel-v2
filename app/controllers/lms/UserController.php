@@ -108,7 +108,7 @@ class UserController extends Controller
 	}
 
 
-	public function update(Reques $request, Response $response, array $args):Response
+	public function update(Reques $request, Response $response, array $args)
 	{
 		$validate = new Validate();
 		
@@ -135,41 +135,6 @@ class UserController extends Controller
 		
 	}
 
-	public function delete(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
-
-		$return_api = $user->destroy($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($return_api);
-
-	}
-
-	public function suspend(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
-
-		$suspend = $user->suspend($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($suspend);
-
-	}
-
-	public function unsuspend(Reques $request, Response $response, array $args)
-	{
-		$user = new User();
-
-		$unsuspend = $user->unsuspend($args['id']);
-
-		$validate = new Validate();
-
-		$validate->validateApi($unsuspend);
-
-	}
 
 	public function profile(Reques $request, Response $response, array $args):Response
 	{		
@@ -203,15 +168,15 @@ class UserController extends Controller
 
 		try{
 
-			$user->redefinePassword($args['id']);
+			if ($user->redefinePassword($args['id'])) {
+				flash('success', success('E-mail de redefinição de senha enviado com sucesso!'));
+			}
 
 		} catch (\Exception $e) {
-
 			flash('api_error', error($e->getMessage()));
-			redirect("/lms/users/{$args['id']}/profile");
-
 		}
 
+		redirect("/lms/users/{$args['id']}/profile");
 	}
 
 }
