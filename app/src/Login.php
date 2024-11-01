@@ -8,7 +8,7 @@ use app\src\Passthru;
 class Login
 {
 	
-	public function login($data, Model $model)
+	public function login(array $data, Model $model):bool
 	{
 		$user = $model->searchUser('email', $data['email']);
 
@@ -22,9 +22,7 @@ class Login
 			$_SESSION['idRole'] 	= $user[0]['role_id'];
 			$_SESSION['loggedIn'] 	= true;
 			return true;
-		} else {
-			return false;
-		}
+		} else { return false; }
 	}
 
 	public function logout()

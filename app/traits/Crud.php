@@ -19,8 +19,16 @@ trait Crud{
 
     public static function _checkH()
     {
-        if(self::$_h == null) {
-            $connection = Database::getInstance();
+        if(self::$_h == null) {            
+
+            try {
+                $connection = Database::getInstance();
+            } catch (\Exception $e) {
+                flash('conn_error', error($e->getMessage()));
+                throw new \Exception($e->getMessage());
+                
+            }
+
             self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
             {
                 $statement = $connection->prepare($queryString);
@@ -45,7 +53,7 @@ trait Crud{
     protected function select()
     {
         self::_checkH();
-        
+
         $args = func_get_args();
 
         if (func_num_args() == 1) {
@@ -66,7 +74,7 @@ trait Crud{
         $table = self::$_h->table($table_name);
         return $table->update(); 
     }
-    
+
 
     protected function insert(array $data, String $table_name)
     {

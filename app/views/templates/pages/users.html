@@ -1,6 +1,11 @@
 {% extends 'pages/base.twig' %}
 
 {% block content %}
+
+{% if session['conn_error'] is defined %}	
+		{{ message('conn_error') }} </ection></div>	
+{% else %}
+
 <!--{{ message('success') }}-->
 <h3 class="card-title">{{ TITLE }}</h3>				
 <div class="card-tools">					
@@ -73,4 +78,6 @@
 
 {{ pagination(PAGES) }}
 
+{% endif %}
+{{ dump(session) }}
 {% endblock %}

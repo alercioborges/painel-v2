@@ -137,11 +137,11 @@ class UserController extends Controller
 
 
 	public function profile(Reques $request, Response $response, array $args):Response
-	{		
-		$user = new User();
-
+	{
 		$render['TITLE'] = 'Página de perfil do usuários';
 		$pathPage = 'pages/lms/user-profile.html';
+
+		$user = new User();
 
 		try{
 

@@ -52,7 +52,6 @@ class User extends Model
 		if ($check_data == NULL){
 
 			$parameter = $this->saveParameters($arg);
-
 			$response = Api::callApi('core_user_create_users', $parameter);
 
 			$return_api = $this->verifyErrorApiSave($response);
@@ -75,13 +74,13 @@ class User extends Model
 	}
 
 
-	public function edit(array $arg)
+	public function edit(array $arg):array
 	{
 		$parameter = $this->updateParameters($arg);
 		$response = Api::callApi('core_user_update_users', $parameter);
 
 		$return_api = $this->verifyErrorApiUpdate($response);
-
+		
 		return $return_api;
 	}
 	
@@ -96,11 +95,11 @@ class User extends Model
 
 		if (isset($response['status']) && $response['status'] == 'emailpasswordconfirmmaybesent') {
 			return true;
-		}
+		} else { return false; }
 	}
 
 
-	private function verifyUserDataExists(String $username, String $email)
+	private function verifyUserDataExists(String $username, String $email):array
 	{
 		$parameter = '&field=email&values[0]=' . $email;
 		$response = Api::callApi('core_user_get_users_by_field', $parameter);

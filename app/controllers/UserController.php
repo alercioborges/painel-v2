@@ -16,16 +16,27 @@ class UserController extends Controller
 	
 	public function show(Reques $request, Response $response):Response
 	{
+		$render['TITLE'] = 'Lissta de usuários';
+		$pathPage = 'pages/users.html';
+
 		$user = new User();
 
-		$users = $user->getAll(2);
-		
-		$this->view('pages/users.html', [
-			'TITLE' => 'Lissta de usuários',
-			'USERS' => $users['USERS'],
-			'SESSIOM' => $_SESSION,
-			'PAGES' => $users['PAGES']
-		]);
+		try {
+
+			$users = $user->getAll(2);
+
+			$render['USERS'] = $users['USERS'];
+			$render['SESSIOM'] = $_SESSION;
+			$render['PAGES'] = $users['PAGES'];
+
+			$this->view($pathPage, $render);
+
+		} catch (\Exception $e) {
+
+			flash('conn_error', error('erro de menssagem'));
+			$this->view($pathPage, $render);
+
+		}		
 
 		return $response;
 
