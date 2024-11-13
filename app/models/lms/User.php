@@ -19,7 +19,7 @@ class User extends Model
 		);
 
 		$response = Api::callApi('core_user_get_users', http_build_query($parameter));		
-
+		
 		foreach ($response['users'] as $key => $value) {
 			if ($value['id'] != 1) {
 				$allUsers[] = array(

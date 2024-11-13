@@ -1,12 +1,15 @@
 <?php
 
-session_start();
-
 use Middlewares\TrailingSlash;
 use Slim\Factory\AppFactory;
 use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 use app\Config;
+use app\src\Middleware;
+
+if (session_status() === PHP_SESSION_NONE) {
+	session_start();
+}
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -21,3 +24,5 @@ $app->add(new TrailingSlash(false));
 $app->add(new WhoopsMiddleware());
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+
+$middleware = new Middleware();

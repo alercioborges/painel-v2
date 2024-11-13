@@ -2,12 +2,12 @@
 
 require "../bootstrap.php";
 
-$app->get('/login', 'app\controllers\LoginController:index');
+$app->get('/login', 'app\controllers\LoginController:index')->setName('login');;
 $app->post('/login', 'app\controllers\LoginController:login');
 
 $app->get('/logout', 'app\controllers\LoginController:logout');
 
-$app->get('', 'app\controllers\OverviewController:index');
+$app->get('', 'app\controllers\OverviewController:index')->add($middleware->logged());
 $app->get('/teste', 'app\controllers\TesteController:show');
 
 $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
@@ -16,11 +16,10 @@ $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 	$group->get('/users/create', 'app\controllers\UserController:create');
 	$group->get('/users/edit/{id:[0-9]+}', 'app\controllers\UserController:edit');
 	$group->get('/users/delete/{id:[0-9]+}', 'app\controllers\UserController:delete');
-
 	$group->post('/users/create', 'app\controllers\UserController:save');
 	$group->post('/users/edit/{id:[0-9]+}', 'app\controllers\UserController:update');
 
-});
+})->add($middleware->logged());
 
 $app->group('/lms/users', function (Slim\Routing\RouteCollectorProxy $group) {
 

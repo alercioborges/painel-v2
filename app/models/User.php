@@ -50,8 +50,14 @@ class User extends Model
 			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.id as role_id'
 		], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->where('u.id', $id)->get();
 		
-		return $user[0];
+		if (isset($user[0])) {
+			return $user[0];
+		} else {
+			throw new \Exception("Usuário indefinido");			
+		}		
 	}
+
+
 
 	public function edit(int $id, array $userData)
 	{

@@ -17,7 +17,7 @@ class ExecuteCurl
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); 
 
 		$response = curl_exec($ch);
-
+		//dd($response);
 		if (curl_errno($ch)) {
 			$error_msg = curl_error($ch);
 			curl_close($ch);

@@ -30,13 +30,14 @@ class UserController extends Controller
 
 		} catch (\Exception $e) {
 
-			flash('api_error', error($e->getMessage()));						
+			flash('api_error', error($e->getMessage()));
 			$this->view($pathPage, $render);			
 		}
 
 		return $response;
 
 	}
+
 
 
 	public function create(Reques $request, Response $response):Response
@@ -48,6 +49,8 @@ class UserController extends Controller
 
 		return $response;
 	}
+
+
 
 	public function save(Reques $request, Response $response):Response
 	{
@@ -80,6 +83,7 @@ class UserController extends Controller
 	}
 
 
+
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
 		$user = new User();
@@ -108,6 +112,7 @@ class UserController extends Controller
 	}
 
 
+
 	public function update(Reques $request, Response $response, array $args)
 	{
 		$validate = new Validate();
@@ -134,6 +139,7 @@ class UserController extends Controller
 		}
 		
 	}
+
 
 
 	public function profile(Reques $request, Response $response, array $args):Response

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"dump",
+				"dump\tTwig dump"
+			],
+			[
 				"if",
 				"if\tif …"
 			],
@@ -147,12 +151,68 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ins",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install t",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"colo",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Colorsublime: Instal",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"Colorsublime: Install Theme",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"packet con",
+				"Install Package Control"
+			],
+			[
+				"Colorsublime: Insta",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"Colorsublime: I",
+				"Colorsublime: Uninstall Theme"
+			],
+			[
+				"Colorsublime",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
 		],
 		"width": 0.0
 	},
 	"console":
 	{
-		"height": 0.0,
+		"height": 154.0,
 		"history":
 		[
 		]
@@ -168,22 +228,32 @@
 	},
 	"expanded_folders":
 	[
-		"/C/xampp/htdocs/painel-v2",
-		"/C/xampp/htdocs/painel-v2/app",
-		"/C/xampp/htdocs/painel-v2/app/controllers",
-		"/C/xampp/htdocs/painel-v2/app/functions",
-		"/C/xampp/htdocs/painel-v2/app/models",
-		"/C/xampp/htdocs/painel-v2/app/src",
-		"/C/xampp/htdocs/painel-v2/app/traits",
-		"/C/xampp/htdocs/painel-v2/app/views",
-		"/C/xampp/htdocs/painel-v2/app/views/templates",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/pages",
-		"/C/xampp/htdocs/painel-v2/app/views/templates/partials",
-		"/C/xampp/htdocs/painel-v2/core",
-		"/C/xampp/htdocs/painel-v2/public"
+		"/C/wamp64/www/painel-v2",
+		"/C/wamp64/www/painel-v2/app",
+		"/C/wamp64/www/painel-v2/app/controllers",
+		"/C/wamp64/www/painel-v2/app/controllers/lms",
+		"/C/wamp64/www/painel-v2/app/models",
+		"/C/wamp64/www/painel-v2/app/models/lms",
+		"/C/wamp64/www/painel-v2/app/src",
+		"/C/wamp64/www/painel-v2/app/views",
+		"/C/wamp64/www/painel-v2/app/views/templates",
+		"/C/wamp64/www/painel-v2/app/views/templates/pages",
+		"/C/wamp64/www/painel-v2/public"
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
+		"/C/wamp64/www/painel-v2/app/src/ExecuteCurl.php",
+		"/C/wamp64/www/painel-v2/app/controllers/UserController.php",
+		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
+		"/C/wamp64/www/painel-v2/bootstrap.php",
+		"/C/wamp64/www/painel-v2/app/src/Middleware.php",
+		"/C/wamp64/www/painel-v2/public/index.php",
+		"/C/wamp64/www/painel-v2/app/controllers/LoginController.php",
+		"/C/wamp64/www/painel-v2/app/Config.php",
+		"/C/wamp64/www/painel-v2/app/views/templates/pages/users.html",
+		"/C/wamp64/www/painel-v2/app/views/templates/pages/user-create.html",
+		"/C/wamp64/www/painel-v2/app/models/User.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/admins.html",
 		"/C/xampp/htdocs/painel-v2/app/models/Administrator.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/AdministratorController.php",
@@ -299,23 +369,11 @@
 		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/starter.html",
 		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/view/admin/base.html",
 		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.twig",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.html",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/footer.twig",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/base.html",
-		"/C/xampp/htdocs/painel/index-old.php",
-		"/C/xampp/htdocs/painel/.htaccess",
-		"/C/xampp/htdocs/painel/index - Copia.php",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/profile.html",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderGeneratorInterface.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/ConfigBuilderInterface.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/Method.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/Builder/Property.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCache.php",
-		"/C/xampp/htdocs/painel/vendor/symfony/config/ConfigCacheFactory.php"
+		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.html"
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -329,6 +387,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"AppFactor",
+			"AppFactory",
+			"Middleware",
+			"}}\n",
 			"this",
 			"PAGES",
 			"macro",
@@ -464,11 +526,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 32.0
 	},
 	"input":
 	{
-		"height": 84.0
+		"height": 90.0
 	},
 	"layout":
 	{
@@ -501,7 +563,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":

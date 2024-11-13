@@ -13,34 +13,22 @@ use app\src\Validate;
 
 class UserController extends Controller
 {
-	
 	public function show(Reques $request, Response $response):Response
 	{
-		$render['TITLE'] = 'Lissta de usuários';
-		$pathPage = 'pages/users.html';
-
 		$user = new User();
 
-		try {
-
-			$users = $user->getAll(2);
-
-			$render['USERS'] = $users['USERS'];
-			$render['SESSIOM'] = $_SESSION;
-			$render['PAGES'] = $users['PAGES'];
-
-			$this->view($pathPage, $render);
-
-		} catch (\Exception $e) {
-
-			flash('conn_error', error('erro de menssagem'));
-			$this->view($pathPage, $render);
-
-		}		
+		$users = $user->getAll(30);
+		
+		$this->view('pages/users.html', [
+			'TITLE' => 'Lissta de usuários',
+			'USERS' => $users['USERS'],
+			'PAGES' => $users['PAGES']
+		]);
 
 		return $response;
 
 	}
+
 
 
 	public function create(Reques $request, Response $response):Response
@@ -58,7 +46,9 @@ class UserController extends Controller
 		return $response;
 	}
 
-	public function save(Reques $request)
+
+
+	public function save()
 	{
 		$validate = new Validate();
 		
@@ -71,24 +61,25 @@ class UserController extends Controller
 		]);
 
 		$user = new User();
+		$user = $user->save($data);
 
-		try {
-			$user = $user->save($data);
-
-			flash('success', success("Usuário criado com sucesso"));
-			redirect("/admin/users");
-			
-		} catch (Exception $e) {
-			flash('error', error($e));
-			redirect("/admin/users");			
-		}
+		flash('success', success("Usuário criado com sucesso"));
+		redirect('/admin/users');
 	}
+
 
 
 	public function edit(Reques $request, Response $response, array $args):Response
 	{
 		$user = new User();
-		$user = $user->get($args['id']);
+		
+		try {
+			$user = $user->get($args['id']);
+		} catch (\Exception $e) {
+			flash('error', error($e->getMessage()));
+			redirect('/admin/users');
+		}
+		
 
 		$role = new Role();
 		$roles = $role->getRoles();
@@ -117,7 +108,6 @@ class UserController extends Controller
 		]);
 		
 		$user = new User();
-
 		$user = $user->edit($args['id'], $data);
 
 		flash('success', success("Cadastro de Usuário alterado com sucesso"));
@@ -131,17 +121,10 @@ class UserController extends Controller
 	public function delete(Reques $request, Response $response, array $args):Response
 	{
 		$user = new User();
+		$user->destroy($args['id']);
 
-		try {
-			$deleted = $user->destroy($args['id']);
-
-			flash('success', success("Usuário exclído com sucesso"));
-			redirect("/admin/users");
-
-		} catch (Exception $e) {
-			flash('error', error("Error ao tentar exclír usuário: {$e}"));
-			redirect("/admin/users");
-		}
+		flash('success', success("Usuário exclído com sucesso"));
+		redirect("/admin/users");
 
 		return $response;
 	}
