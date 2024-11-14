@@ -25,6 +25,10 @@ class UserController extends Controller
 			'PAGES' => $users['PAGES']
 		]);
 
+		if (isset($_GET['search'])) {
+			dd($_GET);
+		}
+		
 		return $response;
 
 	}
@@ -63,7 +67,7 @@ class UserController extends Controller
 		$user = new User();
 		$user = $user->save($data);
 
-		flash('success', success("Usuário criado com sucesso"));
+		flash('message', success("Usuário criado com sucesso"));
 		redirect('/admin/users');
 	}
 
@@ -76,7 +80,7 @@ class UserController extends Controller
 		try {
 			$user = $user->get($args['id']);
 		} catch (\Exception $e) {
-			flash('error', error($e->getMessage()));
+			flash('message', error($e->getMessage()));
 			redirect('/admin/users');
 		}
 		
@@ -110,7 +114,7 @@ class UserController extends Controller
 		$user = new User();
 		$user = $user->edit($args['id'], $data);
 
-		flash('success', success("Cadastro de Usuário alterado com sucesso"));
+		flash('message', success("Cadastro de Usuário alterado com sucesso"));
 		redirect("/admin/users");
 		
 		return $response;
@@ -123,7 +127,7 @@ class UserController extends Controller
 		$user = new User();
 		$user->destroy($args['id']);
 
-		flash('success', success("Usuário exclído com sucesso"));
+		flash('message', success("Usuário exclído com sucesso"));
 		redirect("/admin/users");
 
 		return $response;

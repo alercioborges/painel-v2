@@ -18,13 +18,13 @@ class User extends Model
 
 		$paginate = Paginate::pagination($perPage, $users);
 		
-		$users_data = array(
+		return array(
 			'USERS' => $paginate['dataInPage'],
 			'PAGES' => $paginate['pages']
 		);
+	}
 
-		return $users_data;
-	}	
+
 
 	public function save(array $userDataa)
 	{		
@@ -55,6 +55,25 @@ class User extends Model
 		} else {
 			throw new \Exception("Usuário indefinido");			
 		}		
+	}
+
+
+	
+	public function search($field, $value)
+	{
+		return $this->select([
+			'u.id',
+			'u.firstname',
+			'u.lastname',
+			'u.email',
+			'u.password',
+			'r.id as role_id',
+			'r.name as role_name'],
+			'tbl_user_role as ur')
+		->innerJoin('tbl_user as u', 'u.id', '=', 'ur.user_id')
+		->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')
+		->where("u.{$field}", $value)
+		->get();
 	}
 
 

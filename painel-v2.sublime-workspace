@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"_",
+				"_GET"
+			],
+			[
 				"dump",
 				"dump\tTwig dump"
 			],
@@ -231,29 +235,35 @@
 		"/C/wamp64/www/painel-v2",
 		"/C/wamp64/www/painel-v2/app",
 		"/C/wamp64/www/painel-v2/app/controllers",
-		"/C/wamp64/www/painel-v2/app/controllers/lms",
+		"/C/wamp64/www/painel-v2/app/functions",
 		"/C/wamp64/www/painel-v2/app/models",
-		"/C/wamp64/www/painel-v2/app/models/lms",
-		"/C/wamp64/www/painel-v2/app/src",
 		"/C/wamp64/www/painel-v2/app/views",
 		"/C/wamp64/www/painel-v2/app/views/templates",
 		"/C/wamp64/www/painel-v2/app/views/templates/pages",
-		"/C/wamp64/www/painel-v2/public"
+		"/C/wamp64/www/painel-v2/core"
 	],
 	"file_history":
 	[
-		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
-		"/C/wamp64/www/painel-v2/app/src/ExecuteCurl.php",
+		"/C/wamp64/www/painel-v2/app/views/templates/pages/users.html",
 		"/C/wamp64/www/painel-v2/app/controllers/UserController.php",
+		"/C/wamp64/www/painel-v2/core/Model.php",
 		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
+		"/C/wamp64/www/painel-v2/app/functions/helpers.php",
+		"/C/wamp64/www/painel-v2/app/src/Paginate.php",
+		"/C/wamp64/www/painel-v2/app/src/Login.php",
+		"/C/wamp64/www/painel-v2/app/models/User.php",
+		"/C/wamp64/www/painel-v2/app/models/Role.php",
+		"/C/wamp64/www/painel-v2/app/traits/Validations.php",
+		"/C/wamp64/www/painel-v2/app/src/Validate.php",
+		"/C/wamp64/www/painel-v2/app/src/ExecuteCurl.php",
+		"/C/Users/alercio.borges/Desktop/search (1).php",
+		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
 		"/C/wamp64/www/painel-v2/bootstrap.php",
 		"/C/wamp64/www/painel-v2/app/src/Middleware.php",
 		"/C/wamp64/www/painel-v2/public/index.php",
 		"/C/wamp64/www/painel-v2/app/controllers/LoginController.php",
 		"/C/wamp64/www/painel-v2/app/Config.php",
-		"/C/wamp64/www/painel-v2/app/views/templates/pages/users.html",
 		"/C/wamp64/www/painel-v2/app/views/templates/pages/user-create.html",
-		"/C/wamp64/www/painel-v2/app/models/User.php",
 		"/C/xampp/htdocs/painel-v2/app/views/templates/pages/admins.html",
 		"/C/xampp/htdocs/painel-v2/app/models/Administrator.php",
 		"/C/xampp/htdocs/painel-v2/app/controllers/AdministratorController.php",
@@ -361,15 +371,7 @@
 		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/tables/simple.html",
 		"/C/xampp/htdocs/painel/src/Views/templates/pages/user.html",
 		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/tables/data.html",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/teste.html",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/base.twig",
-		"/C/xampp/htdocs/painel/composer.json",
-		"/C/Users/alercio.borges/Desktop/excel_numero_usuarios_cadastrados.xlsx",
-		"/C/xampp/htdocs/painel/src/Views/templates/pages/hi.html",
-		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/starter.html",
-		"/C/xampp/htdocs/curso-php-7/projeto/ecommerce/view/admin/base.html",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.twig",
-		"/C/xampp/htdocs/painel/src/Views/templates/partials/header.html"
+		"/C/xampp/htdocs/painel/src/Views/templates/pages/teste.html"
 	],
 	"find":
 	{
@@ -387,6 +389,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"flash",
+			"error",
+			"suc",
+			"error",
+			"success",
+			"suc",
+			"table_search\n",
+			"search",
 			"AppFactor",
 			"AppFactory",
 			"Middleware",

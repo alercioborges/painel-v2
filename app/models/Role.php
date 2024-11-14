@@ -10,8 +10,7 @@ class Role extends Model
 
 	public function getRoles()
 	{
-		$roles = $this->select(['id', 'name'], $this->table)->orderby('name')->get();
-		return $roles;
+		return $this->select(['id', 'name'], $this->table)->orderby('name')->get();
 	}
 
 }

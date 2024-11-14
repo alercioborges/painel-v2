@@ -87,7 +87,7 @@ trait Validations{
 	}
 
 
-	Private function getUserId(String $model) 
+	private function getUserId(String $model) 
 	{
 		if (preg_match('/\(\d+\)$/', $model)) {
 			preg_match('/\((\d+)\)/', $model, $id);

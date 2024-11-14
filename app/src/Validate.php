@@ -12,10 +12,10 @@ class Validate
 
 	public function validateApi(array $return_api)
 	{
-		$api_validation = $this->api($return_api);
-		
-		return $api_validation;
+		return $this->api($return_api);		
 	}
+
+	
 
 	public function validate($rules)
 	{

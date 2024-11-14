@@ -43,3 +43,7 @@ function setCookieForm(array $formData)
 		setcookie($key, $value, time() + 1);
 	}
 }
+
+function search($value) {
+	return htmlspecialchars($value,  ENT_QUOTES);
+}

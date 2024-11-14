@@ -15,11 +15,9 @@ class Paginate
 
 		$dataInPage = array_slice($data, $offset, $perPage);
 
-		$paginate_data = array(
+		return array(
 			'dataInPage' => $dataInPage,
 			'pages' => $pages
 		);
-
-		return $paginate_data;
 	}
 }
