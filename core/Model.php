@@ -15,14 +15,17 @@ class Model
 		return $this->select([$field], $this->table)->where($field, $value)->get();
 	}
 
+
 	public function findExist($field, $value, $key, $id)
 	{
 		return $this->select([$field], $this->table)->where($field, $value)->where($key, '<>', $id)->get();
 	}
 
+
 	public function filter($fields)
 	{
 		$fields = explode(',', $fields);
+		
 		
 	}	
 

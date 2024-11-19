@@ -37,7 +37,9 @@ class LoginController extends Controller
 		$loggedIn = $login->login($data, new User);
 
 		if ($loggedIn) {
-			redirect('/');
+			$redirec = $_SESSION['redirect'] ?? '/';
+			unset($_SESSION['redirect']);
+			redirect($redirec);
 		} else {
 			flash('error', error("Nome de usuário e/ou senha incorreto"));
 			redirect('/login');			
@@ -48,7 +50,7 @@ class LoginController extends Controller
 	{
 		$login = new Login();
 		$login->logout();
-		
+
 		redirect('/login');
 	}
 

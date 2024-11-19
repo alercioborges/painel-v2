@@ -34,7 +34,7 @@ function back(){
 
 function redirect($target){
 	app\src\Redirect::redirect(app\Config::BASE_DIR . $target);
-	exit;
+	exit();
 }
 
 function setCookieForm(array $formData)

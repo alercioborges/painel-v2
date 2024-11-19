@@ -26,7 +26,8 @@ class UserController extends Controller
 		]);
 
 		if (isset($_GET['search'])) {
-			dd($_GET);
+			//$usersFilter = filter(['firstname', 'lastname', 'email'], $_GET['search']);
+			//dd($usersFilter);
 		}
 		
 		return $response;
