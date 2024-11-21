@@ -22,11 +22,15 @@ class Model
 	}
 
 
-	public function filter($fields)
+	public function filter(array $fields, String $value):array
 	{
-		$fields = explode(',', $fields);
-		
-		
+		$query = $this->select($fields, $this->table);
+
+		foreach ($fields as $field) {
+			$query->orWhere($field, 'like', '%'.search($value).'%');
+		}
+
+		return $query->get();
 	}	
 
 }

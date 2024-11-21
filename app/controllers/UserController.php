@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Reques;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 use core\Controller;
 
@@ -13,35 +13,35 @@ use app\src\Validate;
 
 class UserController extends Controller
 {
-	public function show(Reques $request, Response $response):Response
+
+	public function show(Request $request, Response $response):Response
 	{
 		$user = new User();
 
-		$users = $user->getAll(30);
-		
+		$perPage = 3;
+
+		$users = isset($_GET['search']) 
+		? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
+		: $user->getAll($perPage);
+
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
 			'USERS' => $users['USERS'],
 			'PAGES' => $users['PAGES']
-		]);
+		]);		
 
-		if (isset($_GET['search'])) {
-			//$usersFilter = filter(['firstname', 'lastname', 'email'], $_GET['search']);
-			//dd($usersFilter);
-		}
-		
 		return $response;
 
 	}
 
 
 
-	public function create(Reques $request, Response $response):Response
+	public function create(Request $request, Response $response):Response
 	{
 		$role = new Role();
 
 		$roles = $role->getRoles();
-		
+
 		$this->view('pages/user-create.html', [
 			'TITLE' => 'Cadastrar novo usuário',
 			'ROLES' => $roles,
@@ -56,7 +56,7 @@ class UserController extends Controller
 	public function save()
 	{
 		$validate = new Validate();
-		
+
 		$data = $validate->validate([			
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
@@ -74,17 +74,17 @@ class UserController extends Controller
 
 
 
-	public function edit(Reques $request, Response $response, array $args):Response
+	public function edit(Request $request, Response $response, array $args):Response
 	{
 		$user = new User();
-		
+
 		try {
 			$user = $user->get($args['id']);
 		} catch (\Exception $e) {
 			flash('message', error($e->getMessage()));
 			redirect('/admin/users');
 		}
-		
+
 
 		$role = new Role();
 		$roles = $role->getRoles();
@@ -101,7 +101,7 @@ class UserController extends Controller
 
 
 
-	public function update(Reques $request, Response $response, array $args):Response
+	public function update(Request $request, Response $response, array $args):Response
 	{
 		$validate = new Validate();
 
@@ -111,19 +111,19 @@ class UserController extends Controller
 			'email'		=> "email:required:max@60:unique@user({$args['id']})",
 			'role_id' 	=> 'required'
 		]);
-		
+
 		$user = new User();
 		$user = $user->edit($args['id'], $data);
 
 		flash('message', success("Cadastro de Usuário alterado com sucesso"));
 		redirect("/admin/users");
-		
+
 		return $response;
 	}
 
 
 
-	public function delete(Reques $request, Response $response, array $args):Response
+	public function delete(Request $request, Response $response, array $args):Response
 	{
 		$user = new User();
 		$user->destroy($args['id']);

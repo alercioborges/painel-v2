@@ -1,6 +1,12 @@
 {{ _self.input(numPages) }}
 
 {% macro input(numPages) %}
+
+{% set pageRequest = '?page=' %}
+{% if get.search is defined %}
+    {% set pageRequest = '?search=' ~ get.search ~ '&page=' %}
+{% endif %}
+
 <!-- Pagination Links -->
 <nav class="mt-4" aria-label="Navegação da página">
 	<ul class="pagination justify-content-center">
@@ -9,7 +15,7 @@
 		{% else %}
 			{% if get['page'] > 1 %}
 				<li class="page-item">
-					<a class="page-link" href="?page={{ get['page'] -1 }}">
+					<a class="page-link" href="{{pageRequest}}{{ get['page'] -1 }}">
 						<span aria-hidden="true">«</span>
 						<span class="sr-only">Anterior</span>
 					</a>
@@ -17,36 +23,36 @@
 			{% endif %}		
 			{% if numPages <= 10  %}
 				{% for i in 1..numPages %}				
-					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="{{pageRequest}}{{ i }}">{{ i }}</a></li>
 				{% endfor %}
 			{% elseif get['page'] <= 8 %}
 				{% for i in 1..10 %}				
-					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
+					<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="{{pageRequest}}{{ i }}">{{ i }}</a></li>				
 				{% endfor %}
 				<li class="page-item disabled"><span class="page-link">…</span></li>
-				<li class="page-item"><a class="page-link" href="?page={{ numPages }}">{{ numPages }}</a></li>
+				<li class="page-item"><a class="page-link" href="{{pageRequest}}{{ numPages }}">{{ numPages }}</a></li>
 			{% elseif get['page'] >= 9 and get['page'] <= numPages - 6%}
-				<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+				<li class="page-item"><a class="page-link" href="{{pageRequest}}1">1</a></li>
 				<li class="page-item disabled"><span class="page-link">…</span></li>
 				{% for i in get['page'] - 3..get['page'] + 6 %}
 					{% if i != numPages %}
-						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>				
+						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="{{pageRequest}}{{ i }}">{{ i }}</a></li>				
 					{% endif %}
 				{% endfor %}
 				<li class="page-item disabled"><span class="page-link">…</span></li>
-				<li class="page-item"><a class="page-link" href="?page={{ numPages }}">{{ numPages }}</a></li>
+				<li class="page-item"><a class="page-link" href="{{pageRequest}}{{ numPages }}">{{ numPages }}</a></li>
 				{% elseif get['page'] <= numPages + 6 %}
-					<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+					<li class="page-item"><a class="page-link" href="{{pageRequest}}1">1</a></li>
 					<li class="page-item disabled"><span class="page-link">…</span></li>
 					{% for i in numPages - 10..numPages %}
-						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+						<li class="page-item {% if get['page'] == i %}active{% elseif get['page'] is not defined and i == 1 %}active{% endif %}"><a class="page-link" href="{{pageRequest}}{{ i }}">{{ i }}</a></li>
 					{% endfor %}
 			{% endif %}
 			{% if get['page'] < numPages %}
-				<li class="page-item">
-					<a class="page-link" href="?page={{ get['page'] +1 }}">
-						<span aria-hidden="true">»</span>
-						<span class="sr-only">Próximo</span>
+				<li class="page-item">					
+					<a class="page-link" href="{{pageRequest}}{{ get['page'] is defined ? get['page'] +1 : 2 }}">
+				<span aria-hidden="true">»</span>
+				<span class="sr-only">Próximo</span>
 					</a>
 				</li>
 			{% endif %}

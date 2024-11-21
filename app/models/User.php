@@ -11,7 +11,7 @@ class User extends Model
 
 	protected $table  = 'tbl_user';
 
-	public function getAll(int $perPage)
+	public function getAll(int $perPage):array
 	{
 		$users = $this->select([
 			'u.id', 'u.firstname', 'u.lastname', 'u.email', 'r.name as role'], 'tbl_user_role as ur')->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')->orderby('id')->get();
@@ -99,6 +99,19 @@ class User extends Model
 		$result['user'] = $this->delete($this->table)->where('id', $id)->execute();
 
 		return $result;
+	}
+
+
+	public function filtered(array $fields, String $value, int $perPage):array
+	{
+		$users = $this->filter($fields, $value);
+
+		$paginate = Paginate::pagination($perPage, $users);
+		
+		return array(
+			'USERS' => $paginate['dataInPage'],
+			'PAGES' => $paginate['pages']
+		);
 	}
 
 }
