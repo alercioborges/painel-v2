@@ -20,7 +20,7 @@ class UserController extends Controller
 
 		$perPage = 3;
 
-		$users = isset($_GET['search']) 
+		$users = isset($_GET['search'])
 		? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
 		: $user->getAll($perPage);
 
