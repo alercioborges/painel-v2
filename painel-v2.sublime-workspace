@@ -235,13 +235,18 @@
 		"/C/wamp64/www/painel-v2",
 		"/C/wamp64/www/painel-v2/app",
 		"/C/wamp64/www/painel-v2/app/controllers",
+		"/C/wamp64/www/painel-v2/app/controllers/lms",
 		"/C/wamp64/www/painel-v2/app/functions",
 		"/C/wamp64/www/painel-v2/app/models",
+		"/C/wamp64/www/painel-v2/app/models/lms",
 		"/C/wamp64/www/painel-v2/app/src",
 		"/C/wamp64/www/painel-v2/core"
 	],
 	"file_history":
 	[
+		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
+		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
+		"/C/wamp64/www/painel-v2/app/src/Api.php",
 		"/C/wamp64/www/painel-v2/app/controllers/UserController.php",
 		"/C/wamp64/www/painel-v2/app/views/templates/partials/output/pagination.twig",
 		"/C/wamp64/www/painel-v2/app/models/User.php",
@@ -254,14 +259,12 @@
 		"/C/wamp64/www/painel-v2/app/Config.php",
 		"/C/wamp64/www/painel-v2/app/functions/helpers.php",
 		"/C/wamp64/www/painel-v2/app/src/Login.php",
-		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
 		"/C/wamp64/www/painel-v2/app/src/Paginate.php",
 		"/C/wamp64/www/painel-v2/app/models/Role.php",
 		"/C/wamp64/www/painel-v2/app/traits/Validations.php",
 		"/C/wamp64/www/painel-v2/app/src/Validate.php",
 		"/C/wamp64/www/painel-v2/app/src/ExecuteCurl.php",
 		"/C/Users/alercio.borges/Desktop/search (1).php",
-		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
 		"/C/wamp64/www/painel-v2/bootstrap.php",
 		"/C/wamp64/www/painel-v2/public/index.php",
 		"/C/wamp64/www/painel-v2/app/views/templates/pages/user-create.html",
@@ -368,12 +371,11 @@
 		"/C/xampp/htdocs/painel/src/Controllers/Teste.php",
 		"/C/xampp/htdocs/painel/src/Config.php",
 		"/C/xampp/htdocs/painel/src/Controllers/HomeController.php",
-		"/C/xampp/htdocs/painel/src/Controllers/ErrorController.php",
-		"/C/xampp/htdocs/painel/src/Views/resource/adminlte/pages/tables/simple.html"
+		"/C/xampp/htdocs/painel/src/Controllers/ErrorController.php"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
@@ -387,6 +389,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"verifyUserDataExists",
+			"ret",
 			"Próximo",
 			"href",
 			"search",
@@ -512,9 +516,7 @@
 			"'],",
 			"course",
 			"couurse",
-			"addUniqueNumber",
-			"number",
-			"nuumber"
+			"addUniqueNumber"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -541,7 +543,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 36.0
+		"height": 32.0
 	},
 	"input":
 	{
@@ -578,7 +580,7 @@
 	"project": "painel-v2.sublime-project",
 	"replace":
 	{
-		"height": 68.0
+		"height": 60.0
 	},
 	"save_all_on_build": true,
 	"select_file":

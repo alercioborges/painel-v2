@@ -21,7 +21,7 @@ class Api
 		$url = $uri . $function . $format . $parameters;
 		$response = ExecuteCurl::runCurl($url);
 
-		if (array_key_exists('exception', $response)) {
+		if (array_key_exists('exception', $response) && !str_contains($response['message'], 'error/')) {
 			throw new \Exception("Error: {$response['message']}");			
 		}
 

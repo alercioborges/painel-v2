@@ -35,12 +35,10 @@ class User extends Model
 
 		$paginate = Paginate::pagination($perPage, $allUsers);
 
-		$users_data = array(
+		return array(
 			'USERS' => $paginate['dataInPage'],
 			'PAGES' => $paginate['pages']
 		);
-
-		return $users_data;
 
 	}
 
@@ -49,19 +47,9 @@ class User extends Model
 	{
 		$check_data = $this->verifyUserDataExists($arg['username'], $arg['email']);
 
-		if ($check_data == NULL){
-
-			$parameter = $this->saveParameters($arg);
-			$response = Api::callApi('core_user_create_users', $parameter);
-
-			$return_api = $this->verifyErrorApiSave($response);
-
-			return $return_api;
-
-		} else {
-
-			return $check_data;
-		} 
+		return empty($check_data) 
+		? $this->verifyErrorApiSave(Api::callApi('core_user_create_users', $this->saveParameters($arg))) 
+		: $check_data;
 	}
 
 
@@ -100,7 +88,9 @@ class User extends Model
 
 
 	private function verifyUserDataExists(String $username, String $email):array
-	{
+	{		
+		$return_api = [];
+
 		$parameter = '&field=email&values[0]=' . $email;
 		$response = Api::callApi('core_user_get_users_by_field', $parameter);
 
