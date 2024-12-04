@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ret",
+				"return"
+			],
+			[
 				"_",
 				"_GET"
 			],
@@ -238,18 +242,22 @@
 		"/C/wamp64/www/painel-v2/app/controllers/lms",
 		"/C/wamp64/www/painel-v2/app/functions",
 		"/C/wamp64/www/painel-v2/app/models",
-		"/C/wamp64/www/painel-v2/app/models/lms",
 		"/C/wamp64/www/painel-v2/app/src",
+		"/C/wamp64/www/painel-v2/app/traits",
+		"/C/wamp64/www/painel-v2/app/traits/lms",
 		"/C/wamp64/www/painel-v2/core"
 	],
 	"file_history":
 	[
-		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
-		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
-		"/C/wamp64/www/painel-v2/app/src/Api.php",
 		"/C/wamp64/www/painel-v2/app/controllers/UserController.php",
-		"/C/wamp64/www/painel-v2/app/views/templates/partials/output/pagination.twig",
 		"/C/wamp64/www/painel-v2/app/models/User.php",
+		"/C/wamp64/www/painel-v2/app/traits/lms/User.php",
+		"/C/wamp64/www/painel-v2/app/models/lms/User.php",
+		"/C/Users/alercio.borges/Desktop/query_uscs_tentativa-quiz_prova.sql",
+		"/C/Users/alercio.borges/Desktop/report_uscs_v2.html",
+		"/C/wamp64/www/painel-v2/app/controllers/lms/UserController.php",
+		"/C/wamp64/www/painel-v2/app/src/Api.php",
+		"/C/wamp64/www/painel-v2/app/views/templates/partials/output/pagination.twig",
 		"/C/wamp64/www/painel-v2/core/Model.php",
 		"/C/wamp64/www/painel-v2/core/Controller.php",
 		"/C/wamp64/www/painel-v2/app/views/templates/pages/users.html",
@@ -368,14 +376,11 @@
 		"/C/xampp/htdocs/painel-v2/app/controllers/HomeController.php",
 		"/C/xampp/htdocs/painel/core/Controller.php",
 		"/C/xampp/htdocs/painel/src/Controllers/UserController.php",
-		"/C/xampp/htdocs/painel/src/Controllers/Teste.php",
-		"/C/xampp/htdocs/painel/src/Config.php",
-		"/C/xampp/htdocs/painel/src/Controllers/HomeController.php",
-		"/C/xampp/htdocs/painel/src/Controllers/ErrorController.php"
+		"/C/xampp/htdocs/painel/src/Controllers/Teste.php"
 	],
 	"find":
 	{
-		"height": 44.0
+		"height": 32.0
 	},
 	"find_in_files":
 	{
@@ -389,6 +394,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"updateParameters",
+			"mail já e",
 			"verifyUserDataExists",
 			"ret",
 			"Próximo",
@@ -514,9 +521,7 @@
 			"setParams",
 			"$conn",
 			"'],",
-			"course",
-			"couurse",
-			"addUniqueNumber"
+			"course"
 		],
 		"highlight": true,
 		"in_selection": false,

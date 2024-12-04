@@ -28,12 +28,12 @@ trait User{
 	{
 		mb_internal_encoding('UTF-8');
 
+		$email = '&users[0][email]=' . strtolower($arg['email']);
 		$username = '&users[0][username]=' . strtolower($arg['username']);
 		$auth = '&users[0][auth]=manual';
 		$firstname = '&users[0][firstname]=' . urlencode(mb_strtoupper($arg['firstname']));
 		$lastname = '&users[0][lastname]=' . urlencode(mb_strtoupper($arg['lastname']));
-		$email = '&users[0][email]=' . strtolower($arg['email']);
-		
+				
 		$parameter = $username.$auth.$firstname.$lastname.$email;
 		
 		return $parameter;

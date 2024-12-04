@@ -126,9 +126,14 @@ class UserController extends Controller
 	public function delete(Request $request, Response $response, array $args):Response
 	{
 		$user = new User();
-		$user->destroy($args['id']);
 
-		flash('message', success("Usuário exclído com sucesso"));
+		try {
+			$user->destroy($args['id']);
+			flash('message', success("Usuário exclído com sucesso"));
+		} catch (Exception $e) {
+			flash('message', error("Erro ao excluir usuário: {$e->getMessage()}"));
+		}
+		
 		redirect("/admin/users");
 
 		return $response;
