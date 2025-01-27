@@ -40,8 +40,13 @@ class UserController extends Controller
 	{
 		$role = new Role();
 
-		$roles = $role->getRoles();
-
+		try {	
+			$roles = $role->getRoles();			
+		} catch (\Exception $e) {
+			flash('message', error($e->getMessage()));
+			redirect('/admin/users');
+		}
+		
 		$this->view('pages/user-create.html', [
 			'TITLE' => 'Cadastrar novo usuário',
 			'ROLES' => $roles,
@@ -66,9 +71,13 @@ class UserController extends Controller
 		]);
 
 		$user = new User();
-		$user = $user->save($data);
 
-		flash('message', success("Usuário criado com sucesso"));
+		try {
+			$user = $user->save($data);			
+		} catch (Exception $e) {
+			flash('message', error("Erro ao tentar cadastrar usuário: $e->getMessage()"));
+		}
+
 		redirect('/admin/users');
 	}
 
@@ -84,7 +93,6 @@ class UserController extends Controller
 			flash('message', error($e->getMessage()));
 			redirect('/admin/users');
 		}
-
 
 		$role = new Role();
 		$roles = $role->getRoles();
@@ -113,9 +121,14 @@ class UserController extends Controller
 		]);
 
 		$user = new User();
-		$user = $user->edit($args['id'], $data);
 
-		flash('message', success("Cadastro de Usuário alterado com sucesso"));
+		try {
+			$user = $user->edit($args['id'], $data);
+			flash('message', success("Cadastro de Usuário alterado com sucesso"));			
+		} catch (\Exception $e) {
+			flash('message', error("Erro ao tentar edupar usuário usuário: {$e->getMessage()}"));
+		}
+
 		redirect("/admin/users");
 
 		return $response;
