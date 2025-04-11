@@ -36,14 +36,16 @@ class LoginController extends Controller
 
 		$loggedIn = $login->login($data, new User);
 
-		if ($loggedIn) {
-			$redirec = $_SESSION['redirect'] ?? '/';
-			unset($_SESSION['redirect']);
-			redirect($redirec);
-		} else {
+		if (!$loggedIn) {
 			flash('error', error("Nome de usuário e/ou senha incorreto"));
-			redirect('/login');			
-		}		
+			setcookie('email', $data['email'], time() + 1);
+			redirect('/login');	
+		}
+
+		$redirec = $_SESSION['redirect'] ?? '/';
+		unset($_SESSION['redirect']);
+		redirect($redirec);
+				
 	}
 
 	public function logout()

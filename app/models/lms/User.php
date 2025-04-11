@@ -168,4 +168,4 @@ class User extends Model
 		];
 	}
 
-}	
+}

@@ -87,6 +87,6 @@ trait Crud{
     {
         self::_checkH();
         $table = self::$_h->table($table_name);
-        return $table->delete(); 
+        return $table->delete();
     }
 }

@@ -7,7 +7,8 @@ use app\traits\Sanitize;
 
 class Validate
 {
-	use Validations, Sanitize;
+	use Validations;
+	use Sanitize;
 
 
 	public function validateApi(array $return_api)
