@@ -7,7 +7,7 @@ use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 use app\Config;
 use app\src\Middleware;
 
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
 }
 

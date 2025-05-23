@@ -17,7 +17,7 @@ class LoginController extends Controller
 	{
 		$this->view('pages/login.html', [
 			'TITLE' => 'Acessar',
-			'COOKIE' => $_COOKIE
+			'COOKIE_EMAIL' => $_SESSION['email'] ?? NULL
 		]);
 
 		return $response;
@@ -37,11 +37,12 @@ class LoginController extends Controller
 		$loggedIn = $login->login($data, new User);
 
 		if (!$loggedIn) {
+			$_SESSION['email'] = $data['email'];
 			flash('error', error("Nome de usuário e/ou senha incorreto"));
-			setcookie('email', $data['email'], time() + 1);
 			redirect('/login');	
 		}
-
+	 	
+		
 		$redirec = $_SESSION['redirect'] ?? '/';
 		unset($_SESSION['redirect']);
 		redirect($redirec);

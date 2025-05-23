@@ -25,7 +25,7 @@
         <form action="{{ get_full_url() }}/login" method="POST">
           <div class="input-group mb-3">
             {{ message('error') }}
-            <input type="email" class="form-control border border-dark" name="email" placeholder="Email" value="{{ COOKIE['email'] }}" maxlength="30" autofocus required>
+            <input type="email" class="form-control border border-dark" name="email" placeholder="Email" value="{{ COOKIE_EMAIL }}" maxlength="30" autofocus required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>                
