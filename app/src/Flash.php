@@ -16,7 +16,7 @@ class Flash
 		if (isset($_SESSION[$index])) {
 			$message = $_SESSION[$index];
 		}
-
+		
 		unset($_SESSION[$index]);
 
 		return $message ?? NULL;
