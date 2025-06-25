@@ -40,3 +40,10 @@ CREATE TABLE tbl_user_role (
 ENGINE=InnoDB
 ROW_FORMAT=COMPRESSED
 AUTO_INCREMENT=0;
+
+
+INSERT INTO tbl_role values(
+	NULL,
+	'Administrador',
+	NOW()	
+)

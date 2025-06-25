@@ -8,8 +8,8 @@ use ClanCats\Hydrahon\Builder;
 use ClanCats\Hydrahon\Query\Sql\FetchableInterface;
 use ClanCats\Hydrahon\Query\Sql\Insert;
 
-trait Crud{
-
+trait Crud
+{
     protected static $_h;
     
     public function __construct()
@@ -22,32 +22,31 @@ trait Crud{
         if(self::$_h == null) {            
 
             try {
-                $connection = Database::getInstance();
+                $connection = Database::getInstance();            
+
+                self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
+                {
+                    $statement = $connection->prepare($queryString);
+                    $statement->execute($queryParameters);
+
+                    if ($query instanceof FetchableInterface)
+                    {
+                        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+                    }
+                    elseif($query instanceof Insert)
+                    {
+                        return $connection->lastInsertId();
+                    }
+                    else 
+                    {
+                        return $statement->rowCount();
+                    }   
+                });
+
             } catch (\Exception $e) {
-                flash('conn_error', error($e->getMessage()));
-                throw new \Exception($e->getMessage());
-                
+                throw new \Exception($e->getMessage());                 
             }
-
-            self::$_h = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
-            {
-                $statement = $connection->prepare($queryString);
-                $statement->execute($queryParameters);
-
-                if ($query instanceof FetchableInterface)
-                {
-                    return $statement->fetchAll(\PDO::FETCH_ASSOC);
-                }
-                elseif($query instanceof Insert)
-                {
-                    return $connection->lastInsertId();
-                }
-                else 
-                {
-                    return $statement->rowCount();
-                }   
-            });
-        }
+        } 
     }
 
     protected function select()

@@ -51,7 +51,7 @@ class LoginController extends Controller
 		} catch (\Exception $e) {
 			// Log do erro (assumindo que existe um sistema de log)
 			error_log('Login error: ' . $e->getMessage());
-			flash('error', error('Erro interno. Tente novamente.'));
+			flash('error', error('Erro interno. Tente novamente mais tarde.'));
 			redirect('/login');
 		}
 	}
