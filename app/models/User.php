@@ -19,8 +19,7 @@ class User extends Model
 		)
 		->innerJoin("$this->table as u", 'u.id', '=', 'ur.user_id')
 		->innerJoin('tbl_role as r', 'r.id', '=', 'ur.role_id')
-		->orderby('id')
-		->get();
+		->orderby('id')->get();
 
 		$paginate = Paginate::pagination($perPage, $users);
 		

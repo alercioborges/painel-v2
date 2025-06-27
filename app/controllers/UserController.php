@@ -20,9 +20,15 @@ class UserController extends Controller
 
 		$perPage = 3;
 
-		$users = isset($_GET['search'])
-		? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
-		: $user->getAll($perPage);
+		try {		
+			$users = isset($_GET['search'])
+			? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
+			: $user->getAll($perPage);
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage());
+			
+			
+		}
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
