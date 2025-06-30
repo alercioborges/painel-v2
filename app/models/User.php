@@ -38,7 +38,7 @@ class User extends Model
 
 		unset($userData['role_id']);
 
-		$userRole['user_id'] = $this->insert([$userData], $this->table);
+		$userRole['user_id'] = $this->insert([$userData]);
 
 		$roleInsertResult = $this->insert([$userRole], 'tbl_user_role');
 
@@ -102,7 +102,7 @@ class User extends Model
 		unset($userData['role_id']);
 
 		return [
-			'user' => $this->update($this->table)->set($userData)->where('id', $id)->execute(),
+			'user' => $this->update()->set($userData)->where('id', $id)->execute(),
 			'role' => $this->update('tbl_user_role')->set($userRole)->where('user_id', $id)->execute()
 		];		
 	}
@@ -113,7 +113,7 @@ class User extends Model
 	{
 		return [
 			'user_role' => $this->delete('tbl_user_role')->where('user_id', $id)->execute(),
-			'user' => $this->delete($this->table)->where('id', $id)->execute()
+			'user' => $this->delete()->where('id', $id)->execute()
 		];
 	}
 

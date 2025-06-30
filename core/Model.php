@@ -6,7 +6,7 @@ use app\traits\Crud;
 use app\traits\Pagination;
 
 
-class Model
+abstract class Model
 {
 	use Crud;
 

@@ -75,26 +75,35 @@ trait Crud
 }
 
 
-protected function update(String $table)
+protected function update(String $table = NULL)
 {
- self::initQueryBuilder();
- $table = self::$queryBuilder->table($table);
- return $table->update($data);
+    self::initQueryBuilder();
+    $tableName = $table ?? $this->getTableName();
+
+    return self::$queryBuilder->table($tableName)->update();
 }
 
 
-protected function insert(array $data, String $table_name)
+protected function insert(array $data, String $table = NULL)
 {
     self::initQueryBuilder();
-    $table = self::$_h->table($table_name);
-    return $table->insert($data)->execute();
+
+    if (empty($data)) {
+        throw new InvalidArgumentException('Insert data cannot be empty');
+    }
+
+    $tableName = $table ?? $this->getTableName();
+
+    return self::$queryBuilder->table($tableName)->insert($data)->execute();
 }
 
-protected function delete(String $table_name)
+protected function delete(String $table = NULL)
 {
     self::initQueryBuilder();
-    $table = self::$_h->table($table_name);
-    return $table->delete();
+
+    $tableName = $table ?? $this->getTableName();
+
+    return self::$queryBuilder->table($tableName)->delete();
 }
 
 
