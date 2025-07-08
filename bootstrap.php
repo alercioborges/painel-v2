@@ -2,6 +2,7 @@
 
 use Middlewares\TrailingSlash;
 use Slim\Factory\AppFactory;
+use Dotenv\Dotenv;
 use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 use app\Config;
@@ -12,6 +13,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 $app = AppFactory::create();
 
