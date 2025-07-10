@@ -34,14 +34,13 @@ class Database
         try {
             self::$instance = new PDO(
                 Config::DB_DRIVER
-                .":dbname=".Config::DB_DATABASE
-                .";host=".Config::DB_HOST,
+                    . ":dbname=" . Config::DB_DATABASE
+                    . ";host=" . Config::DB_HOST,
                 Config::DB_USER,
                 Config::DB_PASS,
                 self::getDefaultOptions()
             );
-
-        } catch (PDOException $e) { 
+        } catch (PDOException $e) {
             self::handleConnectionError($e);
         }
     }
@@ -50,18 +49,18 @@ class Database
 
     private static function handleConnectionError(PDOException $e): void
     {
-        $message = "Erro de conexão com o banco de dados";
-        
+        $message = "Erro de conexão com o banco de dados.";
+
         // Log do erro (se houver sistema de log configurado)
         if (function_exists('error_log')) {
             error_log("Database Connection Error: " . $e->getMessage());
         }
-        
+
         // Em produção, não expor detalhes do erro
-        if (defined('APP_ENV') && APP_ENV === 'production') {
+        if (isset($_ENV['APP_NODE_ENV']) && $_ENV['APP_NODE_ENV'] === 'production') {
             throw new RuntimeException($message);
         }
-        
+
         throw new RuntimeException($message . ': ' . $e->getMessage());
     }
 
@@ -75,6 +74,5 @@ class Database
             PDO::ATTR_STRINGIFY_FETCHES => false,
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . Config::DB_CHARSET
         ];
-    }    
-
+    }
 }

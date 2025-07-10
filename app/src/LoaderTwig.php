@@ -11,7 +11,7 @@ class LoaderTwig
 		$twig = new \Twig\Environment($loader, [
 			'cache' => '../app/views/cache',
 			'cache' => false,
-			'debug' => true
+			'debug' => $_ENV['APP_DEBUG']
 		]);
 
 		$twig->addExtension(new \Twig\Extension\DebugExtension());

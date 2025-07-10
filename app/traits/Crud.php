@@ -22,8 +22,8 @@ trait Crud
         if(self::$queryBuilder == null) {            
 
             try {
-                $connection = Database::getInstance();            
-
+                $connection = Database::getInstance();
+                
                 self::$queryBuilder = new Builder('mysql', function($query, $queryString, $queryParameters) use($connection)
                 {
                     $statement = $connection->prepare($queryString);
