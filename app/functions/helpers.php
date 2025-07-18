@@ -33,7 +33,8 @@ function back(){
 }
 
 function redirect($target){
-	app\src\Redirect::redirect(app\Config::BASE_DIR . $target);
+	$app = \app\config\App::getConfig();
+	app\src\Redirect::redirect($app['dir']. $target);
 	exit();
 }
 

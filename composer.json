@@ -6,7 +6,8 @@
         "middlewares/trailing-slash": "^2.0",
         "clancats/hydrahon": "^1.1",
         "zeuxisoo/slim-whoops": "0.7.*",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "php-di/php-di": "^7.4"
     },
 
     "autoload": {

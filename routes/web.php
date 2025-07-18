@@ -24,7 +24,7 @@ $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
     	$group->post('/edit/{id:[0-9]+}', 'app\controllers\UserController:update');
     	$group->get('/delete/{id:[0-9]+}', 'app\controllers\UserController:delete');
 	});
-})->add($middleware->logged());
+});//->add($middleware->logged());
 
 // Grupo de rotas LMS - Usuários
 $app->group('/lms/users', function (Slim\Routing\RouteCollectorProxy $group) {

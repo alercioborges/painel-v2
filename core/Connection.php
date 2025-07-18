@@ -2,12 +2,12 @@
 
 namespace core;
 
-use app\Config;
+use app\config\Database;
 use PDO;
 use PDOException;
 use RuntimeException;
 
-class Database
+class Connection
 {
     private static ?PDO $instance = null;
 
@@ -27,25 +27,24 @@ class Database
         }
 
         return self::$instance;
-    }
+    }    
 
     private static function createConnection(): void
     {
         try {
+            $config = Database::getConfig();
             self::$instance = new PDO(
-                Config::DB_DRIVER
-                    . ":dbname=" . Config::DB_DATABASE
-                    . ";host=" . Config::DB_HOST,
-                Config::DB_USER,
-                Config::DB_PASS,
-                self::getDefaultOptions()
+                $config['driver']
+                    . ":dbname=" . $config['database']
+                    . ";host=" . $config['host'] . ":" . $config['port'],
+                $config['username'],
+                $config['password'],
+                $config['options']
             );
         } catch (PDOException $e) {
             self::handleConnectionError($e);
         }
     }
-
-
 
     private static function handleConnectionError(PDOException $e): void
     {
@@ -56,23 +55,13 @@ class Database
             error_log("Database Connection Error: " . $e->getMessage());
         }
 
+        $app = \app\config\App::getConfig();
+
         // Em produção, não expor detalhes do erro
-        if (isset($_ENV['APP_NODE_ENV']) && $_ENV['APP_NODE_ENV'] === 'production') {
+        if (isset($app['env']) && $app['env'] === 'production') {
             throw new RuntimeException($message);
         }
 
         throw new RuntimeException($message . ': ' . $e->getMessage());
-    }
-
-
-    private static function getDefaultOptions(): array
-    {
-        return [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-            PDO::ATTR_STRINGIFY_FETCHES => false,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . Config::DB_CHARSET
-        ];
     }
 }

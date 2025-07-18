@@ -6,8 +6,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Routing\RouteContext;
 
-use app\Config;
-
 class Middleware
 {
 
@@ -15,8 +13,9 @@ class Middleware
 	{		
 
 		$logged = function (Request $request, $handler): Response {
-
-			$path = explode(Config::BASE_DIR, $request->getUri()->getPath());		
+			//$app = \app\config\App::getConfig();
+			//dd($app);
+			$path = explode('/painel-v2/public', $request->getUri()->getPath());		
 
 			if (
 				!isset($_SESSION['loggedIn'])

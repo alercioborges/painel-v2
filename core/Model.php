@@ -2,13 +2,14 @@
 
 namespace core;
 
-use app\traits\Crud;
+use app\traits\DatabaseOperations;
+
 use app\traits\Pagination;
 
 
 abstract class Model
 {
-	use Crud;
+	use DatabaseOperations;
 
 	public function find($field, $value)
 	{

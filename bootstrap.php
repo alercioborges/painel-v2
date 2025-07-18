@@ -13,6 +13,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 require __DIR__ . '/vendor/autoload.php';
 
+$config = require __DIR__ . '/app/config/database.php';
+
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
