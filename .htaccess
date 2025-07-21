@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Detecta o caminho da pasta atual (caso esteja em subdiretório)
+RewriteBase /
+
+# Redireciona tudo para a pasta /public, exceto se já for para /public ou arquivos reais
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Define o index padrão
+DirectoryIndex public/index.php

@@ -15,7 +15,7 @@ class Middleware
 		$logged = function (Request $request, $handler): Response {
 			//$app = \app\config\App::getConfig();
 			//dd($app);
-			$path = explode('/painel-v2/public', $request->getUri()->getPath());		
+			$path = explode($_ENV['APP_BASE_DIR'], $request->getUri()->getPath());		
 
 			if (
 				!isset($_SESSION['loggedIn'])

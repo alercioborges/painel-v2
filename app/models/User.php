@@ -32,15 +32,15 @@ class User extends Model
 
 
 	public function save(array $userData)
-	{		
+	{
 		$userData['password'] = Password::make($userData['password']);
 		$userRole = ['role_id' => $userData['role_id']];
 
 		unset($userData['role_id']);
 
-		$userRole['user_id'] = $this->insert([$userData]);
+		$userRole['user_id'] = $this->insert($userData);
 
-		$roleInsertResult = $this->insert([$userRole], 'tbl_user_role');
+		$roleInsertResult = $this->insert($userRole, 'tbl_user_role');
 
 		return [
 			'user' => $userRole['user_id'],

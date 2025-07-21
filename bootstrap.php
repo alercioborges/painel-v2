@@ -2,7 +2,7 @@
 
 use Middlewares\TrailingSlash;
 use Slim\Factory\AppFactory;
-use Dotenv\Dotenv;
+
 use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 
 use app\src\Middleware;
@@ -15,7 +15,11 @@ require __DIR__ . '/vendor/autoload.php';
 
 $config = require __DIR__ . '/app/config/database.php';
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+if (file_exists('.env')) {
+	throw new \Exception("Error Processing Request", 1);	
+}
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 // Criar aplicação Slim

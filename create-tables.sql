@@ -37,6 +37,7 @@ CREATE TABLE tbl_user_role (
 	FOREIGN KEY (user_id) REFERENCES tbl_user(id),
 	FOREIGN KEY (role_id) REFERENCES tbl_role(id)
 )
+COLLATE='utf8mb4_unicode_ci'
 ENGINE=InnoDB
 ROW_FORMAT=COMPRESSED
 AUTO_INCREMENT=0;

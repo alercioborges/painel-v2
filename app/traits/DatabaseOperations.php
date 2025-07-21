@@ -79,7 +79,7 @@ trait DatabaseOperations
     {
         self::initQueryBuilder();
 
-        if (!empty($data)) {
+        if (empty($data)) {
             throw new \InvalidArgumentException('Insert data cannot be empty');
         }
 
