@@ -4,12 +4,28 @@ namespace app\config;
 
 class App
 {
-    public static function getConfig(): array
+
+    private array $dataConfig;
+
+    public function __construct()
     {
-        return [
-            'env' => $_ENV['APP_NODE_ENV'] ?? 'production',
+        $this->dataConfig = [
+            'env'   => $_ENV['APP_NODE_ENV'] ?? 'production',
             'debug' => ($_ENV['APP_DEBUG'] ?? 'false') === 'true',
-            'dir' => $_ENV['APP_BASE_DIR'] ??  ''
+            'dir'   => $_ENV['APP_BASE_DIR'] ??  ''
         ];
+    }
+
+
+    public static function config()
+    {
+        static $config = new App();
+        return $config;
+    }
+
+
+    public function get($key)
+    {
+        return $this->dataConfig[$key];
     }
 }

@@ -13,9 +13,8 @@ class Middleware
 	{		
 
 		$logged = function (Request $request, $handler): Response {
-			//$app = \app\config\App::getConfig();
-			//dd($app);
-			$path = explode($_ENV['APP_BASE_DIR'], $request->getUri()->getPath());		
+			
+			$path = explode(\app\config\App::config()->get('dir'), $request->getUri()->getPath());		
 
 			if (
 				!isset($_SESSION['loggedIn'])

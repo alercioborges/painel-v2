@@ -3,6 +3,7 @@
 namespace core;
 
 use app\config\Database;
+use app\config\App;
 use PDO;
 use PDOException;
 use RuntimeException;
@@ -27,19 +28,19 @@ class Connection
         }
 
         return self::$instance;
-    }    
+    }
 
     private static function createConnection(): void
     {
         try {
-            $config = Database::getConfig();
+
             self::$instance = new PDO(
-                $config['driver']
-                    . ":dbname=" . $config['database']
-                    . ";host=" . $config['host'] . ":" . $config['port'],
-                $config['username'],
-                $config['password'],
-                $config['options']
+                Database::config()->get('driver')
+                    . ":dbname=" . Database::config()->get('database')
+                    . ";host=" . Database::config()->get('host') . ":" . Database::config()->get('port'),
+                Database::config()->get('username'),
+                Database::config()->get('password'),
+                Database::config()->get('options')
             );
         } catch (PDOException $e) {
             self::handleConnectionError($e);
@@ -55,10 +56,8 @@ class Connection
             error_log("Database Connection Error: " . $e->getMessage());
         }
 
-        $app = \app\config\App::getConfig();
-
         // Em produção, não expor detalhes do erro
-        if (isset($app['env']) && $app['env'] === 'production') {
+        if (App::config()->get('env') != NULL && App::config()->get('env') === 'production') {
             throw new RuntimeException($message);
         }
 

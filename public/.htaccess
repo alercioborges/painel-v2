@@ -1,5 +1,10 @@
 RewriteEngine On
 
+# Remove 'public' da URL se estiver presente
+RewriteCond %{THE_REQUEST} \s/+(.*/)?public/([^\s\?]*) [NC]
+RewriteRule ^ /%1%2 [R=301,L]
+
+# Redireciona tudo para index.php se não for arquivo/diretório existente
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

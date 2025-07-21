@@ -13,12 +13,11 @@ function renderTemplate(String $view, array $data = [])
 }
 
 $get_full_url = new Twig\TwigFunction('get_full_url', function()
-{	
-	$app = \app\config\App::getConfig();
+{
 	$isHttps = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
 	$protocol = $isHttps ? 'https://' : 'http://';
 
-	$full_url = $protocol . $_SERVER['HTTP_HOST'] . $app['dir'];
+	$full_url = $protocol . $_SERVER['HTTP_HOST'] . \app\config\App::config()->get('dir');
 
 	return $full_url;
 });
