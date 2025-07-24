@@ -10,6 +10,10 @@ $app->get('/logout', 'app\controllers\LoginController:logout');
 // Rota principal (protegida)
 $app->get('', 'app\controllers\OverviewController:index')->add($middleware->logged());
 
+// Entrar em contato (envio de e-mail)
+$app->get('/contato', 'app\controllers\Contact:index');
+$app->post('/contato', 'app\controllers\Contact:store');
+
 // Rota de teste
 $app->get('/teste', 'app\controllers\TesteController:show');
 

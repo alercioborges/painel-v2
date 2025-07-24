@@ -32,9 +32,8 @@ function back(){
 	exit;
 }
 
-function redirect($target){
-	$app = \app\config\App::getConfig();
-	app\src\Redirect::redirect($app['dir']. $target);
+function redirect($target) {
+	\app\src\Redirect::redirect(\app\config\App::config()->get('dir') . $target);
 	exit();
 }
 
