@@ -11,8 +11,8 @@ $app->get('/logout', 'app\controllers\LoginController:logout');
 $app->get('', 'app\controllers\OverviewController:index')->add($middleware->logged());
 
 // Entrar em contato (envio de e-mail)
-$app->get('/contato', 'app\controllers\Contact:index');
-$app->post('/contato', 'app\controllers\Contact:store');
+$app->get('/contact-us', 'app\controllers\ContactUs:index');
+$app->post('/contact-us', 'app\controllers\ContactUs:store');
 
 // Rota de teste
 $app->get('/teste', 'app\controllers\TesteController:show');
@@ -21,12 +21,12 @@ $app->get('/teste', 'app\controllers\TesteController:show');
 $app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
 	// Rotas de usuários
 	$group->group('/users', function (Slim\Routing\RouteCollectorProxy $group) {
-    	$group->get('', 'app\controllers\UserController:show');
-    	$group->get('/create', 'app\controllers\UserController:create');
-    	$group->post('/create', 'app\controllers\UserController:save');
-    	$group->get('/edit/{id:[0-9]+}', 'app\controllers\UserController:edit');
-    	$group->post('/edit/{id:[0-9]+}', 'app\controllers\UserController:update');
-    	$group->get('/delete/{id:[0-9]+}', 'app\controllers\UserController:delete');
+		$group->get('', 'app\controllers\UserController:show');
+		$group->get('/create', 'app\controllers\UserController:create');
+		$group->post('/create', 'app\controllers\UserController:save');
+		$group->get('/edit/{id:[0-9]+}', 'app\controllers\UserController:edit');
+		$group->post('/edit/{id:[0-9]+}', 'app\controllers\UserController:update');
+		$group->get('/delete/{id:[0-9]+}', 'app\controllers\UserController:delete');
 	});
 })->add($middleware->logged());
 

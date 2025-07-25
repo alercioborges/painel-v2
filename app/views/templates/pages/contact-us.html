@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            transform: translateY(-10px);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .field-invalid {
+            border-color: #e74c3c !important;
+            background: rgba(231, 76, 60, 0.05) !important;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Entre em Contato</h1>
+
+        <div class="success-message" id="successMessage">
+            Mensagem enviada com sucesso! Entraremos em contato em breve.
+        </div>
+
+        <form id="contactForm" action="{{ base_path }}/contact-us" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome <span class="required">*</span></label>
+                <input type="text" id="nome" name="nome">
+                <div class="error-message" id="nomeError">Por favor, digite seu nome.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail <span class="required">*</span></label>
+                <input type="email" id="email" name="email">
+                {{ message("email") }}
+                <div class="error-message" id="emailError">Por favor, digite um e-mail válido.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="assunto">Assunto <span class="required">*</span></label>
+                <input type="text" id="assunto" name="assunto">
+                <div class="error-message" id="assuntoError">Por favor, digite o assunto.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem <span class="required">*</span></label>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui..."></textarea>
+                <div class="error-message" id="mensagemError">Por favor, digite sua mensagem.</div>
+            </div>
+
+            <input type="submit" class="submit-btn" value="enviar">
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('contactForm');
+
+        // Função para validar e-mail
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Função para mostrar erro
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + 'Error');
+
+            field.classList.add('field-invalid');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Função para limpar erro (mantida para uso durante validação)
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + 'Error');
+
+            field.classList.remove('field-invalid');
+            errorElement.style.display = 'none';
+        }
+
+        // Função para limpar completamente um campo (erro, estilização e conteúdo)
+        function clearFieldCompletely(fieldId) {
+            const field = document.getElementById(fieldId);
+            const errorElement = document.getElementById(fieldId + 'Error');
+
+            // Remover classe de erro
+            field.classList.remove('field-invalid');
+            // Ocultar mensagem de erro
+            errorElement.style.display = 'none';
+            // Limpar texto da mensagem
+            errorElement.textContent = '';
+            // Limpar valor do campo
+            field.value = '';
+        }
+
+        // Validação do formulário
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            // Verificar se nome foi preenchido
+            const nome = document.getElementById('nome').value.trim();
+            if (!nome) {
+                showError('nome', 'Por favor, preencha o campo nome.');
+                isValid = false;
+            } else {
+                clearError('nome');
+            }
+
+            // Verificar se email foi preenchido e se é válido
+            const email = document.getElementById('email').value.trim();
+            if (!email) {
+                showError('email', 'Por favor, preencha o campo e-mail.');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('email', 'Por favor, digite um e-mail válido.');
+                isValid = false;
+            } else {
+                clearError('email');
+            }
+
+            // Verificar se assunto foi preenchido
+            const assunto = document.getElementById('assunto').value.trim();
+            if (!assunto) {
+                showError('assunto', 'Por favor, preencha o campo assunto.');
+                isValid = false;
+            } else {
+                clearError('assunto');
+            }
+
+            // Verificar se mensagem foi preenchida
+            const mensagem = document.getElementById('mensagem').value.trim();
+            if (!mensagem) {
+                showError('mensagem', 'Por favor, preencha o campo mensagem.');
+                isValid = false;
+            } else {
+                clearError('mensagem');
+            }
+
+            // Se todos os campos estiverem preenchidos e e-mail válido, enviar formulário
+            if (isValid) {
+                // Enviar o formulário
+                form.submit();
+
+                // Limpar completamente todos os campos (dados, erros e estilização)
+                clearFieldCompletely('nome');
+                clearFieldCompletely('email');
+                clearFieldCompletely('assunto');
+                clearFieldCompletely('mensagem');
+            }
+        });
+    </script>
+    < </body>
+
+</html>
