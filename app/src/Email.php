@@ -6,36 +6,30 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+use app\src\Load;
+
 class Email
 {
     public function send()
     {
         $mail = new PHPMailer(true);
-
+        $config = Load::file('/app/config/SMPT.php');
+        
         try {
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
 
-            $mail->Host = 'sandbox.smtp.mailtrap.io';
+            $mail->Host = $config['host'];
             $mail->SMTPAuth = true;
-            $mail->Username = '4995bfc3ad6535';
-            $mail->Password = '****9a45';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-
-            // Configurações SSL relaxadas
-            $mail->SMTPOptions = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );
+            $mail->Username = $config['username'];
+            $mail->Password = $config['password'];
+            $mail->SMTPSecure = $config['secure'];  //PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = $config['port'];
 
             //Recipients
-            $mail->setFrom('from@example.com', 'Joe User');
-            $mail->addAddress('joe@example.net', 'Joe User');
+            $mail->setFrom('email@hotmail.com', 'Alercio Borges');
+            $mail->addAddress('email@hotmail.com', 'Alercio Borges');
 
             $mail->isHTML(true);
             $mail->Subject = 'subject(assunto)';

@@ -8,7 +8,7 @@ use PDO;
 use PDOException;
 use RuntimeException;
 
-class Connection
+abstract class Connection
 {
     private static ?PDO $instance = null;
 
@@ -51,13 +51,10 @@ class Connection
     {
         $message = "Erro de conexão com o banco de dados.";
 
-        // Log do erro (se houver sistema de log configurado)
-        if (function_exists('error_log')) {
-            error_log("Database Connection Error: " . $e->getMessage());
-        }
+        error_log("Database Connection Error: " . $e->getMessage());
 
         // Em produção, não expor detalhes do erro
-        if (App::config()->get('env') != NULL && App::config()->get('env') === 'production') {
+        if (empty(App::config()->get('env')) || App::config()->get('env') === 'production') {
             throw new RuntimeException($message);
         }
 

@@ -4,7 +4,7 @@ namespace core;
 
 use app\traits\View;
 
-class Controller
+abstract class Controller
 {
 
 	use View;	

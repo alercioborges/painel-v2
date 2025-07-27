@@ -4,7 +4,7 @@ namespace app\src;
 
 class Load
 {
-	public static function file($file)
+	public static function file(string $file):mixed
 	{
 		
 		$file = path().$file;
