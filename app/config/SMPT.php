@@ -2,8 +2,8 @@
 
 return[
     'host'      => 'smtp.gmail.com',
-    'username'  => 'email@gmail.com',
-	'password'  => '#######',
-    'secure'    => 'tls',
-	'port'      => 587
+    'username'  => '*******',
+	'password'  => '******',
+    'secure'    => 'ssl',
+	'port'      => 465
 ];

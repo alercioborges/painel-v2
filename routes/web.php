@@ -2,33 +2,21 @@
 
 require "../bootstrap.php";
 
-// Rotas de autenticação
-$app->get('/login', 'app\controllers\LoginController:index')->setName('login');
-$app->post('/login', 'app\controllers\LoginController:login');
-$app->get('/logout', 'app\controllers\LoginController:logout');
+// Contact-ua route
+require 'contact-us.php';
 
-// Rota principal (protegida)
-$app->get('', 'app\controllers\OverviewController:index')->add($middleware->logged());
+// Auth routes
+require 'auth.php';
 
-// Entrar em contato (envio de e-mail)
-$app->get('/contact-us', 'app\controllers\ContactUs:index');
-$app->post('/contact-us', 'app\controllers\ContactUs:store');
+// Initial routes
+require 'initial.php';
 
 // Rota de teste
 $app->get('/teste', 'app\controllers\TesteController:show');
 
-// Grupo de rotas administrativas
-$app->group('/admin', function (Slim\Routing\RouteCollectorProxy $group) {
-	// Rotas de usuários
-	$group->group('/users', function (Slim\Routing\RouteCollectorProxy $group) {
-		$group->get('', 'app\controllers\UserController:show');
-		$group->get('/create', 'app\controllers\UserController:create');
-		$group->post('/create', 'app\controllers\UserController:save');
-		$group->get('/edit/{id:[0-9]+}', 'app\controllers\UserController:edit');
-		$group->post('/edit/{id:[0-9]+}', 'app\controllers\UserController:update');
-		$group->get('/delete/{id:[0-9]+}', 'app\controllers\UserController:delete');
-	});
-})->add($middleware->logged());
+// Group routes admis
+require 'admin/index.php';
+
 
 // Grupo de rotas LMS - Usuários
 $app->group('/lms/users', function (Slim\Routing\RouteCollectorProxy $group) {

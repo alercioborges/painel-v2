@@ -2,10 +2,12 @@
 
 use Middlewares\TrailingSlash;
 use Slim\Factory\AppFactory;
+use DI\Container;
 
 use app\config\App;
 use app\src\Middleware;
 use app\src\ErrorMiddleware;
+use DI\ContainerBuilder;
 
 if (!session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
@@ -18,6 +20,8 @@ $dotenv->load();
 
 // Criar aplicação Slim
 $app = AppFactory::create();
+
+$container = new ContainerBuilder();
 
 // Adicionando diretório do dominio
 if (!empty(App::config()->get('dir'))) {
@@ -32,6 +36,6 @@ $app->add(new TrailingSlash(false)); // Adiciona barra ao final
 
 // Carrega os tipo de menssagens de etto
 $errorMdwr = new ErrorMiddleware($app);
-$errorMdwr->setErrorMiddleware(App::config()->get('env'), App::config()->get('debug'));
+$errorMdwr->getErrorMiddleware(App::config()->get('env'), App::config()->get('debug'));
 
 $middleware = new Middleware();

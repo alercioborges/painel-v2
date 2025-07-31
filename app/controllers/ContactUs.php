@@ -27,15 +27,18 @@ class ContactUs extends Controller
             $validate = new Validate();
 
             $data = $validate->validate([
-                'email' => 'email:required'
+                'name' => 'required',
+                'email' => 'email:required',
+                'subject' => 'required',
+                'message' => 'required'
             ]);
 
-        $email = new Email();
-        $email->send();
+            $email = new Email();
+            $email->send($data);
 
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
-                    }
+        }
 
         return $response;
     }

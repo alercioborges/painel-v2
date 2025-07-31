@@ -7,7 +7,6 @@ use Slim\Exception\HttpNotFoundException;
 use Zeuxisoo\Whoops\Slim\WhoopsMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Throwable;
 
 class ErrorMiddleware
 {
@@ -18,7 +17,7 @@ class ErrorMiddleware
         $this->app = $app;
     }
 
-    public function setErrorMiddleware(String $environment, bool $debug)
+    public function getErrorMiddleware(String $environment, bool $debug)
     {
         // Configurar Whoops para debug (apenas em desenvolvimento)
         if ($environment === 'development') {
@@ -35,7 +34,7 @@ class ErrorMiddleware
 
             $errorMiddleware->setErrorHandler(
                 HttpNotFoundException::class,
-                function (Request $request, Throwable $exception, bool $displayErrorDetails) use ($app): Response {
+                function (Request $request, \Throwable $exception, bool $displayErrorDetails) use ($app): Response {
                     $response = $this->app->getResponseFactory()->createResponse(404);
 
                     // Carregar arquivo HTML externo

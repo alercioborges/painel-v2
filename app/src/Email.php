@@ -10,7 +10,7 @@ use app\src\Load;
 
 class Email
 {
-    public function send()
+    public function send(array $emailData)
     {
         $mail = new PHPMailer(true);
         $config = Load::file('/app/config/SMPT.php');
@@ -22,18 +22,20 @@ class Email
 
             $mail->Host = $config['host'];
             $mail->SMTPAuth = true;
+            $mail->Mailer  = 'smpt'; 
             $mail->Username = $config['username'];
             $mail->Password = $config['password'];
-            $mail->SMTPSecure = $config['secure'];  //PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPSecure = $config['secure']; //PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = $config['port'];
+            $mail->CharSet = 'UTF-8';
 
             //Recipients
-            $mail->setFrom('email@hotmail.com', 'Alercio Borges');
-            $mail->addAddress('email@hotmail.com', 'Alercio Borges');
+            $mail->setFrom($config['username'], 'Alercio');
+            $mail->addAddress($emailData['email'], 'Alercio');
 
             $mail->isHTML(true);
-            $mail->Subject = 'subject(assunto)';
-            $mail->Body    = 'template';
+            $mail->Subject = $emailData['subject'];
+            $mail->Body    = $emailData['message'];
             $mail->AltBody = 'Rodapé';
 
             $mail->send();
