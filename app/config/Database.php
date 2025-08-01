@@ -15,7 +15,7 @@ class Database
             'host'      => $_ENV['DB_HOST']     ?? 'localhost',
             'port'      => $_ENV['DB_PORT']     ?? '3306',
             'database'  => $_ENV['DB_DATABASE'] ?? '',
-            'username'  => $_ENV['DB_USER']     ?? '',
+            'username'  => $_ENV['DB_USER']     ?? 'root',
             'password'  => $_ENV['DB_PASS']     ?? '',
             'options'   => [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

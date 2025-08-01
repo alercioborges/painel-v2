@@ -9,8 +9,8 @@ class LoaderTwig
 		$loader = new \Twig\Loader\FilesystemLoader($tamplate);
 
 		$twig = new \Twig\Environment($loader, [
-			'cache' => '../app/views/cache',
-			'cache' => false,
+			'cache' => dirname(__DIR__) . '/views/cache',
+			'cache' => (string)\app\config\App::config()->get('debug'),
 			'debug' => \app\config\App::config()->get('debug')
 		]);
 

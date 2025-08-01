@@ -9,7 +9,7 @@ class App
     public function __construct()
     {
         $this->dataConfig['env']   = $_ENV['APP_NODE_ENV'] ?? 'production';
-        $this->dataConfig['debug'] = ($_ENV['APP_DEBUG'] ?? 'false') === 'true';
+        $this->dataConfig['debug'] = filter_var($_ENV['APP_DEBUG'] ?? false, FILTER_VALIDATE_BOOLEAN);        
         $this->dataConfig['dir']   = $_ENV['APP_BASE_DIR'] ?? '';
         $this->dataConfig['url']   = $this->getBaseUrl();
     }

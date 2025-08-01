@@ -13,46 +13,52 @@ use app\src\Validate;
 
 class UserController extends Controller
 {
+	public function index(Request $request, Response $response): Response
+	{
+		$this->view('pages/admin.html', [
+			'TITLE' => 'Administração'
+		]);
 
-	public function show(Request $request, Response $response):Response
+		return $response;
+	}
+	
+	
+	public function show(Request $request, Response $response): Response
 	{
 		$user = new User();
 
 		$perPage = 3;
 
-		try {		
+		try {
 			$users = isset($_GET['search'])
-			? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
-			: $user->getAll($perPage);
+				? $user->filtered(['firstname', 'lastname', 'email'], $_GET['search'], $perPage)
+				: $user->getAll($perPage);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage());
-			
-			
 		}
 
 		$this->view('pages/users.html', [
 			'TITLE' => 'Lissta de usuários',
 			'USERS' => $users['USERS'],
 			'PAGES' => $users['PAGES']
-		]);		
+		]);
 
 		return $response;
-
 	}
 
 
 
-	public function create(Request $request, Response $response):Response
+	public function create(Request $request, Response $response): Response
 	{
 		$role = new Role();
 
-		try {	
-			$roles = $role->getRoles();			
+		try {
+			$roles = $role->getRoles();
 		} catch (\Exception $e) {
 			flash('message', error($e->getMessage()));
 			redirect('/admin/users');
 		}
-		
+
 		$this->view('pages/user-create.html', [
 			'TITLE' => 'Cadastrar novo usuário',
 			'ROLES' => $roles,
@@ -64,11 +70,11 @@ class UserController extends Controller
 
 
 
-	public function save()
+	public function store()
 	{
 		$validate = new Validate();
 
-		$data = $validate->validate([			
+		$data = $validate->validate([
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
 			'email'		=> 'email:required:max@60:unique@user',
@@ -79,7 +85,7 @@ class UserController extends Controller
 		$user = new User();
 
 		try {
-			$user = $user->save($data);			
+			$user = $user->save($data);
 		} catch (Exception $e) {
 			flash('message', error("Erro ao tentar cadastrar usuário: $e->getMessage()"));
 		}
@@ -89,7 +95,7 @@ class UserController extends Controller
 
 
 
-	public function edit(Request $request, Response $response, array $args):Response
+	public function edit(Request $request, Response $response, array $args): Response
 	{
 		$user = new User();
 
@@ -115,11 +121,11 @@ class UserController extends Controller
 
 
 
-	public function update(Request $request, Response $response, array $args):Response
+	public function update(Request $request, Response $response, array $args): Response
 	{
 		$validate = new Validate();
 
-		$data = $validate->validate([			
+		$data = $validate->validate([
 			'firstname'	=> 'required:max@30:uppercase',
 			'lastname'	=> 'required:max@30:uppercase',
 			'email'		=> "email:required:max@60:unique@user({$args['id']})",
@@ -130,7 +136,7 @@ class UserController extends Controller
 
 		try {
 			$user = $user->edit($args['id'], $data);
-			flash('message', success("Cadastro de Usuário alterado com sucesso"));			
+			flash('message', success("Cadastro de Usuário alterado com sucesso"));
 		} catch (\Exception $e) {
 			flash('message', error("Erro ao tentar edupar usuário usuário: {$e->getMessage()}"));
 		}
@@ -142,7 +148,7 @@ class UserController extends Controller
 
 
 
-	public function delete(Request $request, Response $response, array $args):Response
+	public function delete(Request $request, Response $response, array $args): Response
 	{
 		$user = new User();
 
@@ -152,10 +158,9 @@ class UserController extends Controller
 		} catch (Exception $e) {
 			flash('message', error("Erro ao excluir usuário: {$e->getMessage()}"));
 		}
-		
+
 		redirect("/admin/users");
 
 		return $response;
 	}
-
 }

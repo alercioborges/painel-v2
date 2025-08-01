@@ -1,11 +1,8 @@
 {% extends 'pages/base.twig' %}
 
-{% block content %}
-	{{ message('message') }}
-	<h3 class="card-title">{{ TITLE }}</h3>				
-	<div class="card-tools">					
-		
-		<form action="#" method="GET">
+{% block content %}				
+	<div class="card-tools">		
+		<form action="#" method="GET">			
 			<div class="input-group input-group-sm" style="width: 150px;">			
 				<input type="text" name="search" class="form-control float-right" placeholder="Search">	
 				<div class="input-group-append">
@@ -22,6 +19,7 @@
 
 	{% if USERS is not empty %}
 
+		{{ message('message') }}
 		<table id="users-list" class="table table-hover text-nowrap">
 			<thead>
 				<tr>
